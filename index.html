@@ -1,16 +1,412 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
 <meta charset="UTF-8">
-<title>情報部門の日常</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>情報部門の日常 ～課長がIT用語しか喋れない会社～</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    background:#f5f7fa;
+    color:#333;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+header{
+    background:#0d2342;
+    color:white;
+    padding:16px 40px;
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.header-inner{
+    max-width:1200px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:1.5rem;
+    font-weight:bold;
+}
+
+nav a{
+    margin-left:24px;
+}
+
+.hero{
+    position:relative;
+}
+
+.hero img{
+    width:100%;
+    display:block;
+}
+
+.hero-overlay{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:linear-gradient(
+        to right,
+        rgba(255,255,255,0.92) 0%,
+        rgba(255,255,255,0.82) 25%,
+        rgba(255,255,255,0) 60%
+    );
+}
+
+.hero-text{
+    position:absolute;
+    top:50%;
+    left:8%;
+    transform:translateY(-50%);
+    max-width:500px;
+}
+
+.hero-text h1{
+    font-size:4rem;
+    margin-bottom:10px;
+}
+
+.hero-text h2{
+    font-size:1.4rem;
+    margin-bottom:25px;
+    color:#555;
+}
+
+.hero-text p{
+    font-size:1.2rem;
+    line-height:1.8;
+}
+
+.button-group{
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 24px;
+    border-radius:10px;
+    font-weight:bold;
+    margin-right:12px;
+}
+
+.btn-primary{
+    background:#2563eb;
+    color:white;
+}
+
+.btn-secondary{
+    background:white;
+    border:1px solid #ccc;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+    padding:50px 20px;
+}
+
+.section-title{
+    font-size:2rem;
+    margin-bottom:25px;
+}
+
+.characters{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+    margin-bottom:60px;
+}
+
+.card{
+    background:white;
+    border-radius:16px;
+    padding:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.card h3{
+    font-size:2rem;
+    margin-bottom:15px;
+}
+
+.mizudai{
+    border-top:6px solid #d62828;
+}
+
+.aoki{
+    border-top:6px solid #2563eb;
+}
+
+.hoshino{
+    border-top:6px solid #2f855a;
+}
+
+.card p{
+    line-height:1.8;
+}
+
+.content-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:30px;
+}
+
+.panel{
+    background:white;
+    border-radius:16px;
+    padding:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.episode{
+    padding:20px;
+    border-bottom:1px solid #eee;
+}
+
+.episode:last-child{
+    border-bottom:none;
+}
+
+.episode h4{
+    margin-bottom:8px;
+}
+
+.tag{
+    display:inline-block;
+    background:#2563eb;
+    color:white;
+    padding:4px 10px;
+    border-radius:8px;
+    font-size:0.8rem;
+    margin-right:8px;
+}
+
+footer{
+    background:#0d2342;
+    color:white;
+    text-align:center;
+    padding:30px;
+    margin-top:50px;
+}
+
+@media(max-width:900px){
+
+.hero-text h1{
+    font-size:2.5rem;
+}
+
+.content-grid{
+    grid-template-columns:1fr;
+}
+
+}
+
+</style>
 </head>
+
 <body>
+
+<header>
+<div class="header-inner">
+
+<div class="logo">
+☕ 情報部門の日常
+</div>
+
+<nav>
+<a href="#">ホーム</a>
+<a href="#">エピソード一覧</a>
+<a href="#">この物語について</a>
+</nav>
+
+</div>
+</header>
+
+<section class="hero">
+
+<img src="images/cover.png" alt="情報部門の日常">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-text">
 
 <h1>情報部門の日常</h1>
 
-<ul>
-<li><a href="ep01.html">第1話 そのメール、開くな危険！</a></li>
+<h2>～課長がIT用語しか喋れない会社～</h2>
+
+<p>
+IT用語だらけの会話で繰り広げられる、
+情報システム部のゆるくて真面目な日常。
+</p>
+
+<p style="margin-top:15px;">
+楽しみながら、
+情報処理安全確保支援士の知識が身につく物語。
+</p>
+
+<div class="button-group">
+
+<a class="btn btn-primary" href="ep01.html">
+📖 第1話を読む
+</a>
+
+<a class="btn btn-secondary" href="#">
+📚 エピソード一覧
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<div class="container">
+
+<h2 class="section-title">登場人物</h2>
+
+<div class="characters">
+
+<div class="card mizudai">
+
+<h3>ミズダイ</h3>
+
+<p>
+脳内CPUは常時100%稼働。
+IT用語しか話せない情報システム部課長。
+</p>
+
+<p>
+効率化のことしか考えていないように思えて、
+実は誰よりも部下思い。
+</p>
+
+</div>
+
+<div class="card aoki">
+
+<h3>アオキ</h3>
+
+<p>
+情報システム部に配属されたばかりの新人。
+</p>
+
+<p>
+素直で頑張り屋だが、
+時々核心を突く辛辣な一言で周囲を凍らせる。
+</p>
+
+</div>
+
+<div class="card hoshino">
+
+<h3>ホシノ</h3>
+
+<p>
+丁寧な解説を信条とするベテラン社員。
+</p>
+
+<p>
+どんな専門用語も分かりやすく説明する、
+丁寧の権化。
+</p>
+
+</div>
+
+</div>
+
+<div class="content-grid">
+
+<div class="panel">
+
+<h2>最新エピソード</h2>
+
+<div class="episode">
+
+<h4>
+<span class="tag">第1話</span>
+そのメール、開くな危険！
+</h4>
+
+<p>
+怪しい請求書メールを開こうとするアオキ。
+ミズダイ課長の絶叫から、
+セキュリティ研修が始まる。
+</p>
+
+</div>
+
+<div class="episode">
+
+<h4>
+<span class="tag">第2話</span>
+そのパスワード、3秒で破られます
+</h4>
+
+<p>
+パスワード管理の基本と
+多要素認証を学ぶ回。
+</p>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<h2>この物語について</h2>
+
+<p>
+本作品は、
+情報処理安全確保支援士（SC）で学ぶ内容を
+ストーリー形式で楽しく学べるようにした
+学習コンテンツです。
+</p>
+
+<br>
+
+<h3>学べる内容</h3>
+
+<ul style="padding-left:20px;line-height:2;">
+<li>情報セキュリティ</li>
+<li>ネットワーク</li>
+<li>暗号技術</li>
+<li>Web技術</li>
+<li>認証・認可</li>
+<li>クラウド</li>
 </ul>
+
+</div>
+
+</div>
+
+</div>
+
+<footer>
+
+情報部門の日常 © 2026
+
+</footer>
 
 </body>
 </html>
