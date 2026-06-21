@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>第1話 課長の脳はCPUでできている</title>
+
+<style>
+
+body{
+    max-width:900px;
+    margin:auto;
+    padding:20px;
+    background:#f5f7fa;
+    color:#333;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2.2;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+h1{
+    margin-bottom:10px;
+    color:#0d2342;
+}
+
+.subtitle{
+    color:#666;
+    margin-bottom:30px;
+}
+
+.scene{
+    background:white;
+    padding:35px;
+    border-radius:16px;
+    margin-bottom:30px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    margin-bottom:20px;
+    color:#0d2342;
+}
+
+.illustration{
+    margin:30px 0;
+}
+
+.illustration img{
+    width:100%;
+    border-radius:12px;
+}
+
+.caption{
+    text-align:center;
+    color:#777;
+    font-size:0.9rem;
+    margin-top:8px;
+}
+
+.mizudai{
+    color:#d62828;
+    font-weight:bold;
+}
+
+.aoki{
+    color:#2563eb;
+    font-weight:bold;
+}
+
+.hoshino{
+    color:#2f855a;
+    font-weight:bold;
+}
+
+.lesson{
+    background:#fff8dc;
+    border-left:8px solid #f59e0b;
+    padding:20px;
+    border-radius:10px;
+}
+
+.lesson h3{
+    margin-bottom:10px;
+}
+
+footer{
+    text-align:center;
+    margin-top:50px;
+}
+
+.next{
+    display:inline-block;
+    background:#2563eb;
+    color:white;
+    padding:14px 24px;
+    border-radius:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="back">
+<a href="../index.html">← トップページへ戻る</a>
+</div>
+
+<h1>第1話 課長の脳はCPUでできている</h1>
+
+<p class="subtitle">
+学習テーマ：CPU・クロック周波数（導入編）
+</p>
+
+<div class="scene">
+
+<h2>春、情報システム部へ</h2>
+
+<p>
+春。
+</p>
+
+<p>
+アオキは緊張していた。
+</p>
+
+<p>
+今日から情報システム部への正式配属である。
+</p>
+
+<p>
+入社して三か月。
+研修期間を終え、ついに社会人としての本番が始まる。
+</p>
+
+<p>
+人事担当者から渡された部署説明にはこう書かれていた。
+</p>
+
+<p>
+「社内システムの運用管理を担当する部署」
+</p>
+
+<p>
+パソコンに詳しい人たちが静かに働いている部署。
+</p>
+
+<p>
+アオキはそんなイメージを抱いていた。
+</p>
+
+<div class="illustration">
+
+<img src="../images/ep01_01.png" alt="初出勤">
+
+<div class="caption">
+アオキ、情報システム部へ初出勤
+</div>
+
+</div>
+
+<p>
+だが、その幻想は扉を開いた瞬間に粉砕される。
+</p>
+
+</div>
+
+<div class="scene">
+
+<h2>謎の大男</h2>
+
+<p>
+「レイテンシが高い！！」
+</p>
+
+<p>
+「ボトルネックを特定しろ！！」
+</p>
+
+<p>
+「CPUを遊ばせるなァ！！」
+</p>
+
+<p>
+部屋の中央で、
+白いワイシャツを完璧にタックインしたスキンヘッドの大男が叫んでいた。
+</p>
+
+<p>
+しかも異様に筋肉質である。
+</p>
+
+<p>
+どう見ても情報システム部ではない。
+</p>
+
+<p>
+体育会系の何かだった。
+</p>
+
+<p>
+アオキは静かにドアを閉めた。
+</p>
+
+<p>
+部署を間違えたかもしれない。
+</p>
+
+<div class="illustration">
+
+<img src="../images/ep01_02.png" alt="ミズダイ初登場">
+
+<div class="caption">
+情報システム部課長 ミズダイ
+</div>
+
+</div>
+
+<p>
+しかし確認しても、
+やはり情報システム部だった。
+</p>
+
+<p>
+間違っていたのは部署ではなく中身だった。
+</p>
+
+</div>
+
+<div class="scene">
+
+<h2>脳内CPU性能を報告したまえ</h2>
+
+<p>
+
+<span class="mizudai">ミズダイ</span>
+
+「君が新人か。」
+
+</p>
+
+<p>
+
+<span class="aoki">アオキ</span>
+
+「アオキです。」
+
+</p>
+
+<p>
+
+<span class="mizudai">ミズダイ</span>
+
+「よし。」
+
+</p>
+
+<p>
+
+<span class="mizudai">ミズダイ</span>
+
+「脳内CPU性能を報告したまえ。」
+
+</p>
+
+<p>
+
+<span class="aoki">アオキ</span>
+
+「嫌です。」
+
+</p>
+
+<p>
+
+<span class="mizudai">ミズダイ</span>
+
+「なぜだ。」
+
+</p>
+
+<p>
+
+<span class="aoki">アオキ</span>
+
+「人間だからです。」
+
+</p>
+
+<p>
+
+<span class="mizudai">ミズダイ</span>
+
+「なるほど。」
+
+</p>
+
+<p>
+
+<span class="mizudai">ミズダイ</span>
+
+「自己性能を把握していないのだな。」
+
+</p>
+
+<p>
+
+<span class="aoki">アオキ</span>
+
+「会話が成立してない！」
+
+</p>
+
+</div>
+
+<div class="scene">
+
+<h2>丁寧の権化、現る</h2>
+
+<p>
+そこへ一人の男性が現れた。
+</p>
+
+<p>
+小柄で細身。
+眼鏡とグレーのマスク。
+</p>
+
+<p>
+そして何より、
+全身から「丁寧」がにじみ出ていた。
+</p>
+
+<div class="illustration">
+
+<img src="../images/ep01_03.png" alt="ホシノ登場">
+
+<div class="caption">
+ベテラン社員 ホシノ
+</div>
+
+</div>
+
+<p>
+
+<span class="hoshino">ホシノ</span>
+
+「初めまして。
+ホシノと申します。」
+
+</p>
+
+<p>
+
+<span class="hoshino">ホシノ</span>
+
+「本日は誠によろしくお願いいたします。」
+
+</p>
+
+<p>
+
+<span class="aoki">アオキ</span>
+
+「新人配属なのに結婚式みたいな挨拶ですね。」
+
+</p>
+
+<p>
+
+<span class="hoshino">ホシノ</span>
+
+「恐縮です。」
+
+</p>
+
+<p>
+
+<span class="hoshino">ホシノ</span>
+
+「ちなみに課長は故障ではありません。」
+
+</p>
+
+<p>
+
+<span class="aoki">アオキ</span>
+
+「故障じゃないんですか！？」
+
+</p>
+
+<p>
+
+<span class="hoshino">ホシノ</span>
+
+「正常動作です。」
+
+</p>
+
+</div>
+
+<div class="scene">
+
+<h2>CPU使用率100%</h2>
+
+<p>
+その時だった。
+</p>
+
+<p>
+ミズダイのスマホが鳴った。
+</p>
+
+<p>
+メール。
+チャット。
+会議通知。
+電話。
+</p>
+
+<p>
+次々と通知が押し寄せる。
+</p>
+
+<p>
+
+<span class="mizudai">ミズダイ</span>
+
+「む。」
+
+</p>
+
+<p>
+
+<span class="mizudai">ミズダイ</span>
+
+「処理が追いつかん。」
+
+</p>
+
+<p>
+
+<span class="aoki">アオキ</span>
+
+「仕事多いですね。」
+
+</p>
+
+<p>
+
+<span class="mizudai">ミズダイ</span>
+
+「脳内CPU使用率が100％を突破した。」
+
+</p>
+
+<p>
+
+<span class="aoki">アオキ</span>
+
+「寝不足って言ってください。」
+
+</p>
+
+<div class="illustration">
+
+<img src="../images/ep01_04.png" alt="通知に追われるミズダイ">
+
+<div class="caption">
+通知の集中砲火を受けるミズダイ
+</div>
+
+</div>
+
+</div>
+
+<div class="scene">
+
+<h2>CPUとは何か</h2>
+
+<p>
+
+<span class="hoshino">ホシノ</span>
+
+「今のがCPUの良い例でございます。」
+
+</p>
+
+<p>
+
+<span class="aoki">アオキ</span>
+
+「え？」
+
+</p>
+
+<p>
+
+<span class="hoshino">ホシノ</span>
+
+「CPUとはコンピュータの頭脳です。」
+
+</p>
+
+<p>
+
+<span class="hoshino">ホシノ</span>
+
+「計算したり、
+判断したり、
+命令を実行したりします。」
+
+</p>
+
+<p>
+
+<span class="hoshino">ホシノ</span>
+
+「人間でいう脳の役割ですね。」
+
+</p>
+
+<div class="illustration">
+
+<img src="../images/ep01_05.png" alt="CPU解説">
+
+<div class="caption">
+CPUはコンピュータの頭脳
+</div>
+
+</div>
+
+<p>
+
+<span class="hoshino">ホシノ</span>
+
+「課長は大量の仕事が一気に来たため、
+脳が忙しくなっていました。」
+
+</p>
+
+<p>
+
+<span class="aoki">アオキ</span>
+
+「CPUが忙しい状態なんですね。」
+
+</p>
+
+<p>
+
+<span class="hoshino">ホシノ</span>
+
+「その通りでございます。」
+
+</p>
+
+</div>
+
+<div class="scene">
+
+<h2>ホシノの丁寧まとめ</h2>
+
+<div class="lesson">
+
+<h3>本日のSCポイント</h3>
+
+<ul>
+
+<li>CPUはコンピュータの頭脳</li>
+
+<li>計算・判断・命令実行を担当する</li>
+
+<li>CPUが忙しいと処理が遅くなる</li>
+
+<li>性能はクロック周波数などで表される</li>
+
+<li>次回はメモリについて学ぶ</li>
+
+</ul>
+
+</div>
+
+<p>
+
+<span class="aoki">アオキ</span>
+
+「つまり課長は高性能CPUなんですね。」
+
+</p>
+
+<p>
+
+<span class="mizudai">ミズダイ</span>
+
+「当然だ。」
+
+</p>
+
+<p>
+
+<span class="aoki">アオキ</span>
+
+「まず定時で帰ってください。」
+
+</p>
+
+<p>
+
+<span class="hoshino">ホシノ</span>
+
+「それが最も効率的でございます。」
+
+</p>
+
+</div>
+
+<footer>
+
+<p>―― 第1話 完 ――</p>
+
+<br>
+
+<a class="next" href="ep02.html">
+第2話へ →
+</a>
+
+</footer>
+
+</body>
+</html>
