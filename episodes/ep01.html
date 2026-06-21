@@ -1,53 +1,36 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>第1話 課長の脳はCPUでできている</title>
-
 <style>
 
 body{
-    max-width:900px;
+    max-width:950px;
     margin:auto;
-    padding:20px;
     background:#f5f7fa;
-    color:#333;
     font-family:"Yu Gothic","Meiryo",sans-serif;
-    line-height:2.2;
-}
-
-a{
-    color:#2563eb;
-    text-decoration:none;
-}
-
-.back{
-    margin-bottom:20px;
-}
-
-h1{
-    margin-bottom:10px;
-    color:#0d2342;
-}
-
-.subtitle{
-    color:#666;
-    margin-bottom:30px;
+    line-height:2;
+    color:#333;
+    padding:20px;
 }
 
 .scene{
     background:white;
+    border-radius:20px;
     padding:35px;
-    border-radius:16px;
-    margin-bottom:30px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
 }
 
 .scene h2{
-    margin-bottom:20px;
     color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
 }
 
 .illustration{
@@ -56,182 +39,170 @@ h1{
 
 .illustration img{
     width:100%;
-    border-radius:12px;
+    border-radius:15px;
 }
 
 .caption{
     text-align:center;
     color:#777;
-    font-size:0.9rem;
     margin-top:8px;
+    font-size:0.9rem;
 }
 
-.mizudai{
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
     color:#d62828;
-    font-weight:bold;
 }
 
-.aoki{
+.aoki-name{
     color:#2563eb;
-    font-weight:bold;
 }
 
-.hoshino{
+.hoshino-name{
     color:#2f855a;
-    font-weight:bold;
 }
 
-.lesson{
-    background:#fff8dc;
-    border-left:8px solid #f59e0b;
-    padding:20px;
-    border-radius:10px;
+.mizudai-msg{
+    background:#ffeaea;
 }
 
-.lesson h3{
-    margin-bottom:10px;
+.aoki-msg{
+    background:#edf5ff;
 }
 
-footer{
-    text-align:center;
-    margin-top:50px;
-}
-
-.next{
-    display:inline-block;
-    background:#2563eb;
-    color:white;
-    padding:14px 24px;
-    border-radius:10px;
+.hoshino-msg{
+    background:#eaf8ef;
 }
 
 </style>
-</head>
-
-<body>
-
-<div class="back">
-<a href="../index.html">← トップページへ戻る</a>
-</div>
-
-<h1>第1話 課長の脳はCPUでできている</h1>
-
-<p class="subtitle">
-学習テーマ：CPU・クロック周波数（導入編）
-</p>
 
 <div class="scene">
 
 <h2>春、情報システム部へ</h2>
 
-<p>
-春。
-</p>
+<div class="narration">
 
-<p>
-アオキは緊張していた。
-</p>
+四月。
 
-<p>
-今日から情報システム部への正式配属である。
-</p>
+アオキは緊張した面持ちで情報システム部の扉の前に立っていた。
 
-<p>
-入社して三か月。
-研修期間を終え、ついに社会人としての本番が始まる。
-</p>
+三か月の新人研修を終え、
+今日から正式配属である。
 
-<p>
-人事担当者から渡された部署説明にはこう書かれていた。
-</p>
-
-<p>
 「社内システムの運用管理を担当する部署」
-</p>
 
-<p>
-パソコンに詳しい人たちが静かに働いている部署。
-</p>
+そんな説明を聞いていたアオキは、
+静かな人たちがパソコンをカタカタしている部署なのだろうと思っていた。
 
-<p>
-アオキはそんなイメージを抱いていた。
-</p>
+しかし、その予想は盛大に裏切られることになる。
+
+</div>
 
 <div class="illustration">
-
-<img src="../images/ep01_01.png" alt="初出勤">
-
+<img src="../images/ep01/ep01_01.png">
 <div class="caption">
-アオキ、情報システム部へ初出勤
+情報システム部へ初出勤するアオキ
 </div>
-
-</div>
-
-<p>
-だが、その幻想は扉を開いた瞬間に粉砕される。
-</p>
-
 </div>
 
 <div class="scene">
 
-<h2>謎の大男</h2>
+<h2>謎の筋肉課長</h2>
 
-<p>
-「レイテンシが高い！！」
-</p>
+<div class="narration">
 
-<p>
-「ボトルネックを特定しろ！！」
-</p>
+ドアを開けた瞬間、
 
-<p>
+部屋の中央から大声が響いた。
+
+</div>
+
+<div class="talk">
+
+<div class="name mizudai-name">
+ミズダイ
+</div>
+
+<div class="message mizudai-msg">
+
 「CPUを遊ばせるなァ！！」
-</p>
 
-<p>
-部屋の中央で、
-白いワイシャツを完璧にタックインしたスキンヘッドの大男が叫んでいた。
-</p>
+</div>
 
-<p>
-しかも異様に筋肉質である。
-</p>
+</div>
 
-<p>
+<div class="talk">
+
+<div class="name mizudai-name">
+ミズダイ
+</div>
+
+<div class="message mizudai-msg">
+
+「クロック周波数を上げろ！！」
+
+</div>
+
+</div>
+
+<div class="talk">
+
+<div class="name mizudai-name">
+ミズダイ
+</div>
+
+<div class="message mizudai-msg">
+
+「レイテンシが高いぞ！！」
+
+</div>
+
+</div>
+
+<div class="narration">
+
+白いワイシャツを完璧にタックインした、
+筋肉質のスキンヘッド。
+
 どう見ても情報システム部ではない。
-</p>
 
-<p>
-体育会系の何かだった。
-</p>
-
-<p>
 アオキは静かにドアを閉めた。
-</p>
 
-<p>
-部署を間違えたかもしれない。
-</p>
+「部署を間違えたかもしれない」
+
+そう思った。
+
+しかし確認しても、
+やはりここは情報システム部だった。
+
+間違っていたのは部署ではなく中身だった。
+
+</div>
 
 <div class="illustration">
-
-<img src="../images/ep01_02.png" alt="ミズダイ初登場">
-
+<img src="../images/ep01/ep01_02.png">
 <div class="caption">
 情報システム部課長 ミズダイ
 </div>
-
 </div>
 
-<p>
-しかし確認しても、
-やはり情報システム部だった。
-</p>
-
-<p>
-間違っていたのは部署ではなく中身だった。
-</p>
+</div>
 
 </div>
 
@@ -239,85 +210,112 @@ footer{
 
 <h2>脳内CPU性能を報告したまえ</h2>
 
-<p>
+<div class="talk">
 
-<span class="mizudai">ミズダイ</span>
+<div class="name mizudai-name">
+ミズダイ
+</div>
+
+<div class="message mizudai-msg">
 
 「君が新人か。」
 
-</p>
+「まずは脳内CPU性能を報告したまえ。」
 
-<p>
+</div>
 
-<span class="aoki">アオキ</span>
+</div>
 
-「アオキです。」
+<div class="talk">
 
-</p>
+<div class="name aoki-name">
+アオキ
+</div>
 
-<p>
+<div class="message aoki-msg">
 
-<span class="mizudai">ミズダイ</span>
+「はい？」
 
-「よし。」
+「いきなり何言ってるんですか？」
 
-</p>
+</div>
 
-<p>
+</div>
 
-<span class="mizudai">ミズダイ</span>
+<div class="talk">
 
-「脳内CPU性能を報告したまえ。」
+<div class="name mizudai-name">
+ミズダイ
+</div>
 
-</p>
+<div class="message mizudai-msg">
 
-<p>
+「私は8コア5GHzだ。」
 
-<span class="aoki">アオキ</span>
+</div>
 
-「嫌です。」
+</div>
 
-</p>
+<div class="talk">
 
-<p>
+<div class="name aoki-name">
+アオキ
+</div>
 
-<span class="mizudai">ミズダイ</span>
+<div class="message aoki-msg">
 
-「なぜだ。」
+「怖っ。」
 
-</p>
+「自己紹介で脳のスペック言う人初めて見ました。」
 
-<p>
+</div>
 
-<span class="aoki">アオキ</span>
+</div>
 
-「人間だからです。」
+<div class="talk">
 
-</p>
+<div class="name mizudai-name">
+ミズダイ
+</div>
 
-<p>
+<div class="message mizudai-msg">
 
-<span class="mizudai">ミズダイ</span>
+「君のCPU性能は？」
 
-「なるほど。」
+</div>
 
-</p>
+</div>
 
-<p>
+<div class="talk">
 
-<span class="mizudai">ミズダイ</span>
+<div class="name aoki-name">
+アオキ
+</div>
 
-「自己性能を把握していないのだな。」
+<div class="message aoki-msg">
 
-</p>
+「CPUって何ですか？」
 
-<p>
+「すみません、IT用語が全然分からなくて……」
 
-<span class="aoki">アオキ</span>
+</div>
 
-「会話が成立してない！」
+</div>
 
-</p>
+<div class="narration">
+
+その時だった。
+
+後ろから柔らかい声が聞こえた。
+
+</div>
+
+<div class="illustration">
+<img src="../images/ep01/ep01_03.png">
+<div class="caption">
+困惑するアオキ
+</div>
+</div>
 
 </div>
 
@@ -325,316 +323,91 @@ footer{
 
 <h2>丁寧の権化、現る</h2>
 
-<p>
-そこへ一人の男性が現れた。
-</p>
-
-<p>
-小柄で細身。
-眼鏡とグレーのマスク。
-</p>
-
-<p>
-そして何より、
-全身から「丁寧」がにじみ出ていた。
-</p>
-
 <div class="illustration">
-
-<img src="../images/ep01_03.png" alt="ホシノ登場">
-
+<img src="../images/ep01/ep01_04.png">
 <div class="caption">
 ベテラン社員 ホシノ
 </div>
-
 </div>
 
-<p>
+<div class="talk">
 
-<span class="hoshino">ホシノ</span>
-
-「初めまして。
-ホシノと申します。」
-
-</p>
-
-<p>
-
-<span class="hoshino">ホシノ</span>
-
-「本日は誠によろしくお願いいたします。」
-
-</p>
-
-<p>
-
-<span class="aoki">アオキ</span>
-
-「新人配属なのに結婚式みたいな挨拶ですね。」
-
-</p>
-
-<p>
-
-<span class="hoshino">ホシノ</span>
-
-「恐縮です。」
-
-</p>
-
-<p>
-
-<span class="hoshino">ホシノ</span>
-
-「ちなみに課長は故障ではありません。」
-
-</p>
-
-<p>
-
-<span class="aoki">アオキ</span>
-
-「故障じゃないんですか！？」
-
-</p>
-
-<p>
-
-<span class="hoshino">ホシノ</span>
-
-「正常動作です。」
-
-</p>
-
+<div class="name hoshino-name">
+ホシノ
 </div>
 
-<div class="scene">
+<div class="message hoshino-msg">
 
-<h2>CPU使用率100%</h2>
+「初めまして。」
 
-<p>
-その時だった。
-</p>
+「ホシノと申します。」
 
-<p>
-ミズダイのスマホが鳴った。
-</p>
-
-<p>
-メール。
-チャット。
-会議通知。
-電話。
-</p>
-
-<p>
-次々と通知が押し寄せる。
-</p>
-
-<p>
-
-<span class="mizudai">ミズダイ</span>
-
-「む。」
-
-</p>
-
-<p>
-
-<span class="mizudai">ミズダイ</span>
-
-「処理が追いつかん。」
-
-</p>
-
-<p>
-
-<span class="aoki">アオキ</span>
-
-「仕事多いですね。」
-
-</p>
-
-<p>
-
-<span class="mizudai">ミズダイ</span>
-
-「脳内CPU使用率が100％を突破した。」
-
-</p>
-
-<p>
-
-<span class="aoki">アオキ</span>
-
-「寝不足って言ってください。」
-
-</p>
-
-<div class="illustration">
-
-<img src="../images/ep01_04.png" alt="通知に追われるミズダイ">
-
-<div class="caption">
-通知の集中砲火を受けるミズダイ
-</div>
+「どうぞよろしくお願いいたします。」
 
 </div>
 
 </div>
 
-<div class="scene">
+<div class="talk">
 
-<h2>CPUとは何か</h2>
+<div class="name aoki-name">
+アオキ
+</div>
 
-<p>
+<div class="message aoki-msg">
 
-<span class="hoshino">ホシノ</span>
+「助かります！」
 
-「今のがCPUの良い例でございます。」
+「課長が何を言ってるのか全然分からなくて……」
 
-</p>
-
-<p>
-
-<span class="aoki">アオキ</span>
-
-「え？」
-
-</p>
-
-<p>
-
-<span class="hoshino">ホシノ</span>
-
-「CPUとはコンピュータの頭脳です。」
-
-</p>
-
-<p>
-
-<span class="hoshino">ホシノ</span>
-
-「計算したり、
-判断したり、
-命令を実行したりします。」
-
-</p>
-
-<p>
-
-<span class="hoshino">ホシノ</span>
-
-「人間でいう脳の役割ですね。」
-
-</p>
-
-<div class="illustration">
-
-<img src="../images/ep01_05.png" alt="CPU解説">
-
-<div class="caption">
-CPUはコンピュータの頭脳
 </div>
 
 </div>
 
-<p>
+<div class="talk">
 
-<span class="hoshino">ホシノ</span>
+<div class="name hoshino-name">
+ホシノ
+</div>
 
-「課長は大量の仕事が一気に来たため、
-脳が忙しくなっていました。」
+<div class="message hoshino-msg">
 
-</p>
+「ご安心ください。」
 
-<p>
-
-<span class="aoki">アオキ</span>
-
-「CPUが忙しい状態なんですね。」
-
-</p>
-
-<p>
-
-<span class="hoshino">ホシノ</span>
-
-「その通りでございます。」
-
-</p>
+「課長は正常動作でございます。」
 
 </div>
 
-<div class="scene">
+</div>
 
-<h2>ホシノの丁寧まとめ</h2>
+<div class="talk">
 
-<div class="lesson">
+<div class="name aoki-name">
+アオキ
+</div>
 
-<h3>本日のSCポイント</h3>
+<div class="message aoki-msg">
 
-<ul>
-
-<li>CPUはコンピュータの頭脳</li>
-
-<li>計算・判断・命令実行を担当する</li>
-
-<li>CPUが忙しいと処理が遅くなる</li>
-
-<li>性能はクロック周波数などで表される</li>
-
-<li>次回はメモリについて学ぶ</li>
-
-</ul>
+「正常なんですか！？」
 
 </div>
 
-<p>
+</div>
 
-<span class="aoki">アオキ</span>
+<div class="talk">
 
-「つまり課長は高性能CPUなんですね。」
+<div class="name hoshino-name">
+ホシノ
+</div>
 
-</p>
+<div class="message hoshino-msg">
 
-<p>
+「CPUとは、コンピュータの頭脳のことでございます。」
 
-<span class="mizudai">ミズダイ</span>
-
-「当然だ。」
-
-</p>
-
-<p>
-
-<span class="aoki">アオキ</span>
-
-「まず定時で帰ってください。」
-
-</p>
-
-<p>
-
-<span class="hoshino">ホシノ</span>
-
-「それが最も効率的でございます。」
-
-</p>
+「人間で言えば脳のような存在でございます。」
 
 </div>
 
-<footer>
+</div>
 
-<p>―― 第1話 完 ――</p>
-
-<br>
-
-<a class="next" href="ep02.html">
-第2話へ →
-</a>
-
-</footer>
-
-</body>
-</html>
+</div>
