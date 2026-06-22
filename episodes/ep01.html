@@ -1,4 +1,10 @@
-<style>
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第1話：コンピュータの仕組みと、机と本棚のヒミツ</title>
+    <style>
 
 body{
     max-width:950px;
@@ -90,657 +96,216 @@ body{
     background:#eaf8ef;
 }
 
+/* 問題セクション用アレンジ（既存のパーツをベースに表現） */
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
 </style>
+</head>
+<body>
 
 <div class="scene">
+    <h2>プロローグ：配属初日の大絶叫</h2>
+    <div class="narration">
+        今日から情報システム部に配属されたアオキ（25）。<br>
+        「IT部門だし、きっと静かで知的な部署なんだろうな」<br>
+        そんな期待を胸に、部署の重い扉を開けた瞬間――。
+    </div>
+    
+    <div class="illustration">
+        <img src="ep01_01.png" alt="情シス部のオフィスを覗き込むアオキ">
+        <div class="caption">【ep01_01.png】短めのパッツン前髪に猫目のアオキが、恐る恐るオフィスを覗き込む</div>
+    </div>
 
-<h2>春、情報システム部へ</h2>
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「うおおおおおッ！ 止まれ！ 止まるんじゃない！！ 私の処理能力（プロセス）を舐めるなァァァ！！ レジスタが溢れるゥゥ！！」</div>
+    </div>
 
-<div class="narration">
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ひえっ！？ （な、何この筋肉ムキムキのスキンヘッドのおじさん…！？ 白いワイシャツをスラックスにめちゃくちゃキッチリインしてるけど、叫び声が完全に体育会系なんですけど…！）」</div>
+    </div>
 
-四月。
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「おや、アオキさんですね。初めまして、ベテラン社員のホシノと申します。以後お見知り置きを。……あぁ、ミズダイ課長のことはお気になさらずに」</div>
+    </div>
 
-アオキは緊張した面持ちで情報システム部の扉の前に立っていた。
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「あ、初めましてアオキです！ あの、課長は一体どうされたんですか…？ パソコンが爆発でもしそうな勢いですが…」</div>
+    </div>
 
-三か月の新人研修を終え、
-今日から正式配属である。
-
-「社内システムの運用管理を担当する部署」
-
-そんな説明を聞いていたアオキは、
-静かな人たちがパソコンをカタカタしている部署なのだろうと思っていた。
-
-しかし、その予想は盛大に裏切られることになる。
-
-</div>
-
-<div class="illustration">
-<img src="../images/ep01/ep01_01.png">
-<div class="caption">
-情報システム部へ初出勤するアオキ
-</div>
-</div>
-
-<div class="scene">
-
-<h2>謎の筋肉課長</h2>
-
-<div class="narration">
-
-ドアを開けた瞬間、
-
-部屋の中央から大声が響いた。
-
-</div>
-
-<div class="talk">
-
-<div class="name mizudai-name">
-ミズダイ
-</div>
-
-<div class="message mizudai-msg">
-
-「CPUを遊ばせるなァ！！」
-
-</div>
-
-</div>
-
-<div class="talk">
-
-<div class="name mizudai-name">
-ミズダイ
-</div>
-
-<div class="message mizudai-msg">
-
-「クロック周波数を上げろ！！」
-
-</div>
-
-</div>
-
-<div class="talk">
-
-<div class="name mizudai-name">
-ミズダイ
-</div>
-
-<div class="message mizudai-msg">
-
-「レイテンシが高いぞ！！」
-
-</div>
-
-</div>
-
-<div class="narration">
-
-白いワイシャツを完璧にタックインした、
-筋肉質のスキンヘッド。
-
-どう見ても情報システム部ではない。
-
-アオキは静かにドアを閉めた。
-
-「部署を間違えたかもしれない」
-
-そう思った。
-
-しかし確認しても、
-やはりここは情報システム部だった。
-
-間違っていたのは部署ではなく中身だった。
-
-</div>
-
-<div class="illustration">
-<img src="../images/ep01/ep01_02.png">
-<div class="caption">
-情報システム部課長 ミズダイ
-</div>
-</div>
-
-</div>
-
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「いえ、パソコンは正常です。フリーズしているのは課長の脳内でございます。大量の業務を同時に処理しようとして、今、脳内CPUの使用率が100%を突破した状態でございますね（にっこり）」</div>
+    </div>
 </div>
 
 <div class="scene">
+    <h2>CPUの役割：制御と演算、性能を示すクロック周波数</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「CPUの使用率100%……？ よくパソコンのスペック表で『CPU』って見ますけど、具体的に何をしてるんですか？」</div>
+    </div>
 
-<h2>脳内CPU性能を報告したまえ</h2>
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">
+            「CPU（中央処理装置）は、一言で言えば**『コンピュータの頭脳』**です。試験に出るポイントとしては、CPUが**『制御』**と**『演算』**という2つの大仕事をしている点ですね。<br>
+            <ul>
+                <li><strong>制御：</strong>メモリからプログラムの命令を取り出して解釈し、各装置に指示を出す。</li>
+                <li><strong>演算：</strong>指示に従って、四則演算（計算）や論理演算を行う。</li>
+            </ul>
+            この命令の取り出しから実行までのサイクルを、1秒間に何回繰り返せるかというテンポを**『クロック周波数』**と呼び、単位は**Hz（ヘルツ）**で表します。この数値が高いほど、頭の回転が速いCPUということになります」
+        </div>
+    </div>
 
-<div class="talk">
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「フンッ！ つまり、私という『課長（CPU）』が、指示を出して（制御）、この強靭な大胸筋で計算を高速実行（演算）しているということだな！ 私の脳内クロックは常時5.0GHz超えだッ！」</div>
+    </div>
 
-<div class="name mizudai-name">
-ミズダイ
-</div>
-
-<div class="message mizudai-msg">
-
-「君が新人か。」
-
-「まずは脳内CPU性能を報告したまえ。」
-
-</div>
-
-</div>
-
-<div class="talk">
-
-<div class="name aoki-name">
-アオキ
-</div>
-
-<div class="message aoki-msg">
-
-「はい？」
-
-「いきなり何言ってるんですか？」
-
-</div>
-
-</div>
-
-<div class="talk">
-
-<div class="name mizudai-name">
-ミズダイ
-</div>
-
-<div class="message mizudai-msg">
-
-「私は8コア5GHzだ。」
-
-</div>
-
-</div>
-
-<div class="talk">
-
-<div class="name aoki-name">
-アオキ
-</div>
-
-<div class="message aoki-msg">
-
-「怖っ。」
-
-「自己紹介で脳のスペック言う人初めて見ました。」
-
-</div>
-
-</div>
-
-<div class="talk">
-
-<div class="name mizudai-name">
-ミズダイ
-</div>
-
-<div class="message mizudai-msg">
-
-「君のCPU性能は？」
-
-</div>
-
-</div>
-
-<div class="talk">
-
-<div class="name aoki-name">
-アオキ
-</div>
-
-<div class="message aoki-msg">
-
-「CPUって何ですか？」
-
-「すみません、IT用語が全然分からなくて……」
-
-</div>
-
-</div>
-
-<div class="narration">
-
-その時だった。
-
-後ろから柔らかい声が聞こえた。
-
-</div>
-
-<div class="illustration">
-<img src="../images/ep01/ep01_03.png">
-<div class="caption">
-困惑するアオキ
-</div>
-</div>
-
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「筋肉は計算しませんよ、課長。……でもホシノさん、CPUが凄く働き者なのは分かりました！」</div>
+    </div>
 </div>
 
 <div class="scene">
+    <h2>メモリとストレージ：「作業机」と「本棚」のカンケイ</h2>
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「しかしアオキさん、どんなに頭の回転が速いCPUでも、データを置いておく場所がなければ仕事ができません。そこで登場するのが、**『メモリ（主記憶装置）』**と**『HDD/SSD（補助記憶装置・ストレージ）』**です」</div>
+    </div>
 
-<h2>丁寧の権化、現る</h2>
+    <div class="illustration">
+        <img src="ep01_02.png" alt="ホシノさんがホワイトボードで説明する机と本棚のイラスト">
+        <div class="caption">【ep01_02.png】ホシノさんがホワイトボードを使い、CPU（働く人）、メモリ（作業机）、HDD/SSD（本棚）の例えをわかりやすく図解している</div>
+    </div>
 
-<div class="illustration">
-<img src="../images/ep01/ep01_04.png">
-<div class="caption">
-ベテラン社員 ホシノ
-</div>
-</div>
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">
+            「この2つの違いは、**『作業机』と『本棚』**で例えると非常にスッキリ理解できますよ。<br><br>
+            <strong>● メモリ（主記憶装置）＝『作業机』</strong><br>
+            CPUが今まさに使っているプログラムやデータを広げる場所です。アクセス速度は**高速**ですが、机が狭い（容量が小さい）と書類が乗り切らず、仕事が遅くなります。また、**揮発性（きはつせい）**といって、パソコンの電源を切ると机の上の書類はすべて消えてしまいます。<br><br>
+            <strong>● HDD/SSD（補助記憶装置）＝『本棚』</strong><br>
+            データを長期間保管しておく場所です。容量は**巨大**ですが、本棚から書類を取り出すのには時間がかかるため、アクセス速度は**低速**です。こちらは**不揮発性（ふきはつせい）**なので、電源を切ってもデータは消えません」
+        </div>
+    </div>
 
-<div class="talk">
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど！ パソコンを起動するときに時間がかかるのは、本棚（HDD/SSD）から重い教科書を引っ張り出して、作業机（メモリ）に広げているからなんですね！」</div>
+    </div>
 
-<div class="name hoshino-name">
-ホシノ
-</div>
-
-<div class="message hoshino-msg">
-
-「初めまして。」
-
-「ホシノと申します。」
-
-「どうぞよろしくお願いいたします。」
-
-</div>
-
-</div>
-
-<div class="talk">
-
-<div class="name aoki-name">
-アオキ
-</div>
-
-<div class="message aoki-msg">
-
-「助かります！」
-
-「課長が何を言ってるのか全然分からなくて……」
-
-</div>
-
-</div>
-
-<div class="talk">
-
-<div class="name hoshino-name">
-ホシノ
-</div>
-
-<div class="message hoshino-msg">
-
-「ご安心ください。」
-
-「課長は正常動作でございます。」
-
-</div>
-
-</div>
-
-<div class="talk">
-
-<div class="name aoki-name">
-アオキ
-</div>
-
-<div class="message aoki-msg">
-
-「正常なんですか！？」
-
-</div>
-
-</div>
-
-<div class="talk">
-
-<div class="name hoshino-name">
-ホシノ
-</div>
-
-<div class="message hoshino-msg">
-
-「CPUとは、コンピュータの頭脳のことでございます。」
-
-「人間で言えば脳のような存在でございます。」
-
-</div>
-
-</div>
-
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい！ まさにその通りです、アオキさん！」</div>
+    </div>
 </div>
 
 <div class="scene">
+    <h2>キャッシュメモリとバス：速度差を埋めるハコとデータの通り道</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「でも、超高速なCPU（人間）に対して、いくらメモリが高速とはいえ、机から書類を取るだけでも待ち時間が発生しちゃいませんか？」</div>
+    </div>
 
-<h2>シーン5　メモリが足りない課長</h2>
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">
+            「鋭いですね。そこで、CPUとメモリの間のさらなる速度差を埋めるために、CPUのすぐ内部に**『キャッシュメモリ』**という超高速で小容量な記憶装置が用意されています。<br>
+            これは例えるなら、**『机の上のペン立て』や『引き出しの中のトレイ』**です。よく使うデータ（ペンなど）をここに入れておくことで、いちいち机に手を伸ばす必要すらなくなり、CPUの待ち時間を減らして処理を高速化できます」
+        </div>
+    </div>
 
-<div class="illustration">
-<img src="../images/ep01_05.png">
-<div class="caption">
-大量の仕事で混乱するミズダイ
-</div>
-</div>
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「そして！ コンピュータ内でこれらのデータや指示が行き交う共通の通り道のことを**『バス（Bus）』**と呼ぶのだ！ 筋肉に栄養を運ぶ血管のようなものだな！」</div>
+    </div>
 
-<p>
-昼前。
-</p>
-
-<p>
-ミズダイ課長の机の上には、
-書類が山のように積み上がっていた。
-</p>
-
-<p>
-メール、電話、チャット、会議通知。
-</p>
-
-<p>
-同時にいくつもの仕事が襲い掛かる。
-</p>
-
-<p class="mizudai">
-ミズダイ「まずい…」
-</p>
-
-<p class="mizudai">
-ミズダイ「脳内メモリ使用率が99％だ…」
-</p>
-
-<p class="aoki">
-アオキ「寝不足って言えばいいのでは？」
-</p>
-
-<p class="mizudai">
-ミズダイ「いや、今は会議資料を考えながら、
-障害報告を読んで、
-バックアップ確認もしなければならん。」
-</p>
-
-<p class="aoki">
-アオキ「一気にやりすぎです！」
-</p>
-
-<p class="hoshino">
-ホシノ「メモリとは、一時的に作業する机の広さのようなものです。」
-</p>
-
-<p class="hoshino">
-ホシノ「机が狭いと、たくさんの資料を広げられません。」
-</p>
-
-<p class="hoshino">
-ホシノ「コンピュータも同じでございます。」
-</p>
-
-<p class="aoki">
-アオキ「なるほど。」
-</p>
-
-<p class="aoki">
-アオキ「課長の机が散らかってるのはメモリ不足なんですね。」
-</p>
-
-<p class="mizudai">
-ミズダイ「失礼な。」
-</p>
-
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「課長が急にまともな補足を……！ データの通り道が『バス』、CPUのすぐ近くにある超高速な味方が『キャッシュメモリ』ですね。これでコンピュータの仕組みの基本が繋がりました！」</div>
+    </div>
 </div>
 
 <div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        ホシノさんがホワイトボードに、実際の試験に出題される問題を書き出した！
+    </div>
 
-<h2>シーン6　SSDは巨大な倉庫</h2>
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        CPUと主記憶装置（メモリ）のアクセス速度の差を緩和し、処理を高速化するために用いられる超高速な記憶装置はどれか。<br><br>
+        <span class="quiz-option">ア：キャッシュメモリ</span><br>
+        <span class="quiz-option">イ：フラッシュメモリ</span><br>
+        <span class="quiz-option">ウ：バーチャルメモリ</span><br>
+        <span class="quiz-option">エ：レジスタ</span>
+    </div>
 
-<div class="illustration">
-<img src="../images/ep01_06.png">
-<div class="caption">
-ホシノの倉庫理論
-</div>
-</div>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「これはさっき習ったばかりです！ CPUと主記憶（メモリ）の速度差を埋める、机の上のペン立てのような存在だから……正解は **『ア』** ですよね！」</div>
+    </div>
 
-<p>
-アオキは課長の本棚を見て驚いた。
-</p>
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ ちなみに『イ』のフラッシュメモリはUSBメモリやSSDに使われる不揮発性メモリ、『ウ』のバーチャルメモリ（仮想記憶）はメモリ不足時にHDD等をメモリに見せかける技術です。『エ』のレジスタはCPUの内部にある最も高速な記憶回路ですが、主記憶との差を緩和する目的の装置といえば『キャッシュメモリ』になります」</div>
+    </div>
 
-<p>
-分厚いマニュアルがびっしり並んでいる。
-</p>
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        記憶装置に関する記述のうち、適切なものはどれか。<br><br>
+        <span class="quiz-option">ア：主記憶装置（メモリ）は不揮発性であり、電源を切っても内容が消えない。</span><br>
+        <span class="quiz-option">イ：補助記憶装置（HDD/SSD）は揮発性であり、電源を切ると内容が消える。</span><br>
+        <span class="quiz-option">ウ：アクセス速度は、一般に主記憶装置よりも補助記憶装置の方が高速である。</span><br>
+        <span class="quiz-option">エ：補助記憶装置は、主記憶装置に比べて記憶容量を大きくすることが容易で、ビット当たりの単価も安い。</span>
+    </div>
 
-<p class="aoki">
-アオキ「課長、こんなに資料使うんですか？」
-</p>
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ぬうっ！ 揮発性と不揮発性の罠だな！ アオキ、私の大胸筋の記憶力は不揮発性だが、お前はどう解く！？」</div>
+    </div>
 
-<p class="mizudai">
-ミズダイ「当然だ。」
-</p>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ええっと、主記憶（メモリ＝作業机）は電源を切ると消えるから『揮発性』。だからアは間違い。補助記憶（本棚）は電源を切っても消えないから『不揮発性』。だからイも間違い。アクセス速度は作業机（主記憶）の方が速いからウも間違い。……ということは、容量が大きくて単価が安い本棚の特徴を言っている **『エ』** が正解です！」</div>
+    </div>
 
-<p class="mizudai">
-ミズダイ「私の脳内SSDは8TBある。」
-</p>
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい、完璧な考察です！ 記憶装置の【速度・容量・価格・揮発性】の特徴を比べる問題は午前試験（科目A）の超定番ですので、この『机と本棚』のイメージさえ持っておけば確実に1点をもぎ取れますよ」</div>
+    </div>
 
-<p class="aoki">
-アオキ「人間の話をしてください。」
-</p>
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハ！ 配属初日で定番問題を2問もクリアするとは、アオキ、お前のポテンシャル（仕様）もなかなかのものだな！ よし、今日の研修を終えたご褒美に、プロテインを主記憶（胃袋）へ転送（バス）してやろう！」</div>
+    </div>
 
-<p class="hoshino">
-ホシノ「SSDやHDDはデータを保存する場所です。」
-</p>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「プロテインの転送は拒否（デプロイ却下）でお願いします。……でも、コンピュータの仕組みって、言葉は難しくてもイメージで考えるとすごく面白いですね！」</div>
+    </div>
 
-<p class="hoshino">
-ホシノ「先ほどのメモリが作業机なら、
-SSDは倉庫ですね。」
-</p>
-
-<p class="hoshino">
-ホシノ「使わない資料は倉庫にしまい、
-必要な時だけ机に持ってきます。」
-</p>
-
-<p class="aoki">
-アオキ「机と倉庫か。」
-</p>
-
-<p class="aoki">
-アオキ「だいぶイメージできてきました。」
-</p>
-
-</div>
-
-<div class="scene">
-
-<h2>シーン7　バスとは道路である</h2>
-
-<div class="illustration">
-<img src="../images/ep01_07.png">
-<div class="caption">
-頭の中で交通整理を始めるミズダイ
-</div>
+    <div class="narration">
+        コンピュータの基本構造をマスターしたアオキ。情シス部でのサバイバル学習は、まだまだ始まったばかり！<br>
+        （第1話：コンピュータの仕組み 編 完）
+    </div>
 </div>
 
-<p>
-その時。
-</p>
-
-<p>
-ミズダイ課長が突然ホワイトボードに道路を書き始めた。
-</p>
-
-<p class="mizudai">
-ミズダイ「CPUとメモリを結ぶバスが渋滞している！」
-</p>
-
-<p class="aoki">
-アオキ「また始まった。」
-</p>
-
-<p class="aoki">
-アオキ「バスって乗り物ですか？」
-</p>
-
-<p class="hoshino">
-ホシノ「コンピュータのバスとは、
-データが通る道路のことでございます。」
-</p>
-
-<p class="hoshino">
-ホシノ「CPU、メモリ、SSDは、
-道路でつながっております。」
-</p>
-
-<p class="hoshino">
-ホシノ「道路が細いと渋滞します。」
-</p>
-
-<p class="hoshino">
-ホシノ「広い道路ならデータを素早く運べます。」
-</p>
-
-<p class="aoki">
-アオキ「高速道路みたいなものですね。」
-</p>
-
-<p class="hoshino">
-ホシノ「その通りでございます。」
-</p>
-
-</div>
-<div class="scene">
-
-<h2>シーン8　課長のキャッシュは3秒</h2>
-
-<div class="illustration">
-<img src="../images/ep01_08.png">
-<div class="caption">
-ホシノによるコンピュータ構造のまとめ
-</div>
-</div>
-
-<p>
-午後。
-</p>
-
-<p>
-アオキはさっき聞いた話を思い出そうとしていた。
-</p>
-
-<p class="aoki">
-アオキ「えーと…CPUが頭で…」
-</p>
-
-<p>
-
-「机がメモリで…」
-
-</p>
-
-<p>
-
-「倉庫がSSDで…」
-
-</p>
-
-<p>
-
-「道路がバス…」
-
-</p>
-
-<p>
-
-「あれ？」
-</p>
-
-<p>
-
-「何か忘れた。」
-
-</p>
-
-<p class="mizudai">
-ミズダイ「君のキャッシュ容量が少ないな。」
-</p>
-
-<p class="aoki">
-アオキ「また始まった。」
-</p>
-
-<p class="hoshino">
-ホシノ「キャッシュとは、
-CPUのすぐ近くにある超高速メモリです。」
-</p>
-
-<p class="hoshino">
-ホシノ「よく使う情報を近くに置いておくことで、
-すぐ取り出せるようにしています。」
-</p>
-
-<p class="hoshino">
-ホシノ「机の上の付箋のようなものですね。」
-</p>
-
-<p class="aoki">
-アオキ「なるほど。」
-</p>
-
-<p class="aoki">
-アオキ「付箋だからすぐ見られるんですね。」
-</p>
-
-<p class="mizudai">
-ミズダイ「そして私のクロック周波数は5GHz。」
-</p>
-
-<p class="aoki">
-アオキ「まだ言ってる。」
-</p>
-
-<p class="hoshino">
-ホシノ「クロック周波数とは、
-CPUがどれくらい速く仕事をするかを表す指標です。」
-</p>
-
-<p class="hoshino">
-ホシノ「ただし速いだけではなく、
-CPU、メモリ、SSDなど全体のバランスが大切でございます。」
-</p>
-
-<div class="lesson">
-
-<h3>ホシノの丁寧まとめ</h3>
-
-<ul>
-
-<li>CPU＝頭脳</li>
-
-<li>メモリ＝作業机</li>
-
-<li>HDD・SSD＝倉庫</li>
-
-<li>バス＝データの道路</li>
-
-<li>キャッシュ＝机の付箋</li>
-
-<li>クロック周波数＝仕事の速さの目安</li>
-
-</ul>
-
-</div>
-
-<p class="aoki">
-アオキ「コンピュータって、人間の仕事場みたいなんですね。」
-</p>
-
-<p class="hoshino">
-ホシノ「そのように考えると理解しやすいですね。」
-</p>
-
-<p class="mizudai">
-ミズダイ「つまり私は超高性能PCということだ。」
-</p>
-
-<p class="aoki">
-アオキ「まず定時でシャットダウンしてください。」
-</p>
-
-</div>
+</body>
+</html>
