@@ -1,53 +1,56 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>第2話 課長の机は4ビット、本棚はテラバイト</title>
-
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第2話：0と1のスイッチ！2進数と文字コードの謎</title>
+    <style>
 
 body{
-    max-width:900px;
+    max-width:950px;
     margin:auto;
-    padding:20px;
     background:#f5f7fa;
-    color:#333;
     font-family:"Yu Gothic","Meiryo",sans-serif;
-    line-height:2.2;
+    line-height:2;
+    color:#333;
+    padding:20px;
 }
 
 a{
     color:#2563eb;
     text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
 }
 
 .back{
     margin-bottom:20px;
 }
 
-h1{
-    margin-bottom:10px;
-    color:#0d2342;
-}
-
-.subtitle{
-    color:#666;
-    margin-bottom:30px;
-}
-
 .scene{
     background:white;
+    border-radius:20px;
     padding:35px;
-    border-radius:16px;
-    margin-bottom:30px;
-    box-shadow:0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
 }
 
 .scene h2{
-    margin-bottom:20px;
     color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
 }
 
 .illustration{
@@ -56,318 +59,390 @@ h1{
 
 .illustration img{
     width:100%;
-    border-radius:12px;
+    border-radius:15px;
 }
 
 .caption{
     text-align:center;
     color:#777;
-    font-size:0.9rem;
     margin-top:8px;
+    font-size:0.9rem;
 }
 
-.mizudai{
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
     color:#d62828;
-    font-weight:bold;
 }
 
-.aoki{
+.aoki-name{
     color:#2563eb;
-    font-weight:bold;
 }
 
-.hoshino{
+.hoshino-name{
     color:#2f855a;
-    font-weight:bold;
 }
 
-.lesson{
-    background:#fff8dc;
-    border-left:8px solid #f59e0b;
-    padding:20px;
-    border-radius:10px;
+.mizudai-msg{
+    background:#ffeaea;
 }
 
-.lesson h3{
-    margin-bottom:10px;
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+/* 問題セクション用アレンジ（既存のパーツをベースに表現） */
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
 }
 
 footer{
     text-align:center;
     margin-top:50px;
+    margin-bottom:50px;
 }
 
 .next{
     display:inline-block;
     background:#2563eb;
     color:white;
-    padding:14px 24px;
+    padding:14px 30px;
     border-radius:10px;
+    font-weight:bold;
+    transition:background 0.2s;
+}
+
+.next:hover{
+    background:#1d4ed8;
+    color:white;
+    text-decoration:none;
 }
 
 </style>
 </head>
-
 <body>
 
 <div class="back">
-<a href="ep01.html">← 第1話へ戻る</a>
-</div>
-
-<h1>第2話 課長の机は4ビット、本棚はテラバイト</h1>
-
-<p class="subtitle">
-学習テーマ：メモリ・HDD/SSD・キャッシュ・バス
-</p>
-
-<div class="scene">
-
-<h2>書類の山と、狭すぎる机</h2>
-
-<p>
-情報システム部に配属されて二日目。
-</p>
-
-<p>
-アオキは、ミズダイ課長のデスクの前で立ち尽くしていた。
-</p>
-
-<p>
-課長のデスクは、なぜか学校の児童用机並みに小さい。
-そこに、尋常ではない量の書類がタワーのように積み上がっている。
-</p>
-
-<p>
-「ガシャーン！」
-</p>
-
-<p>
-ミズダイが腕を動かした拍子に、書類の山が崩落した。
-</p>
-
-<p>
-<span class="mizudai">ミズダイ</span>
-「おのれ……！ メモリ容量（作業スペース）が圧倒的に不足している……！」
-</p>
-
-<p>
-<span class="aoki">アオキ</span>
-「いや、単純に机が小さすぎるだけです。なんでそのサイズなんです？」
-</p>
-
-<p>
-<span class="mizudai">ミズダイ</span>
-「筋肉を大きく見せるための演出だ。」
-</p>
-
-<p>
-<span class="aoki">アオキ</span>
-「業務に支障が出てるんで今すぐ大きな机に替えてください。」
-</p>
-
-<div class="illustration">
-<img src="../images/ep02_01.png" alt="狭い机で作業するミズダイ">
-<div class="caption">
-演出のために極小のデスクで戦うミズダイ課長
-</div>
-</div>
-
+    <a href="ep01.html">← 第1話へ戻る</a>
 </div>
 
 <div class="scene">
+    <h2>プロローグ：スイッチのONとOFF</h2>
+    <div class="narration">
+        配属されて数日。アオキ（25）は少しずつ情報システム部の雰囲気に慣れて……いなかった。<br>
+        ある日の朝、アオキがオフィスに入ると、カチ、カチ、カチ、カチ……と激しい音が響いていた。<br>
+        ミズダイ課長が、壁の照明スイッチをものすごい速さで連打していたのだ。
+    </div>
+    
+    <div class="illustration">
+        <img src="../images/ep02/ep02_01.png" alt="スイッチを連打するミズダイ課長と困惑するアオキ">
+        <div class="caption">【ep02_01.png】スイッチのON/OFFを体現するミズダイ課長</div>
+    </div>
 
-<h2>本棚への遠い旅路</h2>
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「アオキくん！ おはよう！ 見たまえ、このスイッチを！ 点いている（1）か、消えている（0）か！ 中間など存在しない！ 実に美しい二者択一だ！」</div>
+    </div>
 
-<p>
-ミズダイは崩れた書類を拾い上げると、部屋の遥か奥にある巨大なスチール製の本棚へと歩き出した。
-</p>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「課長、おはようございます。朝から部屋の電気をチカチカさせるのやめてもらえます？ 目がチカチカして仕事になりません。」</div>
+    </div>
 
-<p>
-そして、一つのファイルを丁寧に片付け、また別のファイルを抜き出して戻ってくる。
-</p>
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「フッ、これこそがデジタルの極意なのだ。物事を曖昧にせず、1か0かで白黒つける！ これがコンピュータの基本なのだよ！」</div>
+    </div>
 
-<p>
-往復、約30秒。
-</p>
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「おはようございます、アオキさん。課長は朝からコンピュータの基礎である『ビット』を表現してくださっているのですよ。」</div>
+    </div>
 
-<p>
-<span class="mizudai">ミズダイ</span>
-「ふぅ……。HDD（ハードディスク）へのアクセスはレイテンシ（遅延）が大きすぎるな。」
-</p>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ホシノさん！ おはようございます。また課長の奇行のフォローですか……。で、その『ビット』って何ですか？」</div>
+    </div>
 
-<p>
-<span class="aoki">アオキ</span>
-「……本棚に書類を取りに行ってただけですよね？」
-</p>
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">
+            「はい、**ビット（Bit）**とは、コンピュータが扱う情報の最小単位のことです。課長がやっているように、スイッチが『ON（1）』か『OFF（0）』かの2つの状態を表します。<br>
+            コンピュータの中身は非常に細かな電気の通り道でできており、電気が流れている状態を『1』、流れていない状態を『0』として認識しているのです。」
+        </div>
+    </div>
 
-<p>
-背後から、いつもの丁寧な声が響いた。
-</p>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど。じゃあ、スイッチが1個なら、表せる情報は『1』と『0』の2通りだけってことですね。」
+        </div>
+    </div>
 
-<p>
-<span class="hoshino">ホシノ</span>
-「アオキさん、おはようございます。課長は今、コンピュータの『記憶階層』を体現してくださっているのです。」
-</p>
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「その通りです。では、スイッチが2個あったらどうなるでしょうか？」</div>
+    </div>
 
-<p>
-<span class="aoki">アオキ</span>
-「ホシノさん！ おはようございます。……体現、ですか？」
-</p>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ええと……『両方OFF』『左だけON』『右だけON』『両方ON』の4通りですかね。」</div>
+    </div>
 
-<div class="illustration">
-<img src="../images/ep02_02.png" alt="本棚へ走るミズダイ">
-<div class="caption">
-本棚（ストレージ）へアクセスするミズダイ
-</div>
-</div>
-
-</div>
-
-<div class="scene">
-
-<h2>主記憶と補助記憶装置</h2>
-
-<p>
-ホシノはホワイトボードの前に立ち、サラサラと図を描き始めた。
-</p>
-
-<p>
-<span class="hoshino">ホシノ</span>
-「コンピュータの記憶装置には、大きく分けて『メモリ（主記憶）』と『HDDやSSD（補助記憶）』がございます。」
-</p>
-
-<p>
-<span class="hoshino">ホシノ</span>
-「**メモリ（主記憶）**は、CPUが直接データを読み書きする『作業机』です。動作は非常に高速ですが、電源を切るとデータが消えてしまう性質（揮発性）があります。」
-</p>
-
-<p>
-<span class="hoshino">ホシノ</span>
-「一方、**HDDやSSD（補助記憶装置）**は、データを永続的に保存しておく『本棚』です。容量は非常に大きいですが、CPUから遠く、読み書きに時間がかかります。」
-</p>
-
-<div class="illustration">
-<img src="../images/ep02_03.png" alt="メモリとHDDの解説図">
-<div class="caption">
-メモリ（机）とHDD/SSD（本棚）の関係性
-</div>
-</div>
-
-<p>
-<span class="aoki">アオキ</span>
-「なるほど。課長の机が狭いのは、メモリ容量が足りなくて、いちいち本棚（HDD）に書類を取りに行かなきゃいけない状態ってことですね。」
-</p>
-
-<p>
-<span class="hoshino">ホシノ</span>
-「その通りでございます。机が狭いと、どんなに頭の回転（CPUのクロック周波数）が速い人でも、引き出しや本棚との往復ばかりで仕事が進みません。この状態をコンピュータでは『スラッシング』と呼んだりしますね。」
-</p>
-
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ 2進数で表すと `00`, `01`, `10`, `11` の4通りになります。スイッチが3個なら8通り（`000`〜`111`）、4個なら16通り（`0000`〜`1111`）と、スイッチが増えるたびに表せる情報が2倍に増えていきます。このように、0と1の組み合わせで数を数えていく方法を **2進数（Binary）** と呼びます。」</div>
+    </div>
 </div>
 
 <div class="scene">
+    <h2>スイッチを8個集めて「1バイト」</h2>
+    <div class="narration">
+        アオキは自分のパソコンの画面を見つめた。
+    </div>
 
-<h2>「キャッシュ」という名のカンニングペーパー</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「でも、0と1だけで、どうやって普段使っている文字や大きな数字を表しているんですか？ スイッチが数個じゃ全然足りないですよね。」</div>
+    </div>
 
-<p>
-すると、ミズダイが胸ポケットから1枚のシワシワのメモ用紙を取り出した。
-</p>
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「そうですね。そこで、コンピュータはいくつかのスイッチをまとめてグループとして扱います。基本となるグループが、スイッチを8個集めた **バイト（Byte）** です。」</div>
+    </div>
 
-<p>
-<span class="mizudai">ミズダイ</span>
-「フッ、だが私とて無策ではない。よく使うデータは、この『キャッシュメモリ』に格納してある。」
-</p>
+    <div class="illustration">
+        <img src="../images/ep02/ep02_02.png" alt="8個のスイッチが並んだリモコンのイメージ">
+        <div class="caption">【ep02_02.png】8ビット（1バイト）のリモコンと256通りの表現</div>
+    </div>
 
-<p>
-<span class="aoki">アオキ</span>
-「それ、今日の定食のメニュー表じゃないですか」
-</p>
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「そう！ 1つのバイトは、8個のビットスイッチが横一列に並んだ特製リモコンのようなものだ！ どうだ、この圧倒的な8連スイッチ！」</div>
+    </div>
 
-<p>
-<span class="hoshino">ホシノ</span>
-「お目が高い。しかし概念としては正解です。CPUとメモリの間には、さらに高速な小容量の記憶領域である**キャッシュメモリ**が存在します。」
-</p>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「普通に8個並んでるって言えばいいじゃないですか。で、8個集まると何通りになるんですか？」</div>
+    </div>
 
-<p>
-<span class="hoshino">ホシノ</span>
-「よく使うデータを手元のメモ（キャッシュ）に一時コピーしておくことで、わざわざ遠い机（メモリ）や本棚（HDD）に見に行く手間を省き、処理を高速化する仕組みです。」
-</p>
-
-<p>
-<span class="aoki">アオキ</span>
-「ちなみに、そのデータが通る道筋のことは何て言うんですか？」
-</p>
-
-<p>
-<span class="hoshino">ホシノ</span>
-「お、素晴らしい着眼点ですね！ コンピュータ内でデータが行き交う共通の通り道のことを**バス（Bus）**と呼びます。課長が机と本棚を往復しているこの通路も、我が部のデータバスと言えますね。」
-</p>
-
-<div class="illustration">
-<img src="../images/ep02_04.png" alt="キャッシュとバスの解説">
-<div class="caption">
-キャッシュメモリ（手元のメモ）とバス（通路）
-</div>
-</div>
-
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「8ビットの場合、2の8乗で、**256通り**（`00000000`から`11111111`）の情報を表すことができます。この256通りという数が、英語のアルファベット（大文字・小文字で52文字）、数字（10文字）、記号、制御文字などをすべて割り当てるのにちょうど良いサイズだったのです。そのため、歴史的に『1バイト＝8ビット』がコンピュータで文字を扱う基本単位となりました。」</div>
+    </div>
 </div>
 
 <div class="scene">
+    <h2>長すぎる2進数と「16進数」</h2>
+    <div class="narration">
+        ミズダイは鼻息を荒くしながら、ホワイトボードに0と1の羅列を書き殴った。
+    </div>
 
-<h2>ホシノの丁寧まとめ</h2>
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「しかしアオキくん！ 2進数は人間には長すぎる！ 例えば、私の好きな今日のラッキーナンバーを2進数で表すと `11011011` だ！ いちいち『オン・オン・オフ・オン・オン・オフ・オン・オン』などと言っていたら、私の滑舌のクロック周波数が追いつかん！」</div>
+    </div>
 
-<div class="lesson">
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「いや、普通に10進数で言えばいいじゃないですか。」</div>
+    </div>
 
-<h3>本日のSCポイント</h3>
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「ふふ、確かに10進数でもいいのですが、コンピュータの内部データ（2進数）と相性が悪く、変換が面倒になります。そこで登場するのが **16進数（Hexadecimal）** です。16進数は、`0`から`9`までの数字に加えて、`A`, `B`, `C`, `D`, `E`, `F` のアルファベットを使って、1つの桁で16通りの値を表す方法です。」</div>
+    </div>
 
-<ul>
+    <div class="illustration">
+        <img src="../images/ep02/ep02_03.png" alt="2進数と16進数の対比図">
+        <div class="caption">【ep02_03.png】2進数から16進数へのスッキリ変換</div>
+    </div>
 
-<li>**メモリ（主記憶）**：CPUが直接扱う「作業机」。高速だが電源を切ると消える。</li>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「アルファベットを数字代わりに使うんですか？」</div>
+    </div>
 
-<li>**HDD / SSD（補助記憶）**：データを長期間貯める「本棚」。大容量だが低速。</li>
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「はい。`A`は10、`B`は11……`F`は15を表します。実は、4ビット（16通り）の情報は、16進数の『1桁』でぴったり表現できます。つまり、1バイト（8ビット）の情報なら、16進数を使うとわずか『2桁』でスッキリ書き表せるのです。」</div>
+    </div>
 
-<li>**キャッシュメモリ**：CPUとメモリの速度差を埋める「手元のメモ」。超高速。</li>
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「そう！ 先ほどの `11011011` は、4桁ずつに分けると `1101`（13＝D）と `1011`（11＝B）だから、16進数なら `DB` となる！ あの長ったらしかった0と1が、たったの2文字だ！ 非常にスマートだろう！」</div>
+    </div>
 
-<li>**バス**：コンピュータ内でデータが移動するための「共通の通路」。</li>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど、Webサイトのデザインとかでよく見るカラーコード（`#FF0000`など）もこれなんですね！」</div>
+    </div>
 
-<li>次回は「2進数とデータ表現」について学ぶ。</li>
-
-</ul>
-
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい！ まさにそれです。`FF0000` は赤を表しますが、これも赤・緑・青の強さをそれぞれ1バイト（16進数2桁、00〜FF）で表現しているのですよ。」</div>
+    </div>
 </div>
 
-<p>
-<span class="aoki">アオキ</span>
-「よく分かりました。じゃあ課長、その狭い机は捨てて、早くまともなデスクに交換しましょう。」
-</p>
+<div class="scene">
+    <h2>スイッチの組み合わせと文字の辞書</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なんとなく数字の表し方はわかりました。でも、『文字』はどうやって表しているんですか？ コンピュータの中身は0と1だけなんですよね？」</div>
+    </div>
 
-<p>
-<span class="mizudai">ミズダイ</span>
-「断る！ メモリを増設（机を大きく）したら、私の大胸筋が目立たなくなるだろうが！」
-</p>
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「はい、それは『この0と1の組み合わせは、この文字にする』という対応表を決めているからです。この対応表のことを **文字コード（Character Code）** と呼びます。いわば、コンピュータと人間の間にある暗号表（コードブック）ですね。」</div>
+    </div>
 
-<p>
-<span class="hoshino">ホシノ</span>
-「それでは、私が力づくでデスクを差し替えさせていただきますね（にっこり）」
-</p>
+    <div class="illustration">
+        <img src="../images/ep02/ep02_04.png" alt="ASCII（薄い辞書）とUnicode（世界共通の分厚い辞書）のイメージ">
+        <div class="caption">【ep02_04.png】ASCIIとUnicodeの対比図</div>
+    </div>
 
-<p>
-<span class="mizudai">ミズダイ</span>
-「えっ、ホシノくん力づく……！？ ちょっと待っ、腕力がバグって――」
-</p>
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「昔のアメリカ人が作った最初の暗号表が **ASCII（アスキー）** だ！ これは7ビット（実質1バイト）を使って、英数字や記号を登録した薄い辞書だな。」</div>
+    </div>
 
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「薄い辞書？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「はい。ASCIIは英語圏で開発されたため、英語のアルファベットと少しの記号しか載っていません。そのため、日本語の『ひらがな』や『漢字』は登録されておらず、表示することができませんでした。」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「あ、だから昔の海外のゲームとかで日本語が使えなかったり、文字化けしたりしてたんですね。」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「その通りです。日本語や他の言語も扱えるように、それぞれの国で独自の文字コード（Shift_JISやEUC-JPなど）が作られましたが、今度は国をまたぐと文字化けするという問題が発生しました。そこで、世界中のすべての文字にユニークな番号を割り当てて、1つの辞書にまとめた世界共通の規格が作られました。それが **Unicode（ユニコード）** です。」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「Unicodeは世界共通！ 世界中のどんな言葉も、絵文字（😊）さえも、この分厚い世界百科事典（Unicode）があれば文字化けせずに表現できるのだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「現在、Webサイトやシステムで最も広く使われている **UTF-8** という文字コードは、このUnicodeをコンピュータで効率的に扱うための仕組み（エンコード方式）の1つです。これがあるおかげで、アオキさんがスマホで送る絵文字も、海外の友達の画面で正しく表示されるのですよ。」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        ホシノさんがホワイトボードに、2進数とデータ表現に関する過去問を書き出した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        2進数 10110110 を16進表記にしたものはどれか。<br><br>
+        <span class="quiz-option">ア：A6</span><br>
+        <span class="quiz-option">イ：B6</span><br>
+        <span class="quiz-option">ウ：C6</span><br>
+        <span class="quiz-option">エ：D6</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ええと、2進数から16進数の変換ですね。さっきホシノさんが『4ビットの情報は16進数の1桁で表せる』って言っていました。<br>
+        だから、`10110110` を半分に分けて、`1011` と `0110` にします。<br>
+        後半の `0110` は、10進数で表すと 4×1 + 2×1 = 6 だから、16進数でもそのまま『6』。<br>
+        前半の `1011` は、10進数で表すと 8×1 + 2×1 + 1×1 = 11。16進数では 10がA、11がBだから、これは『B』になります。<br>
+        合わせると……正解は **『イのB6』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ 素晴らしい計算スピードですね、アオキさん。2進数から16進数への変換は、このように『4桁ずつに区切ってそれぞれ変換する』のが最も早くて正確です」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「うむ！ 4桁は1桁！ プロテインも4倍濃縮すれば1本で済むのと同じ理屈だな！ 実に効率的だ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「プロテインは普通に飲んでください。」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        文字コードに関する記述のうち、適切なものはどれか。<br><br>
+        <span class="quiz-option">ア：ASCIIは、日本語の漢字やひらがななどを表現するために開発された文字コードである。</span><br>
+        <span class="quiz-option">イ：Unicodeは、世界中の様々な言語の文字を統一して扱うことができる文字コード規格である。</span><br>
+        <span class="quiz-option">ウ：UTF-8は、すべての文字を常に16ビット（2バイト）の固定長で表現する文字コードである。</span><br>
+        <span class="quiz-option">エ：Shift_JISは、英語圏での文字化けを防ぐために国際規格として制定された文字コードである。</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「文字コードの特徴を比べる問題ですね。<br>
+        アは、ASCIIは英語用で漢字は載っていないから間違い。<br>
+        ウは、UTF-8は文字によって長さが変わる可変長だから『常に16ビットの固定長』というのは間違い。<br>
+        エは、Shift_JISは日本で考案されたもので、英語圏での文字化け防止用ではないから間違い。<br>
+        ということは、世界共通の規格であると説明している **『イ』** が正解です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ 完璧ですね。UTF-8は『1〜4バイトの可変長』であるため、英数字は1バイト、日本語の漢字やひらがなは主に3バイトで表現されます。この『可変長』という特徴も非常によく狙われますので覚えておきましょう」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「フハハ！ 2進数も文字コードも完全にマスターしたようだな！ これでアオキのデータ表現力も一段とキレを増したぞ！ よし、今日の研修を終えたご褒美に、2進数のお祝い（10101010）を叫びながらジムに行くか！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「2進数で叫ぶのもジムに行くのも遠慮しておきます……。でも、試験問題が本当に解けると達成感がありますね！」</div>
+    </div>
+
+    <div class="narration">
+        0と1のデータ表現を身につけ、ITの理解がまた一歩深まったアオキ。情シス部メンバーとの賑やかな学びは、これからも加速していく！<br>
+        （第2話：2進数とデータ表現 編 完）
+    </div>
 </div>
 
 <footer>
-
-<p>―― 第2話 完 ――</p>
-
-<br>
-
-<a class="next" href="ep03.html">
-第3話へ →
-</a>
-
+    <a class="next" href="ep03.html">第3話へ →</a>
 </footer>
 
 </body>
