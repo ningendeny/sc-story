@@ -144,14 +144,48 @@ footer{
     color:white;
     text-decoration:none;
 }
+.home-link{
+    position:fixed;
+    top:20px;
+    left:20px;
+    background:#2563eb;
+    color:white;
+    text-decoration:none;
+    padding:12px 18px;
+    border-radius:30px;
+    font-weight:bold;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    z-index:1000;
+}
 
+.next-link{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    background:#2f855a;
+    color:white;
+    text-decoration:none;
+    padding:12px 18px;
+    border-radius:30px;
+    font-weight:bold;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    z-index:1000;
+}
+
+.home-link:hover,
+.next-link:hover{
+    opacity:0.9;
+}
 </style>
 </head>
 <body>
+<a class="home-link" href="ep01.html">
+    ← 第1話へ
+</a>
 
-<div class="back">
-    <a href="ep01.html">← 第1話へ戻る</a>
-</div>
+<a class="next-link" href="https://ningendeny.github.io/sc-story/episodes/ep02.html">
+    第2話へ →
+</a>
 
 <div class="scene">
     <h2>プロローグ：スイッチのONとOFF</h2>
