@@ -129,7 +129,7 @@ footer{
     margin-bottom:50px;
 }
 
-.next{
+.previous{
     display:inline-block;
     background:#2563eb;
     color:white;
@@ -139,53 +139,85 @@ footer{
     transition:background 0.2s;
 }
 
-.next:hover{
-    background:#1d4ed8;
-    color:white;
-    text-decoration:none;
-}
-.home-link{
-    position:fixed;
-    top:20px;
-    left:20px;
+.next{
+    display:inline-block;
     background:#2563eb;
     color:white;
-    text-decoration:none;
-    padding:12px 18px;
-    border-radius:30px;
+    padding:14px 30px;
+    border-radius:10px;
     font-weight:bold;
-    box-shadow:0 4px 10px rgba(0,0,0,0.15);
-    z-index:1000;
+    transition:background 0.2s;
 }
+/* ===== スマホ対応 ===== */
+@media (max-width:768px){
 
-.next-link{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    background:#2f855a;
-    color:white;
-    text-decoration:none;
-    padding:12px 18px;
-    border-radius:30px;
-    font-weight:bold;
-    box-shadow:0 4px 10px rgba(0,0,0,0.15);
-    z-index:1000;
-}
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
 
-.home-link:hover,
-.next-link:hover{
-    opacity:0.9;
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+
+    .scene h2{
+        font-size:1.3rem;
+        padding-left:10px;
+    }
+
+    .talk{
+        flex-direction:column;
+    }
+
+    .name{
+        width:auto;
+        margin-bottom:8px;
+        font-size:0.95rem;
+    }
+
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+
+    .question-box{
+        padding:15px;
+    }
+
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+
+    .home-link{
+        top:auto;
+        bottom:10px;
+        left:10px;
+        padding:10px 14px;
+        font-size:0.85rem;
+    }
+
+    .next-link{
+        bottom:10px;
+        right:10px;
+        padding:10px 14px;
+        font-size:0.85rem;
+    }
+
+    .illustration img{
+        border-radius:10px;
+    }
 }
 </style>
 </head>
 <body>
-<a class="home-link" href="ep01.html">
-    ← 第1話へ
-</a>
-
-<a class="next-link" href="https://ningendeny.github.io/sc-story/episodes/ep02.html">
-    第2話へ →
-</a>
 
 <div class="scene">
     <h2>プロローグ：スイッチのONとOFF</h2>
@@ -476,8 +508,10 @@ footer{
 </div>
 
 <footer>
+    <a class="previous" href="ep01.html">← 第1話へ</a>
     <a class="next" href="ep03.html">第3話へ →</a>
 </footer>
+
 
 </body>
 </html>
