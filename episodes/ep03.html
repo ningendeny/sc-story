@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第3話：論理演算の迷宮と、階段スイッチのナゾ</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.illustration{
+    margin:30px 0;
+}
+
+.illustration img{
+    width:100%;
+    border-radius:15px;
+}
+
+.caption{
+    text-align:center;
+    color:#777;
+    margin-top:8px;
+    font-size:0.9rem;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+/* 問題セクション用アレンジ（既存のパーツをベースに表現） */
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+footer{
+    text-align:center;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+.next{
+    display:inline-block;
+    background:#2563eb;
+    color:white;
+    padding:14px 30px;
+    border-radius:10px;
+    font-weight:bold;
+    transition:background 0.2s;
+}
+
+.next:hover{
+    background:#1d4ed8;
+    color:white;
+    text-decoration:none;
+}
+
+</style>
+</head>
+<body>
+
+<div class="back">
+    <a href="ep02.html">← 第2話へ戻る</a>
+</div>
+
+<div class="scene">
+    <h2>プロローグ：ダブルキーの金庫</h2>
+    <div class="narration">
+        情シス部での研修が始まって1週間。<br>
+        アオキ（25）は、重要書類が保管されているというオフィス奥のスチール金庫の前にいた。<br>
+        金庫の扉には、不自然に2つの鍵穴が並んでいる。
+    </div>
+    
+    <div class="illustration">
+        <img src="../images/ep03/ep03_01.png" alt="2つの鍵穴がある金庫を見つめるアオキ">
+        <div class="caption">【ep03_01.png】2つの鍵穴を持つ情シス部の重要金庫</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「あれ？ この金庫、鍵穴が2つありますね。私の持っている『管理者の鍵』だけじゃ開かないのかな……」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「ええ、その金庫はセキュリティ確保のため、アオキさんの持つ『管理者の鍵』と、私が持つ『承認者の鍵』の**両方を差し込んで回さないと開かない**仕様になっております」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「うむ！ まさにこれこそが**AND（論理積）**の精神！ 片方の鍵がある（1）だけではダメ！ 両方の鍵が揃って（1かつ1）初めて扉が開く（1）のだ！ 美しいセキュリティフォーメーションだな！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど。論理演算のANDって、すべての条件が『1（真）』の時だけ、結果が『1（真）』になる演算のことでしたよね。」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">
+            「その通りです。コンピュータでは以下のように処理されます。<br>
+            <ul>
+                <li>『アオキの鍵あり（1）』 AND 『ホシノの鍵なし（0）』 ＝ 『開かない（0）』</li>
+                <li>『アオキの鍵あり（1）』 AND 『ホシノの鍵あり（1）』 ＝ 『開く（1）』</li>
+            </ul>
+            このように、すべての入力が 1 のときのみ 1 を出力するのがAND演算です。」
+        </div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>お支払いは現金かカードか</h2>
+    <div class="narration">
+        お昼休み。情シス部の3人は社内売店にやってきた。<br>
+        レジの前に立ったミズダイ課長が、突然ポケットを叩いて絶叫した。
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「しまったァァ！ 財布をデスクに忘れた！ しかし、私のスマホには電子マネーカードが登録されているッ！ ふぅ、危うくランチ難民になるところだったぞ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「心臓に悪いので大声出すのやめてください。……でも、買い物は『現金』か『カード（電子マネー）』のどちらか一方でもあれば決済できますよね。」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「そうですね。これが**OR（論理和）**の仕組みです。OR演算は、複数の条件のうち**少なくとも1つが『1（真）』**であれば、結果が『1（真）』になります。」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep03/ep03_02.png" alt="レジでスマホ決済するミズダイ課長">
+        <div class="caption">【ep03_02.png】現金かカードのどちらかがあれば決済できる（ORの例え）</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">
+            「お買い物で例えると以下のようになります。<br>
+            <ul>
+                <li>『現金なし（0）』 OR 『カードあり（1）』 ＝ 『買い物できる（1）』</li>
+                <li>『現金あり（1）』 OR 『カードあり（1）』 ＝ 『買い物できる（1）』</li>
+                <li>『現金なし（0）』 OR 『カードなし（0）』 ＝ 『買い物できない（0）』</li>
+            </ul>
+            どちらか片方、あるいは両方の入力が 1 であれば 1 を出力するのがOR演算です。」
+        </div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>暗くなったらON</h2>
+    <div class="narration">
+        夕方、オフィスに戻ると、外が薄暗くなってきた。<br>
+        すると、窓際のセンサーライトが自動的にフワッと点灯した。
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「あ、電気がついた。情シスのセンサーライトって自動なんですね。」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「はい、明るさセンサーが外の光を検知しているのです。明るさが『明るくない（0）』状態になると、ライトが『点灯（1）』する仕組みになっています」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「これぞ**NOT（否定）**の極み！ 入力をそっくりそのまま反転させるのだ！ 『明るい（1）』をNOTすると『消灯（0）』！ 『明るくない（0）』をNOTすると『点灯（1）』！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「一番シンプルですね。入力された値をそのまま逆にするだけ、と。」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep03/ep03_03.png" alt="暗くなると自動でつくライトの仕組み">
+        <div class="caption">【ep03_03.png】入力を反転させるNOT演算の仕組み</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>階段の電灯と3路スイッチ</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「そういえば、うちのオフィスの階段の電気なんですけど……。1階でスイッチを押して電気を点けて、2階に上がって別のスイッチを押したら電気が消えますよね。あれってどういう回路なんですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「おや、良い疑問ですね。あれは『3路スイッチ』と呼ばれる配線で、コンピュータの論理回路では**XOR（排他的論理和）**と同じ働きをしています。」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep03/ep03_04.png" alt="階段の上と下にあるスイッチのイラスト">
+        <div class="caption">【ep03_04.png】上と下のスイッチが『異なる状態』のときだけ点灯する階段のライト</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">
+            「XOR演算は、**2つの入力が『異なるとき』だけ結果が『1（真）』**になり、**『同じとき』は結果が『0（偽）』**になります。<br>
+            階段のスイッチで言うと、以下のようになります。<br>
+            <ul>
+                <li>『1階スイッチ：上向き（1）』 XOR 『2階スイッチ：下向き（0）』 ＝ 『点灯（1）』</li>
+                <li>『1階スイッチ：上向き（1）』 XOR 『2階スイッチ：上向き（1）』 ＝ 『消灯（0）』</li>
+            </ul>
+            このように、どちらか片方だけが ON の状態のときだけ電気が通る仕組みになっているのです」
+        </div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「『排他的（Exclusive）』とは相手を排除する、すなわち『重複を許さない』ということ！ 2つのスイッチが揃って同じ方向（1と1、あるいは0と0）を向いている贅沢者めらは、XORの鉄槌によって0（消灯）へと叩き落とされるのだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「相変わらず例えが過激ですけど、イメージはすごく分かりやすいです。同じ向きだとOFF、違う向きだとONになるのがXORですね。」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        ホシノさんがホワイトボードに、論理演算に関する試験問題を書き出した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        2つの入力A、Bに対する出力Xの真理値表が以下のようになるとき、この論理演算を示すものはどれか。<br><br>
+        <table border="1" cellpadding="5" style="border-collapse: collapse; margin-left: 20px; background: white; text-align: center;">
+            <tr style="background: #edf2f7;"><th>A</th><th>B</th><th>X</th></tr>
+            <tr><td>0</td><td>0</td><td>0</td></tr>
+            <tr><td>0</td><td>1</td><td>1</td></tr>
+            <tr><td>1</td><td>0</td><td>1</td></tr>
+            <tr><td>1</td><td>1</td><td>0</td></tr>
+        </table>
+        <br>
+        <span class="quiz-option">ア：AND</span><br>
+        <span class="quiz-option">イ：OR</span><br>
+        <span class="quiz-option">ウ：XOR</span><br>
+        <span class="quiz-option">エ：NOT</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「表を見ると……<br>
+        ・AとBが『0と0』のときは『0』<br>
+        ・AとBが『0と1』、または『1と0』のように『値が異なるとき』は『1』<br>
+        ・AとBが『1と1』のときは『0』<br>
+        値が異なるときだけ1が出力されているから、これはさっき習った階段のスイッチと同じ！ 正解は **『ウのXOR』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい！ 大正解です。この表を**真理値表（しんりちひょう）**と呼び、試験では表を読み取る問題が非常によく出題されます」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        2つのビット列 10101100 と 01101010 に対し、ビットごとの排他的論理和（XOR）演算を行った結果はどれか。<br><br>
+        <span class="quiz-option">ア：00101000</span><br>
+        <span class="quiz-option">イ：11101110</span><br>
+        <span class="quiz-option">ウ：11000110</span><br>
+        <span class="quiz-option">エ：00010001</span>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ほう！ 今度はビット列同士の演算だな！ アオキ、XORの奥義をビット列に叩き込んでみせよ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ビットごとの演算ですね。上と下のビットを1桁ずつ見比べて、XOR（値が異なれば1、同じなら0）を計算していきます。<br>
+        ・1桁目（左端）：1 と 0 → 異なるから 1<br>
+        ・2桁目：0 と 1 → 異なるから 1<br>
+        ・3桁目：1 と 1 → 同じだから 0<br>
+        ・4桁目：0 と 0 → 同じだから 0<br>
+        ・5桁目：1 と 1 → 同じだから 0<br>
+        ・6桁目：1 と 0 → 異なるから 1<br>
+        ・7桁目：0 と 1 → 異なるから 1<br>
+        ・8桁目（右端）：0 と 0 → 同じだから 0<br>
+        これらを並べると `11000110` になるので、正解は **『ウ』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「お見事、大正解です！ ちなみに、選択肢『ア』はAND（論理積）の演算結果、『イ』はOR（論理和）の演算結果になっております。こちらもあわせて確認しておくと理解が深まりますよ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハ！ 論理の迷宮をいともたやすく突破するとは！ アオキ、お前の脳内トランジスタ（回路）も良い具合に繋がってきたようだな！ よし、今日の褒美に、情シス特製のプロテインドリンクをプレゼントしよう！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「プロテインは遠慮しますって言ってますよね……。でも、真理値表の読み方さえわかれば、パズルみたいにサクサク解けて楽しいです！」</div>
+    </div>
+
+    <div class="narration">
+        論理演算の基本であるAND、OR、NOT、XORをマスターしたアオキ。<br>
+        0と1の組み合わせから生まれるコンピュータの知恵に触れ、情シス部での歩みはさらに確かなものとなっていく！<br>
+        （第3話：論理演算 編 完）
+    </div>
+</div>
+
+<footer>
+    <a class="next" href="ep04.html">第4話へ →</a>
+</footer>
+
+</body>
+</html>
