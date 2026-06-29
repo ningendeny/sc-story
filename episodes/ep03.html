@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第3話：論理演算の迷宮と、階段スイッチのナゾ</title>
+    <title>第3話：論理演算の迷宮と、ファミレス・ランチのルール</title>
     <style>
 
 body{
@@ -154,76 +154,155 @@ footer{
 </div>
 
 <div class="scene">
-    <h2>プロローグ：ダブルキーの金庫</h2>
+    <h2>プロローグ：ファミレスのセット割引</h2>
     <div class="narration">
-        情シス部での研修が始まって1週間。<br>
-        アオキ（25）は、重要書類が保管されているというオフィス奥のスチール金庫の前にいた。<br>
-        金庫の扉には、不自然に2つの鍵穴が並んでいる。
+        情シス部での研修が始まって数日。<br>
+        アオキ（25）は、ミズダイ課長とホシノの3人で近くのファミリーレストラン「マッピー」へランチに来ていた。<br>
+        メニューを開いたアオキは、お得な割引サービスを見つける。
     </div>
     
     <div class="illustration">
-        <img src="../images/ep03/ep03_01.png" alt="2つの鍵穴がある金庫を見つめるアオキ">
-        <div class="caption">【ep03_01.png】2つの鍵穴を持つ情シス部の重要金庫</div>
+        <img src="../images/ep03/ep03_01.png" alt="ファミレスのメニューを見る3人">
+        <div class="caption">【ep03_01.png】ランチセットの割引メニューを選ぶアオキたち</div>
     </div>
 
     <div class="talk">
         <div class="name aoki-name">アオキ</div>
-        <div class="message aoki-msg">「あれ？ この金庫、鍵穴が2つありますね。私の持っている『管理者の鍵』だけじゃ開かないのかな……」</div>
+        <div class="message aoki-msg">「あ、この『ランチハンバーグセット』、ドリンクバーを一緒に頼むと割引になるんですね」</div>
     </div>
 
     <div class="talk">
         <div class="name hoshino-name">ホシノ</div>
-        <div class="message hoshino-msg">「ええ、その金庫はセキュリティ確保のため、アオキさんの持つ『管理者の鍵』と、私が持つ『承認者の鍵』の**両方を差し込んで回さないと開かない**仕様になっております」</div>
+        <div class="message hoshino-msg">「ええ、その割引には条件がありますよ。メニューの注意書きにある通り、『メインのハンバーグを注文する（1）』**かつ**『ドリンクバーを注文する（1）』の両方を満たしたときだけ、自動的に『セット割引が適用される（1）』ようになっています。」</div>
     </div>
 
     <div class="talk">
         <div class="name mizudai-name">ミズダイ</div>
-        <div class="message mizudai-msg">「うむ！ まさにこれこそが**AND（論理積）**の精神！ 片方の鍵がある（1）だけではダメ！ 両方の鍵が揃って（1かつ1）初めて扉が開く（1）のだ！ 美しいセキュリティフォーメーションだな！」</div>
+        <div class="message mizudai-msg">「うむ！ これぞまさに **AND（論理積）** ゲート！ メイン注文（1）とドリンク注文（1）の両方が揃って（1 AND 1）初めて割引（1）になる！ どちらか片方だけでは割引は発動せん！」</div>
     </div>
 
     <div class="talk">
         <div class="name aoki-name">アオキ</div>
-        <div class="message aoki-msg">「なるほど。論理演算のANDって、すべての条件が『1（真）』の時だけ、結果が『1（真）』になる演算のことでしたよね。」</div>
+        <div class="message aoki-msg">「なるほど。すべての条件が『1（真）』の時だけ、結果が『1（真）』になるのがAND演算ですね。」</div>
     </div>
 
     <div class="talk">
         <div class="name hoshino-name">ホシノ</div>
         <div class="message hoshino-msg">
-            「その通りです。コンピュータでは以下のように処理されます。<br>
+            「その通りです。コンピュータでも同じで、すべての入力が 1 のときのみ 1 を出力するのがAND演算です。<br>
             <ul>
-                <li>『アオキの鍵あり（1）』 AND 『ホシノの鍵なし（0）』 ＝ 『開かない（0）』</li>
-                <li>『アオキの鍵あり（1）』 AND 『ホシノの鍵あり（1）』 ＝ 『開く（1）』</li>
+                <li>『メイン注文（1）』 AND 『ドリンク注文なし（0）』 ＝ 『割引なし（0）』</li>
+                <li>『メイン注文（1）』 AND 『ドリンク注文（1）』 ＝ 『割引あり（1）』</li>
             </ul>
-            このように、すべての入力が 1 のときのみ 1 を出力するのがAND演算です。」
+            こうして条件を絞り込む際にANDは活躍します。」
         </div>
     </div>
 </div>
 
 <div class="scene">
-    <h2>お支払いは現金かカードか</h2>
+    <h2>ライスかパンか、それとも両方？</h2>
     <div class="narration">
-        お昼休み。情シス部の3人は社内売店にやってきた。<br>
-        レジの前に立ったミズダイ課長が、突然ポケットを叩いて絶叫した。
-    </div>
-
-    <div class="talk">
-        <div class="name mizudai-name">ミズダイ</div>
-        <div class="message mizudai-msg">「しまったァァ！ 財布をデスクに忘れた！ しかし、私のスマホには電子マネーカードが登録されているッ！ ふぅ、危うくランチ難民になるところだったぞ！」</div>
+        メインのハンバーグを注文したアオキは、主食の選択肢に悩んでいた。
     </div>
 
     <div class="talk">
         <div class="name aoki-name">アオキ</div>
-        <div class="message aoki-msg">「心臓に悪いので大声出すのやめてください。……でも、買い物は『現金』か『カード（電子マネー）』のどちらか一方でもあれば決済できますよね。」</div>
+        <div class="message aoki-msg">「セットの主食は『ライス』か『パン』か……。うーん、どっちも美味しそうだから両方頼んじゃおうかな」</div>
     </div>
 
     <div class="talk">
         <div class="name hoshino-name">ホシノ</div>
-        <div class="message hoshino-msg">「そうですね。これが**OR（論理和）**の仕組みです。OR演算は、複数の条件のうち**少なくとも1つが『1（真）』**であれば、結果が『1（真）』になります。」</div>
+        <div class="message hoshino-msg">「あぁ、アオキさん、それはできませんよ。セット料金内で選べるのは、どちらか片方だけです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「そうだ！ 『ライスを選ぶ（1）』 **XOR（排他的論理和）** 『パンを選ぶ（1）』！ どちらか一方のみ（1と0、または0と1）を選ぶのがこのセットの鉄則！ 両方（1と1）を選んで贅沢をしようとすれば、セットの枠から『除外（0）』され、追加料金という名のペナルティが発生するのだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「（追加料金払えばいい話なんですけど……）でも、どっちか片方だけしか選べないっていうのがまさに **XOR** ＝ 排他的論理和なんですね。もちろん、どっちも頼まない（0と0）のも、セットとしては無し（0）ですしね。」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「その通りです。XOR演算は、**2つの入力が『異なるとき』だけ結果が『1（真）』**になり、**『同じとき』は結果が『0（偽）』**になります。身近な選択ルールにそっくりですね」</div>
     </div>
 
     <div class="illustration">
-        <img src="../images/ep03/ep03_02.png" alt="レジでスマホ決済するミズダイ課長">
-        <div class="caption">【ep03_02.png】現金かカードのどちらかがあれば決済できる（ORの例え）</div>
+        <img src="../images/ep03/ep03_02.png" alt="ライスかパンの選択イメージ">
+        <div class="caption">【ep03_02.png】ライスかパンのどちらか一方だけを選べるXORのルール</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>なみなみ注がれる水とNOTゲート</h2>
+    <div class="narration">
+        注文を終えて料理を待つ間、ミズダイ課長がアオキのコップを凝視し始めた。<br>
+        アオキのコップのお水は、すでに飲み干されて空っぽになっている。
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「アオキくん！ 君のコップの『水が満ちているか？』というステータスが現在『0（偽）』だ！ すなわち、NOT演算によって『水を注ぐべきフラグ』が『1（真）』になったということッ！ 注ぐぞォォ！」</div>
+    </div>
+
+    <div class="narration">
+        ミズダイ課長はテーブルのピッチャーを掴み、アオキのコップに勢いよく水を注ぎ始めた。
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「わわわ、ちょっと課長！ ストップ！ なみなみ注ぎすぎて表面張力ギリギリですよ！ これでコップが『満ちた（1）』ので、NOTによって『水を注ぐべきフラグ』は『0（偽）』になりました！ 手を止めてください！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「ふふ、お見事な連携です。今のやり取りこそが、まさに **NOT（否定）** 演算ですね。NOT演算は、入力された値が『真（1）』なら『偽（0）』に、『偽（0）』なら『真（1）』にと、そっくりそのまま反転させるのが特徴です。」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど。コップが空（0）だから水を注ぐ（1）。コップが満杯（1）だから水を注ぐのをやめる（0）。ONとOFFがひっくり返るわけですね。」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「その通り！ ちなみに私の筋肉ルールでは、『トレーニングをしていない（0）』状態のNOTは『トレーニングをする（1）』！ 『トレーニングをしている（1）』状態のNOTは『さらにトレーニングをする（1）』！ 常にONなのだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「それはただのバグです。反転してないじゃないですか。」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep03/ep03_03.png" alt="コップの水と給水フラグの反転">
+        <div class="caption">【ep03_03.png】コップの状態（1/0）を反転させて注水要否を決めるNOTの仕組み</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>お会計とORゲート</h2>
+    <div class="narration">
+        楽しいランチタイムも終わり、伝票を持って3人はレジへ向かった。<br>
+        レジの前で、ミズダイ課長がポケットを叩いて慌てふためいた。
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「しまったァァ！ また財布をデスクに忘れたぞ！ だが安心したまえ、私のスマホには電子マネーがチャージされている！ お会計は任せろ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「本当に心臓に悪いので焦らせるのやめてください……。でも、会計は『現金』か『電子マネー（カード）』のどちらか一方でもあれば決済できますよね。」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「そうですね。これが **OR（論理和）** の仕組みです。OR演算は、複数の条件のうち**少なくとも1つが『1（真）』**であれば、結果が『1（真）』になります。」</div>
     </div>
 
     <div class="talk">
@@ -231,93 +310,29 @@ footer{
         <div class="message hoshino-msg">
             「お買い物で例えると以下のようになります。<br>
             <ul>
-                <li>『現金なし（0）』 OR 『カードあり（1）』 ＝ 『買い物できる（1）』</li>
-                <li>『現金あり（1）』 OR 『カードあり（1）』 ＝ 『買い物できる（1）』</li>
-                <li>『現金なし（0）』 OR 『カードなし（0）』 ＝ 『買い物できない（0）』</li>
+                <li>『現金なし（0）』 OR 『電子マネーあり（1）』 ＝ 『会計できる（1）』</li>
+                <li>『現金あり（1）』 OR 『電子マネーあり（1）』 ＝ 『会計できる（1）』</li>
+                <li>『現金なし（0）』 OR 『電子マネーなし（0）』 ＝ 『会計できない（0）』</li>
             </ul>
             どちらか片方、あるいは両方の入力が 1 であれば 1 を出力するのがOR演算です。」
         </div>
     </div>
-</div>
-
-<div class="scene">
-    <h2>暗くなったらON</h2>
-    <div class="narration">
-        夕方、オフィスに戻ると、外が薄暗くなってきた。<br>
-        すると、窓際のセンサーライトが自動的にフワッと点灯した。
-    </div>
 
     <div class="talk">
         <div class="name aoki-name">アオキ</div>
-        <div class="message aoki-msg">「あ、電気がついた。情シスのセンサーライトって自動なんですね。」</div>
-    </div>
-
-    <div class="talk">
-        <div class="name hoshino-name">ホシノ</div>
-        <div class="message hoshino-msg">「はい、明るさセンサーが外の光を検知しているのです。明るさが『明るくない（0）』状態になると、ライトが『点灯（1）』する仕組みになっています」</div>
-    </div>
-
-    <div class="talk">
-        <div class="name mizudai-name">ミズダイ</div>
-        <div class="message mizudai-msg">「これぞ**NOT（否定）**の極み！ 入力をそっくりそのまま反転させるのだ！ 『明るい（1）』をNOTすると『消灯（0）』！ 『明るくない（0）』をNOTすると『点灯（1）』！」</div>
-    </div>
-
-    <div class="talk">
-        <div class="name aoki-name">アオキ</div>
-        <div class="message aoki-msg">「一番シンプルですね。入力された値をそのまま逆にするだけ、と。」</div>
+        <div class="message aoki-msg">「なるほど。どれか1つでも支払手段があればOK、だからORですね。なんとか無事にお会計できて良かったです」</div>
     </div>
 
     <div class="illustration">
-        <img src="../images/ep03/ep03_03.png" alt="暗くなると自動でつくライトの仕組み">
-        <div class="caption">【ep03_03.png】入力を反転させるNOT演算の仕組み</div>
-    </div>
-</div>
-
-<div class="scene">
-    <h2>階段の電灯と3路スイッチ</h2>
-    <div class="talk">
-        <div class="name aoki-name">アオキ</div>
-        <div class="message aoki-msg">「そういえば、うちのオフィスの階段の電気なんですけど……。1階でスイッチを押して電気を点けて、2階に上がって別のスイッチを押したら電気が消えますよね。あれってどういう回路なんですか？」</div>
-    </div>
-
-    <div class="talk">
-        <div class="name hoshino-name">ホシノ</div>
-        <div class="message hoshino-msg">「おや、良い疑問ですね。あれは『3路スイッチ』と呼ばれる配線で、コンピュータの論理回路では**XOR（排他的論理和）**と同じ働きをしています。」</div>
-    </div>
-
-    <div class="illustration">
-        <img src="../images/ep03/ep03_04.png" alt="階段の上と下にあるスイッチのイラスト">
-        <div class="caption">【ep03_04.png】上と下のスイッチが『異なる状態』のときだけ点灯する階段のライト</div>
-    </div>
-
-    <div class="talk">
-        <div class="name hoshino-name">ホシノ</div>
-        <div class="message hoshino-msg">
-            「XOR演算は、**2つの入力が『異なるとき』だけ結果が『1（真）』**になり、**『同じとき』は結果が『0（偽）』**になります。<br>
-            階段のスイッチで言うと、以下のようになります。<br>
-            <ul>
-                <li>『1階スイッチ：上向き（1）』 XOR 『2階スイッチ：下向き（0）』 ＝ 『点灯（1）』</li>
-                <li>『1階スイッチ：上向き（1）』 XOR 『2階スイッチ：上向き（1）』 ＝ 『消灯（0）』</li>
-            </ul>
-            このように、どちらか片方だけが ON の状態のときだけ電気が通る仕組みになっているのです」
-        </div>
-    </div>
-
-    <div class="talk">
-        <div class="name mizudai-name">ミズダイ</div>
-        <div class="message mizudai-msg">「『排他的（Exclusive）』とは相手を排除する、すなわち『重複を許さない』ということ！ 2つのスイッチが揃って同じ方向（1と1、あるいは0と0）を向いている贅沢者めらは、XORの鉄槌によって0（消灯）へと叩き落とされるのだ！」</div>
-    </div>
-
-    <div class="talk">
-        <div class="name aoki-name">アオキ</div>
-        <div class="message aoki-msg">「相変わらず例えが過激ですけど、イメージはすごく分かりやすいです。同じ向きだとOFF、違う向きだとONになるのがXORですね。」</div>
+        <img src="../images/ep03/ep03_04.png" alt="現金かカードかでの支払いORイメージ">
+        <div class="caption">【ep03_04.png】現金か電子マネーのどちらかがあれば会計できるORの仕組み</div>
     </div>
 </div>
 
 <div class="scene">
     <h2>午前問題（科目A）にチャレンジ！</h2>
     <div class="narration">
-        ホシノさんがホワイトボードに、論理演算に関する試験問題を書き出した！
+        無事にお会計を済ませ、お店を出る前に、ホシノさんがファミレスのテーブルの上でメモ帳を使って試験問題を書き出した！
     </div>
 
     <div class="question-box">
@@ -343,12 +358,12 @@ footer{
         ・AとBが『0と0』のときは『0』<br>
         ・AとBが『0と1』、または『1と0』のように『値が異なるとき』は『1』<br>
         ・AとBが『1と1』のときは『0』<br>
-        値が異なるときだけ1が出力されているから、これはさっき習った階段のスイッチと同じ！ 正解は **『ウのXOR』** です！」</div>
+        値が異なるときだけ1が出力されているから、これはさっき習ったライスとパンの選択と同じ！ 正解は **『ウのXOR』** です！」</div>
     </div>
 
     <div class="talk">
         <div class="name hoshino-name">ホシノ</div>
-        <div class="message hoshino-msg">「素晴らしい！ 大正解です。この表を**真理値表（しんりちひょう）**と呼び、試験では表を読み取る問題が非常によく出題されます」</div>
+        <div class="message hoshino-msg">「大正解です！ 素晴らしいですね。この表を**真理値表（しんりちひょう）**と呼び、試験では表を読み取る問題が非常によく出題されます」</div>
     </div>
 
     <div class="question-box">
@@ -362,7 +377,7 @@ footer{
 
     <div class="talk">
         <div class="name mizudai-name">ミズダイ</div>
-        <div class="message mizudai-msg">「ほう！ 今度はビット列同士の演算だな！ アオキ、XORの奥義をビット列に叩き込んでみせよ！」</div>
+        <div class="message mizudai-msg">「おおお！ 今度はビット列同士の演算だな！ アオキ、XORの奥義をビット列に叩き込んでみせよ！」</div>
     </div>
 
     <div class="talk">
@@ -386,17 +401,17 @@ footer{
 
     <div class="talk">
         <div class="name mizudai-name">ミズダイ</div>
-        <div class="message mizudai-msg">「ガハハ！ 論理の迷宮をいともたやすく突破するとは！ アオキ、お前の脳内トランジスタ（回路）も良い具合に繋がってきたようだな！ よし、今日の褒美に、情シス特製のプロテインドリンクをプレゼントしよう！」</div>
+        <div class="message mizudai-msg">「ガハハ！ お昼ご飯のついでに論理演算を完全に理解するとは！ アオキ、お前の脳内回路も良い具合に繋がってきたようだな！ よし、今日の研修（ランチ）を終えたご褒美に、次はプロテインドリンクをドリンクバーで調合してやろう！」</div>
     </div>
 
     <div class="talk">
         <div class="name aoki-name">アオキ</div>
-        <div class="message aoki-msg">「プロテインは遠慮しますって言ってますよね……。でも、真理値表の読み方さえわかれば、パズルみたいにサクサク解けて楽しいです！」</div>
+        <div class="message aoki-msg">「ドリンクバーにプロテインなんて置いてないですし、混ぜないでください……。でも、レストランのメニューにも論理演算の考え方が隠れていると思うと面白いですね！」</div>
     </div>
 
     <div class="narration">
         論理演算の基本であるAND、OR、NOT、XORをマスターしたアオキ。<br>
-        0と1の組み合わせから生まれるコンピュータの知恵に触れ、情シス部での歩みはさらに確かなものとなっていく！<br>
+        日常のあらゆるシーンに隠れたコンピュータの知恵を学び、情シス部でのサバイバルはまだまだ続く！<br>
         （第3話：論理演算 編 完）
     </div>
 </div>
