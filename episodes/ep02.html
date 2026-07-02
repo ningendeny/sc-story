@@ -123,30 +123,44 @@ a:hover{
     font-weight: bold;
 }
 
-footer{
-    text-align:center;
-    margin-top:50px;
-    margin-bottom:50px;
+/* ===== 共通ナビゲーション ===== */
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
 }
-
-.previous{
-    display:inline-block;
-    background:#2563eb;
-    color:white;
-    padding:14px 30px;
-    border-radius:10px;
-    font-weight:bold;
-    transition:background 0.2s;
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
-
-.next{
-    display:inline-block;
-    background:#2563eb;
-    color:white;
-    padding:14px 30px;
-    border-radius:10px;
-    font-weight:bold;
-    transition:background 0.2s;
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 /* ===== スマホ対応 ===== */
 @media (max-width:768px){
@@ -196,28 +210,34 @@ footer{
         margin-top:8px;
     }
 
-    .home-link{
-        top:auto;
-        bottom:10px;
-        left:10px;
-        padding:10px 14px;
-        font-size:0.85rem;
-    }
-
-    .next-link{
-        bottom:10px;
-        right:10px;
-        padding:10px 14px;
-        font-size:0.85rem;
-    }
-
     .illustration img{
         border-radius:10px;
+    }
+
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
     }
 }
 </style>
 </head>
 <body>
+
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep01.html">← 第1話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep03.html">第3話へ →</a>
+</nav>
 
 <div class="scene">
     <h2>プロローグ：スイッチのONとOFF</h2>
@@ -507,9 +527,10 @@ footer{
     </div>
 </div>
 
-<footer>
-    <a class="previous" href="ep01.html">← 第1話へ</a>
-    <a class="next" href="ep03.html">第3話へ →</a>
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep01.html">← 第1話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep03.html">第3話へ →</a>
 </footer>
 
 
