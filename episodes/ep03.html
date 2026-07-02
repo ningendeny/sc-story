@@ -123,35 +123,122 @@ a:hover{
     font-weight: bold;
 }
 
-footer{
-    text-align:center;
-    margin-top:50px;
-    margin-bottom:50px;
+/* ===== 共通ナビゲーション ===== */
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
 }
-
-.next{
-    display:inline-block;
-    background:#2563eb;
-    color:white;
-    padding:14px 30px;
-    border-radius:10px;
-    font-weight:bold;
-    transition:background 0.2s;
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+/* ===== スマホ対応 ===== */
+@media (max-width:768px){
 
-.next:hover{
-    background:#1d4ed8;
-    color:white;
-    text-decoration:none;
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
+
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+
+    .scene h2{
+        font-size:1.3rem;
+        padding-left:10px;
+    }
+
+    .talk{
+        flex-direction:column;
+    }
+
+    .name{
+        width:auto;
+        margin-bottom:8px;
+        font-size:0.95rem;
+    }
+
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+
+    .question-box{
+        padding:15px;
+    }
+
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+
+    .illustration img{
+        border-radius:10px;
+    }
+
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
+    }
 }
 
 </style>
 </head>
 <body>
 
-<div class="back">
-    <a href="ep02.html">← 第2話へ戻る</a>
-</div>
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep02.html">← 第2話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep04.html">第4話へ →</a>
+</nav>
 
 <div class="scene">
     <h2>プロローグ：ファミレスのセット割引</h2>
@@ -416,8 +503,10 @@ footer{
     </div>
 </div>
 
-<footer>
-    <a class="next" href="ep04.html">第4話へ →</a>
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep02.html">← 第2話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep04.html">第4話へ →</a>
 </footer>
 
 </body>
