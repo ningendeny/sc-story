@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第4話：迷子のパケットと、サイダーとマスクのヒミツ</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.illustration{
+    margin:30px 0;
+}
+
+.illustration img{
+    width:100%;
+    border-radius:15px;
+}
+
+.caption{
+    text-align:center;
+    color:#777;
+    margin-top:8px;
+    font-size:0.9rem;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+/* 問題セクション用アレンジ（既存のパーツをベースに表現） */
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* ===== 共通ナビゲーション ===== */
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+/* ===== スマホ対応 ===== */
+@media (max-width:768px){
+
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
+
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+
+    .scene h2{
+        font-size:1.3rem;
+        padding-left:10px;
+    }
+
+    .talk{
+        flex-direction:column;
+    }
+
+    .name{
+        width:auto;
+        margin-bottom:8px;
+        font-size:0.95rem;
+    }
+
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+
+    .question-box{
+        padding:15px;
+    }
+
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+
+    .illustration img{
+        border-radius:10px;
+    }
+
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep03.html">← 第3話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep05.html">第5話へ →</a>
+</nav>
+
+<div class="scene">
+    <h2>プロローグ：手紙の宛先は「192.168.1.10」？</h2>
+    <div class="narration">
+        情シス部での勤務にも少し慣れてきたアオキ（25）。<br>
+        デスクで作業していると、ミズダイ課長が真剣な表情で、封筒に何かを書き殴っていた。
+    </div>
+    
+    <div class="illustration">
+        <img src="../images/ep04/ep04_01.png" alt="手紙の宛先にIPアドレスを書くミズダイ課長">
+        <div class="caption">【ep04_01.png】宛先不明になりそうな手紙を書くミズダイ課長</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「フゥーッ！ よし、アオキくんへの業務連絡レターの宛先が書けたぞ！ 『宛先：192.168.1.10』！ これで完璧に届くはずだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「届くわけないでしょう。それ、郵便局員さんが見たらただの謎の数字の羅列ですよ。というか、同じ部屋にいるんだから普通に口で言ってください」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「うふふ。ですが概念としては合っていますね。インターネットの世界で、データを送るための『住所』にあたるのが **IPアドレス** です。」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">
+            「現在広く使われている **IPv4** は、全体で32ビット（4バイト）のデータです。そのまま2進数で書くと `11000000101010000000000100001010` と長すぎて人間が読めません。<br>
+            そこで、8ビット（1バイト）ずつ4つに区切り、それぞれを10進数（0〜255）にして、ドットで繋いで表現するルールになっています。<br>
+            例：`192.168.1.10`」
+        </div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど。だから4つの数字が並んでいるんですね。でも、全世界のPCやスマホに、それぞれ違う住所が割り当てられているってことですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「その通りです。住所が重複すると、手紙がどこに届くか分からなくなってしまいますからね（重複すると『IPアドレスの競合』というエラーになります）。」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>住所の「市区町村」と「番地」、そして謎の覆面</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「手紙の住所なら『東京都渋谷区（エリア）』と『〇〇町1-2-3（個別）』に分かれていますよね。IPアドレスにもそういう区別はあるんですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい着眼点です！ まさにIPアドレスも、グループを表す **『ネットワーク部（市区町村）』** と、そのグループ内の個別の端末を表す **『ホスト部（番地）』** の2つに分かれています」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「そして！ どこからどこまでが市区町村名なのかをコンピュータに示すために被せるのが、この **サブネットマスク（Subnet Mask）** なのだァァッ！！」</div>
+    </div>
+
+    <div class="narration">
+        そう叫びながらミズダイ課長が振り返ると、顔に真っ白な美容パックのシートマスクを貼り付けていた。
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep04/ep04_02.png" alt="美容パックのマスクを貼ったミズダイ課長">
+        <div class="caption">【ep04_02.png】サブネットマスク（物理）を装着したミズダイ課長</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「いや、それただの美容パック（シートマスク）ですよね。カサカサの肌を保湿してるだけじゃないですか。……ホシノさん、本物のサブネットマスクの解説をお願いします」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">
+            「はい、課長のお肌が潤ったところで解説しますね。サブネットマスク（例：`255.255.255.0`）は、IPアドレスに重ね合わせることで境界線を引く役割を持ちます。<br>
+            2進数で表したとき、**『1』が並んでいる部分がネットワーク部**、**『0』が並んでいる部分がホスト部** になります。<br>
+            <br>
+            例えば、IPが `192.168.1.10`、マスクが `255.255.255.0` の場合：<br>
+            ・マスクの `255.255.255`（2進数で1が24個並ぶ）＝ ここまでがネットワーク部（市区町村）<br>
+            ・マスクの `0`（2進数で0が8個並ぶ）＝ ここからがホスト部（番地）<br>
+            つまり、同じ `192.168.1.` というネットワークの中に、`10` 番というホスト（端末）がいる、という意味になります。」
+        </div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>喉を潤す「サイダー（CIDR）」？</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「でも、いちいち『サブネットマスクは255.255.255.0です』って書くの、数字が多くてめんどくさくないですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「フハハ！ そこで喉を潤す、この冷え冷えの **サイダー（CIDR）** 表記の出番だッ！ ゴクゴク……プハァーッ！ 炭酸が脳内CPUに染み渡るぞ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「（本当に炭酸サイダーを飲み始めたよ……）炭酸のサイダーじゃなくて、表記法のCIDRですよね。ホシノさん……」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">
+            「はい、綴りは **CIDR**（Classless Inter-Domain Routing）ですね。これは、サブネットマスクの『1のビットの数』を、IPアドレスの末尾に `/` を使ってスッキリ書く方法です。<br>
+            <br>
+            ・`255.255.255.0` は、2進数にすると左から1が **24個** 並んでいます。<br>
+            ・そのため、CIDR表記では **`/24`** と書きます。<br>
+            <br>
+            つまり、`192.168.1.10 /24` と書くだけで、『IPアドレスは192.168.1.10で、左から24ビット目までがネットワーク部ですよ』ということが一目で伝わるのです。非常にスマートですよね」
+        </div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep04/ep04_03.png" alt="IPアドレスとCIDR表記の関係性">
+        <div class="caption">【ep04_03.png】CIDR表記（プレフィックス）で境界線をスマートに表す</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>ホストの定員と、「ロビーとゴミ箱」のルール</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど。もし `/24` のネットワークだったら、ホスト部（番地）に使えるのは残り8ビット分ですね。8ビット＝256通りだから、PCは256台繋げられるんですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「惜しいです！ 実は、ホスト部に使えるアドレスの中でも**『最初』と『最後』の2つはPCに割り当ててはいけない**ルールがあります。そのため、実際に繋げられる最大数は **256 - 2 = 254台** になります」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ホスト部が全部0（例：`.0`）は『ネットワーク自身』を表す **ネットワークアドレス**！ ホスト部が全部1（例：`.255`）は全員に一斉送信するための **ブロードキャストアドレス**！ 例えるなら、マンションの『エントランスロビー（.0）』と『共同ゴミ箱（.255）』だ！ ロビーやゴミ箱には住めないだろう！ だから入居者はマイナス2しなければならんのだッ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ゴミ箱に住むのは嫌すぎますね……。でも、ロビー（ネットワーク全体）とゴミ箱（全員宛て）という例えで、マイナス2の理由がよく分かりました！」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep04/ep04_04.png" alt="ネットワークアドレスとブロードキャストアドレスの例え">
+        <div class="caption">【ep04_04.png】特別な2つのアドレス（住めない場所）のイメージ</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        ホシノさんがホワイトボードに、IPアドレスとサブネットに関する過去問を書き出した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        CIDR表記が 192.168.1.0/24 であるネットワークにおいて、ホスト（PCやプリンタなど）に割り当てることができるIPアドレスの最大数はいくつか。<br><br>
+        <span class="quiz-option">ア：254</span><br>
+        <span class="quiz-option">イ：255</span><br>
+        <span class="quiz-option">ウ：256</span><br>
+        <span class="quiz-option">エ：512</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「これはさっき課長が言っていた『マイナス2』のルールですね！<br>
+        `/24` ということは、ホスト部は残り8ビット（32 - 24 = 8ビット）。<br>
+        8ビットで表せるアドレスの総数は 2の8乗で 256通り。<br>
+        そこから、ネットワークアドレス（ホスト部がすべて0）とブロードキャストアドレス（ホスト部がすべて1）の2つを引く必要があるから、<br>
+        256 - 2 = 254台。<br>
+        正解は **『アの254』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい！ 大正解です。この『マイナス2』を忘れて『256』を選んでしまうミスが非常に多いので、アオキさんはバッチリですね」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        IPアドレスが 192.168.10.35、サブネットマスクが 255.255.255.224 の端末がある。この端末と同じサブネットに属するIPアドレスはどれか。<br><br>
+        <span class="quiz-option">ア：192.168.10.15</span><br>
+        <span class="quiz-option">イ：192.168.10.30</span><br>
+        <span class="quiz-option">ウ：192.168.10.50</span><br>
+        <span class="quiz-option">エ：192.168.10.65</span>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「おおお！ これはサブネットの境界線を見極める本格的な計算問題！ アオキ、お肌をサブネットマスクで保湿した私を納得させる解答を見せてみよ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「パックはもう剥がしてください……。ええと、この問題は2進数にして考えます。<br>
+        まず、IPアドレスの最後のアドレスは『35』。2進数にすると `00100011` です。<br>
+        次に、サブネットマスクの最後の値は『224』。2進数にすると `11100000` です（128 + 64 + 32 = 224）。<br>
+        この2つを重ね合わせ（AND演算）します。<br>
+        マスクが `111` になっている左端の3ビット `001` がネットワーク部。<br>
+        残りの5ビットがホスト部です。<br>
+        同じネットワークに属するということは、ネットワーク部（最初の3ビット）が `001` で共通している必要があります。<br>
+        ホスト部が全部0の `00100000`（10進数で32）から、全部1の `00111111`（10進数で63）までの範囲が、同じサブネットになります。<br>
+        選択肢の中で、最後の数字が 32 から 63 の間にあるのは……『50』の **『ウ』** だけです！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ 完璧なロジックですね。サブネットマスクの末尾が `224` の場合、ネットワークが32刻み（256通り ÷ 8パターン）に分割されるため、32〜63のグループに属する端末を探す、というアプローチでも素早く解くことができますよ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「見事だアオキ！ 私の顔面マスク（シートマスク）に匹敵する、完璧なサブネットマスクの使いこなしぶり！ よし、今日の研修完了の記念に、炭酸サイダー（CIDR）で乾杯といこう！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「乾杯はいいですけど、サイダーはいただきます（ごくごく）。……ふぅ、ネットワークの住所も、ルールがわかればパズルのように解けますね！」</div>
+    </div>
+
+    <div class="narration">
+        IPアドレスとサブネットマスクの役割、そしてアドレス設計のルールを学んだアオキ。<br>
+        ネットワークエンジニアへの第一歩を踏み出し、情シス部での挑戦は次のステージへ！<br>
+        （第4話：IPアドレスとサブネットマスク 編 完）
+    </div>
+</div>
+
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep03.html">← 第3話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep05.html">第5話へ →</a>
+</footer>
+
+</body>
+</html>
