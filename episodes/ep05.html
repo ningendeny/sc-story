@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第5話：プロテインが舞うオフィスと、プロトコルの約束</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.illustration{
+    margin:30px 0;
+}
+
+.illustration img{
+    width:100%;
+    border-radius:15px;
+}
+
+.caption{
+    text-align:center;
+    color:#777;
+    margin-top:8px;
+    font-size:0.9rem;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+/* 問題セクション用アレンジ（既存のパーツをベースに表現） */
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+footer{
+    text-align:center;
+    margin-top:50px;
+    margin-bottom:50px;
+}
+
+.next{
+    display:inline-block;
+    background:#2563eb;
+    color:white;
+    padding:14px 30px;
+    border-radius:10px;
+    font-weight:bold;
+    transition:background 0.2s;
+}
+
+.next:hover{
+    background:#1d4ed8;
+    color:white;
+    text-decoration:none;
+}
+
+</style>
+</head>
+<body>
+
+<div class="back">
+    <a href="ep04.html">← 第4話へ戻る</a>
+</div>
+
+<div class="scene">
+    <h2>プロローグ：噛み合わないやり取りとプロトコル</h2>
+    <div class="narration">
+        情シス部での研修中、アオキ（25）は他部署との仕事の手順に戸惑っていた。<br>
+        こちらがデータを送ったつもりでも、相手から「どういう手順で開けばいいのか分からない」と問い合わせが来るのだ。
+    </div>
+    
+    <div class="illustration">
+        <img src="../images/ep05/ep05_01.png" alt="共通の約束事がないと会話が成り立たないコンピュータ同士">
+        <div class="caption">【ep05_01.png】プロトコル（共通の約束事）が一致しないと通信できないイメージ</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「メールを送ったはずなのに、相手から『うちのシステムじゃ開けない』って言われちゃいました。同じコンピュータ同士なのに、どうしてすぐに繋がらないんですかね……」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「ふふ、それはお互いの通信のルールが一致していないからですね。コンピュータ同士が会話をするための共通の約束事を、**プロトコル（Protocol）** と呼びます。」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「そう！ プロトコルとはいわば『ビジネスマナー』や『共通の言語』だ！ 私が『プロテイン！』と叫んだら、アオキくんが『バー！』と返す！ このやり取りが成立するのも、我が部の共通プロトコルがあるからだな！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「そんなコールアンドレスポンスのルール作った覚えはありません。でも、ルール（プロトコル）がないと、データがごちゃごちゃになって解読できないのは分かりました」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「ええ。インターネットの世界では、このプロトコルが何重にも組み合わさって通信を支えています。今日はその代表的なものを見ていきましょう。」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>受領印付きの重要書類（TCP）</h2>
+    <div class="narration">
+        ホシノがデスクから厚い重要契約書を取り出した。
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「例えば、この契約書を総務部に届けるとします。絶対に紛失は許されません。こういう時に使われるのが **TCP（Transmission Control Protocol）** というプロトコルです。」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「絶対に届けるためのプロトコルですか。」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">
+            「はい。TCPでは、まず送信する前に相手と連絡を取り合い、準備ができているか確認します。これを **3ウェイハンドシェイク** と呼びます。<br>
+            1. 送信側（アオキ）が『送ってもいいですか？（SYN）』と尋ねる。<br>
+            2. 受信側（総務部）が『いいですよ、こちらのデータも送っていいですか？（SYN-ACK）』と答える。<br>
+            3. 送信側（アオキ）が『了解しました、では送ります（ACK）』と合意する。<br>
+            この3工程を経て、ようやくデータの送信を開始するのです」
+        </div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「さらに！ TCPはデータを細かく分けた『パケット』を送るたびに、『今送ったパケット、ちゃんと届いたか？』と受領確認（ACK）を求める！ もし途中でパケットが紛失した場合は、容赦なく再送させるのだ！ まさに『受領印付きの書留郵便』だな！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「めちゃくちゃ手堅いですね。それなら絶対にデータが壊れたり無くなったりしなさそうです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「その通りです。ただ、手順が非常に丁寧な分、通信速度（オーバーヘッド）という点では少し遅くなってしまいます」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>飛んでくるプロテイン（UDP）</h2>
+    <div class="narration">
+        すると、デスクの向こう側からミズダイ課長が立ち上がった。
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「フハハ！ 丁寧な手続きなど大胸筋が許さん！ スピードこそパワー！ アオキ、受け取れェェーッ！！」</div>
+    </div>
+
+    <div class="narration">
+        ビュッ！と風を切る音とともに、ミズダイ課長の剛腕からプロテインバーの小袋がアオキに向かって投じられた。<br>
+        スマホをいじっていたアオキは反応できず、プロテインバーはアオキの額にクリーンヒットして床に転がった。
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「いたっ！！！ な、何するんですか課長！ 痛いですし、プロテインバーが粉々になりましたよ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「これぞ **UDP（User Datagram Protocol）** なのだッ！！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「いや、ただの投げっぱなしの暴力ですよ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">
+            「ふふ、課長は体当たりでUDPを教えてくださったのですね（にっこり）。<br>
+            UDPは、相手の受け入れ態勢を確認せず、届いたかどうかの受領確認も行いません。ひたすらデータを一方的に『投げつける』プロトコルです」
+        </div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「届く保証がないってことですか？ それ、使い道あるんですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大いにありますよ。例えば、動画のライブ配信やオンライン音声通話などです。多少データが抜け落ちて（画像が一瞬乱れたり、音が途切れたりして）も、一時停止して再送を待つより、リアルタイムで次々にデータを流し続けた方がスムーズですよね。このように、信頼性よりも『速度やリアルタイム性』を重視する場面でUDPが使われます」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど。再送を待っていると動画がカクカクしちゃいますもんね。投げっぱなしだけど速い、それがUDPですか」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep05/ep05_02.png" alt="届く保証はないが超高速なUDP">
+        <div class="caption">【ep05_02.png】届く保証はないが超高速なUDP（ポイ投げのイメージ）</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>安否確認の点呼と、座席表での人探し</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「通信するプロトコルは分かりました。でも、そもそも相手のPCがちゃんと起動しているか（生きているか）を確かめる方法はないんですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「ありますよ。それが **ICMP（Internet Control Message Protocol）** です。主に通信のエラー通知や、ネットワークの診断に使われます」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「アオキくん！ 生きているかァッ！（点呼：Ping）」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「はい、生きてます！（応答：Pong）」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「まさに今のやり取りですね。コマンドプロンプトで使う `ping`（ピング）というツールは、このICMPを利用して『相手の端末がネットワーク上で生きているか』を安否確認しているのです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「へえー、便利ですね。……あ、もう一つ質問が。ネットワークの住所である『IPアドレス』は分かっていても、実際にデータを届けるには、PCの物理的な識別番号である『MAC（マック）アドレス』が必要だって以前聞きました。どうやって紐づけているんですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「良い質問ですね！ それを行うのが **ARP（Address Resolution Protocol）** です。オフィスでの『座席表と本名の紐づけ』で例えると分かりやすいですよ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">
+            「アオキさんが『総務部の3番席（IPアドレス）』の物理的な名前（MACアドレス）を知りたいとします。アオキさんはフロア全体に大声で呼びかけます。<br>
+            『総務部の3番席に座っているのは誰ですか？ 物理的な名前を教えてください！（ARP要求）』<br>
+            すると、その席に座っている本人だけが返事をします。<br>
+            『私（MACアドレス）ですよ！（ARP応答）』<br>
+            こうしてIPアドレスからMACアドレスを調べる仕組みがARPです」
+        </div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど！ 全体に呼びかけて（ブロードキャスト）、該当する人が返事をする。だからIPアドレスだけで正しいPCにデータが届くんですね！」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep05/ep05_03.png" alt="IPアドレスからMACアドレスを取得する仕組み">
+        <div class="caption">【ep05_03.png】IPアドレス（座席番号）からMACアドレス（物理的な本人）を特定するARPの仕組み</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        オフィスのホワイトボードの前に、ホシノさんがプロトコルに関する過去問を書き出した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        インターネットで用いられるトランスポート層のプロトコルであるTCPの特徴として、適切なものはどれか。<br><br>
+        <span class="quiz-option">ア：データの送信時にコネクションを確立せず、ヘッダサイズも小さいため、高速な伝送に適している。</span><br>
+        <span class="quiz-option">イ：データの到達確認や順序制御を行わず、音声や動画などのリアルタイム配信に適している。</span><br>
+        <span class="quiz-option">ウ：送信相手との間でコネクションを確立してから通信を開始し、データの到着確認と再送制御を行うことで信頼性の高い通信を提供する。</span><br>
+        <span class="quiz-option">エ：MACアドレスからIPアドレスを自動的に取得するために用いられるプロトコルである。</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「これはさっき習いました！ コネクションを確立して、到着確認と再送を行う信頼性の高い書留郵便だから……正解は **『ウ』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ ちなみに『ア』『イ』はUDPの特徴、『エ』はRARP（逆ARP）やDHCPなどの特徴になります」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        LANにおいて、IPアドレスから対応する機器の物理アドレス（MACアドレス）を取得するために用いられるプロトコルはどれか。<br><br>
+        <span class="quiz-option">ア：ARP</span><br>
+        <span class="quiz-option">イ：DHCP</span><br>
+        <span class="quiz-option">ウ：ICMP</span><br>
+        <span class="quiz-option">エ：DNS</span>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「フハハ！ 座席番号（IP）から筋肉の本名（MAC）をフロア全体に叫んで特定するプロトコルだな！ アオキ、瞬殺してみせよ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「はい！ IPアドレスからMACアドレスを調べる、フロアでの呼びかけプロトコルだから、正解は **『アのARP』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい！ 完璧です。ちなみに『イ』のDHCPはIPアドレスを自動で割り当てるプロトコル、『ウ』のICMPは安否確認（ping）やエラー通知に使われるプロトコル、『エ』のDNSはドメイン名とIPアドレスを変換するプロトコルです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「素晴らしいぞアオキ！ プロトコルの約束事を完全に理解したな！ よし、この調子で、次は私の筋肉プロトコル（プロテイン摂取）を一緒に行おうではないか！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「そのプロトコルは接続拒否（接続タイムアウト）でお願いします。……でも、難しそうだったネットワークの言葉も、オフィスのやり取りに例えるとすごくスッキリしますね！」</div>
+    </div>
+
+    <div class="narration">
+        通信を支えるプロトコルたちの働きを学んだアオキ。ネットワークの仕組みを繋ぐ旅は、まだまだ続いていく！<br>
+        （第5話：通信プロトコル 編 完）
+    </div>
+</div>
+
+<footer>
+    <a class="next" href="ep06.html">第6話へ →</a>
+</footer>
+
+</body>
+</html>
