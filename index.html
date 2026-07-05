@@ -228,6 +228,86 @@ footer{
 
 }
 
+/* ===== アコーディオン (ロードマップ分類) ===== */
+.accordion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+.accordion-item {
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #ffffff;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+.accordion-item:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-color: #cbd5e1;
+}
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 24px;
+    background: #f8fafc;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.2s;
+}
+.accordion-header:hover {
+    background: #f1f5f9;
+}
+.accordion-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #0d2342;
+}
+.accordion-icon {
+    font-size: 0.9rem;
+    transition: transform 0.3s;
+}
+.accordion-item.active .accordion-icon {
+    transform: rotate(90deg);
+}
+.stage-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-align: center;
+    min-width: 80px;
+}
+.stage-tag.active {
+    background: #dbeafe;
+    color: #1e40af;
+}
+.stage-tag.empty {
+    background: #f1f5f9;
+    color: #64748b;
+}
+.accordion-content {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.3s ease-out;
+}
+.accordion-item.active .accordion-content {
+    grid-template-rows: 1fr;
+}
+.accordion-content-inner {
+    overflow: hidden;
+}
+.accordion-body {
+    padding: 10px 24px 24px 24px;
+    display: flex;
+    flex-direction: column;
+}
+
 </style>
 </head>
 
@@ -264,82 +344,181 @@ footer{
 
 <h2>エピソード一覧</h2>
 
-<a href="episodes/ep01.html">
+<div class="accordion-list">
 
-<div class="episode">
+  <!-- Category 1 -->
+  <div class="accordion-item active">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-title">
+        <span class="accordion-icon">▶</span>
+        <span>① ITの基礎編 (第1段階)</span>
+      </div>
+      <span class="stage-tag active">3話収録</span>
+    </div>
+    <div class="accordion-content">
+      <div class="accordion-content-inner">
+        <div class="accordion-body">
+          <a href="episodes/ep01.html">
+            <div class="episode">
+              <h4><span class="tag">第1話</span> 課長の脳はCPUでできている</h4>
+              <p>今日から情報部門へ配属されたアオキ。パソコンに詳しい人たちが静かに働いている部署。そんなイメージを抱いていた。だが、その幻想は扉を開いた瞬間に粉砕される・・・</p>
+            </div>
+          </a>
+          <a href="episodes/ep02.html">
+            <div class="episode">
+              <h4><span class="tag">第2話</span> ２進数？16進数？</h4>
+              <p>配属されて数日。アオキ（25）は少しずつ情報システム部の雰囲気に慣れて……いなかった。ある日の朝、アオキがオフィスに入ると、カチ、カチ、カチ、カチ……と激しい音が響いていた。ミズダイ課長が、壁の照明スイッチをものすごい速さで連打していたのだ。</p>
+            </div>
+          </a>
+          <a href="episodes/ep03.html">
+            <div class="episode">
+              <h4><span class="tag">第3話</span> 論理演算の迷宮と、ファミレス・ランチのルール</h4>
+              <p>情シス部での研修が始まって数日。アオキ（25）は、ミズダイ課長とホシノの3人で近くのファミリーレストラン「マッピー」へランチに来ていた。お得な割引メニューの条件を巡り、ミズダイ課長が「論理演算」の解説を始めて……</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<h4>
-<span class="tag">第1話</span>
-課長の脳はCPUでできている
-</h4>
+  <!-- Category 2 -->
+  <div class="accordion-item active">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-title">
+        <span class="accordion-icon">▶</span>
+        <span>② ネットワーク編 (第2段階)</span>
+      </div>
+      <span class="stage-tag active">2話収録</span>
+    </div>
+    <div class="accordion-content">
+      <div class="accordion-content-inner">
+        <div class="accordion-body">
+          <a href="episodes/ep04.html">
+            <div class="episode">
+              <h4><span class="tag">第4話</span> 迷子のパケットと、サイダーとマスクのヒミツ</h4>
+              <p>情シス部での勤務にも少し慣れてきたアオキ（25）。デスクで作業していると、ミズダイ課長が真剣な表情で、封筒に「192.168.1.10」と書き殴っていた。そこからIPアドレスやサブネットマスクについての講義が始まり……</p>
+            </div>
+          </a>
+          <a href="episodes/ep05.html">
+            <div class="episode">
+              <h4><span class="tag">第5話</span> プロテインが舞うオフィスと、プロトコルの約束</h4>
+              <p>情シス部での研修中、アオキ（25）は他部署との仕事の手順（プロトコル）の噛み合わなさに戸惑っていた。コンピュータ同士が通信を行うための共通ルールであるプロトコル（TCP、UDP、HTTPなど）についての講義が始まり……</p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<p>
-今日から情報部門へ配属されたアオキ。
-パソコンに詳しい人たちが静かに働いている部署。
-そんなイメージを抱いていた。
-だが、その幻想は扉を開いた瞬間に粉砕される・・・
-</p>
+  <!-- Category 3 -->
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-title">
+        <span class="accordion-icon">▶</span>
+        <span>③ セキュリティ編 (第3段階)</span>
+      </div>
+      <span class="stage-tag empty">準備中</span>
+    </div>
+    <div class="accordion-content">
+      <div class="accordion-content-inner">
+        <div class="accordion-body">
+          <p style="color: #64748b; padding: 10px;">エピソードは順次公開予定です。お楽しみに！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category 4 -->
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-title">
+        <span class="accordion-icon">▶</span>
+        <span>④ OS編 (第4段階)</span>
+      </div>
+      <span class="stage-tag empty">準備中</span>
+    </div>
+    <div class="accordion-content">
+      <div class="accordion-content-inner">
+        <div class="accordion-body">
+          <p style="color: #64748b; padding: 10px;">エピソードは順次公開予定です。お楽しみに！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category 5 -->
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-title">
+        <span class="accordion-icon">▶</span>
+        <span>⑤ データベース編 (第5段階)</span>
+      </div>
+      <span class="stage-tag empty">準備中</span>
+    </div>
+    <div class="accordion-content">
+      <div class="accordion-content-inner">
+        <div class="accordion-body">
+          <p style="color: #64748b; padding: 10px;">エピソードは順次公開予定です。お楽しみに！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category 6 -->
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-title">
+        <span class="accordion-icon">▶</span>
+        <span>⑥ アルゴリズム編 (第6段階)</span>
+      </div>
+      <span class="stage-tag empty">準備中</span>
+    </div>
+    <div class="accordion-content">
+      <div class="accordion-content-inner">
+        <div class="accordion-body">
+          <p style="color: #64748b; padding: 10px;">エピソードは順次公開予定です。お楽しみに！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category 7 -->
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-title">
+        <span class="accordion-icon">▶</span>
+        <span>⑦ システム開発編 (第7段階)</span>
+      </div>
+      <span class="stage-tag empty">準備中</span>
+    </div>
+    <div class="accordion-content">
+      <div class="accordion-content-inner">
+        <div class="accordion-body">
+          <p style="color: #64748b; padding: 10px;">エピソードは順次公開予定です。お楽しみに！</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Category 8 -->
+  <div class="accordion-item">
+    <div class="accordion-header" onclick="toggleAccordion(this)">
+      <div class="accordion-title">
+        <span class="accordion-icon">▶</span>
+        <span>⑧ マネジメント編 (第8段階)</span>
+      </div>
+      <span class="stage-tag empty">準備中</span>
+    </div>
+    <div class="accordion-content">
+      <div class="accordion-content-inner">
+        <div class="accordion-body">
+          <p style="color: #64748b; padding: 10px;">エピソードは順次公開予定です。お楽しみに！</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>
-
-</a>
-
-<a href="episodes/ep02.html">
-
-<div class="episode">
-
-<h4>
-<span class="tag">第2話</span>
-２進数？16進数？
-</h4>
-
-<p>
-配属されて数日。アオキ（25）は少しずつ情報システム部の雰囲気に慣れて……いなかった。
-ある日の朝、アオキがオフィスに入ると、カチ、カチ、カチ、カチ……と激しい音が響いていた。
-ミズダイ課長が、壁の照明スイッチをものすごい速さで連打していたのだ。
-</p>
-
-</div>
-
-</a>
-
-<a href="episodes/ep03.html">
-
-<div class="episode">
-
-<h4>
-<span class="tag">第3話</span>
-論理演算の迷宮と、ファミレス・ランチのルール
-</h4>
-
-<p>
-情シス部での研修が始まって数日。
-アオキ（25）は、ミズダイ課長とホシノの3人で近くのファミリーレストラン「マッピー」へランチに来ていた。
-お得な割引メニューの条件を巡り、ミズダイ課長が「論理演算」の解説を始めて……
-</p>
-
-</div>
-
-</a>
-
-<a href="episodes/ep04.html">
-
-<div class="episode">
-
-<h4>
-<span class="tag">第4話</span>
-迷子のパケットと、サイダーとマスクのヒミツ
-</h4>
-
-<p>
-情シス部での勤務にも少し慣れてきたアオキ（25）。
-デスクで作業していると、ミズダイ課長が真剣な表情で、封筒に「192.168.1.10」と書き殴っていた。
-そこからIPアドレスやサブネットマスクについての講義が始まり……
-</p>
-
-</div>
-
-</a>
 
 </div>
 
@@ -378,6 +557,13 @@ footer{
 情報部門の日常 © 2026
 
 </footer>
+
+<script>
+function toggleAccordion(header) {
+    const item = header.parentElement;
+    item.classList.toggle('active');
+}
+</script>
 
 </body>
 </html>
