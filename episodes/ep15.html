@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第15話：黒い画面と、パーミッションの謎</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.yamamoto-name{
+    color:#805ad5;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+.yamamoto-msg{
+    background:#faf5ff;
+    border:1px solid #d6bcfa;
+}
+
+.code-box {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-family: "Consolas", "Courier New", monospace;
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+@media (max-width:768px){
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+    .name{
+        width:80px;
+        font-size:0.95rem;
+    }
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+    .question-box{
+        padding:15px;
+    }
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep14.html">← 第14話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep16.html">第16話へ →</a>
+</nav>
+
+<div class="scene">
+    <h2>プロローグ：サーバーログの調査（CUI）</h2>
+    <div class="narration">
+        ある午後、社内サーバーに不審なアクセス履歴がないか調べることになった情シス部。<br>
+        アオキがサーバーにリモート接続すると、画面には普段のアイコンだらけのデスクトップ（GUI）ではなく、黒い背景に白い文字だけが並ぶコマンドライン（CUI）が表示された。
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">
+            アオキ
+        </div>
+        <div class="message aoki-msg">
+            「うわっ、出たな『黒い画面』！ コピー＆ペーストもボタンクリックもできないぞ。どうやって操作すればいいんだ？」
+        </div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「フン、GUIに甘やかされた一般人が。これはLinuxのシェルターミナルだ。サーバー管理ではこれが標準的な作業空間だ。お前に基本コマンドを叩き込んでやる。まずは `ls` と `cd` だ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「**`ls`** は現在のディレクトリ（フォルダ）にあるファイルの一覧を表示するコマンドだ。そして **`cd`** は別のディレクトリに移動するコマンド。フォルダをクリックする代わりに、コマンドで移動するんだ」</div>
+    </div>
+
+    <div class="code-box">
+$ ls<br>
+log_file.txt  sys_config.conf<br>
+$ cd /var/log
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど！ `ls` で中身を確認して、`cd` でフォルダを移動していくんですね。黒い画面でも、やっていることは普段のフォルダ操作と同じなんだ！」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>文字列の検索と権限（grep と chmod）</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「でも、この巨大なログファイル `log_file.txt` の中から、『ERROR』という文字が含まれる行だけを見つけ出すにはどうすればいいんですか？ メモ帳で開いて検索することもできないのに……」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「そういう時こそ **`grep`** コマンドの出番だ。ファイルの中から指定した文字列が含まれる行だけを検索して抽出してくれる。実務でもテストでも必須のコマンドだ」</div>
+    </div>
+
+    <div class="code-box">
+$ grep "ERROR" log_file.txt<br>
+2026-07-25 12:00:00 [ERROR] Connection timed out.<br>
+2026-07-25 12:05:30 [ERROR] Database access denied.
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「うおお、一瞬でエラーログだけが抜き出された！ すごい便利ですね！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「あ、でも、この設定ファイル `sys_config.conf` を編集しようとしたら、『Permission denied』って言われて保存できませんでした。権限が足りないってことですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「それはファイルのパーミッション（権限）の制限ですね。Linuxでは、各ファイルに対して『読み込み（r）』『書き込み（w）』『実行（x）』の権限が設定されており、それを **所有者（user）**、**グループ（group）**、**その他（other）** の3区分ごとに指定します」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「この権限を変更するのが **`chmod`** コマンドだ。権限は数値で表される。r=4, w=2, x=1 と定義されており、それぞれの和で表す。例えば『rwx』は 4+2+1=7、『r-x』は 4+0+1=5 になる。つまり、`chmod 755` と実行すると、所有者に 7(rwx)、グループとその他に 5(r-x) の権限を与えることになる」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「フハハ！ 筋肉のアクセス権だな！<br>
+        このミズダイの筋肉に対しては、所有者（私自身）は『触る・見せる・ポーズを取る（7:rwx）』ができる！ だが、その他の部員（アオキ）に対しては『見るだけ（4:r--）』しか許可しておらん！ 触ることは拒否（Permission denied）だ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「課長の筋肉を触りたいと思ったことは一度もないので問題ありません。でも、r=4, w=2, x=1 の組み合わせの数字で権限を設定する仕組みは、数字のパズルみたいで分かりやすいですね！」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        Linuxの基本コマンドと権限管理を学んだアオキ。<br>
+        ホシノさんがホワイトボードに、パーミッションに関する過去問を書き出した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        Linux等のOSにおいて、あるファイルに対する権限を「所有者には読み込み・書き込み・実行の全ての権限（rwx）」、「グループおよびその他には読み込みと実行の権限（r-x）」を与える場合、chmodコマンドに指定する3桁の数値として、適切なものはどれか。<br><br>
+        <span class="quiz-option">ア：555</span><br>
+        <span class="quiz-option">イ：644</span><br>
+        <span class="quiz-option">ウ：755</span><br>
+        <span class="quiz-option">エ：777</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ええと、読み込み（r）=4、書き込み（w）=2、実行（x）=1 だから……<br>
+        所有者は全部（rwx）で 4+2+1=7。<br>
+        グループとその他は（r-x）だから 4+0+1=5。<br>
+        これを3桁並べると **『ウの755』** になります！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ちなみに『エの777』は全員に全権限を与えるため、セキュリティ的に極めて危険な状態になります」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        UNIX/Linuxシステムにおいて、テキストファイルの中から特定の文字列パターンを含む行を検索して画面に出力するコマンドはどれか。<br><br>
+        <span class="quiz-option">ア：cat</span><br>
+        <span class="quiz-option">イ：grep</span><br>
+        <span class="quiz-option">ウ：chmod</span><br>
+        <span class="quiz-option">エ：find</span>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「アオキ、これが分からないならお前を設定ファイルから消去（DELETE）してやる。答えろ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「物騒すぎます！ 特定の文字列パターンを検索するコマンドだから、正解は **『イのgrep』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい、大正解です！ ちなみにcatはファイルの中身を表示するコマンド、findはファイルを名前や条件で検索するコマンドです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハ！ コマンド操作もバッチリだな！ 黒い画面を恐れない『CUIマッスル』が身についたぞ！ よし、今日の仕上げに、いつものプロテインを……」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「フン、そのプロテインだけは所有者権限（rwx）で俺が回収する。……（ごくごく）チッ、やはりこのスムージーは最高だな。この味を消去（DELETE）されないよう、しっかりとバックアップをとっておけよ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「（文句を言いながら毎日プロテイン飲んでるな……）でも、コマンドを打ってサーバーを自在に操作できるようになって、少しインフラエンジニアっぽくなれた気がします！」</div>
+    </div>
+
+    <div class="narration">
+        サーバー管理に不可欠なLinuxコマンドを習得し、ロードマップ第4段階「OS」を完全クリアしたアオキ。<br>
+        次の第5段階は、業務システムの要となる「データベース（データベース設計・SQL）」へと進んでいく！<br>
+        （第4段階：OS編 完）
+    </div>
+</div>
+
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep14.html">← 第14話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep16.html">第16話へ →</a>
+</footer>
+
+</body>
+</html>

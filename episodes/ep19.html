@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第19話：開発のロードマップと、テストの階段</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.yamamoto-name{
+    color:#805ad5;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+.yamamoto-msg{
+    background:#faf5ff;
+    border:1px solid #d6bcfa;
+}
+
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+@media (max-width:768px){
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+    .name{
+        width:80px;
+        font-size:0.95rem;
+    }
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+    .question-box{
+        padding:15px;
+    }
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep18.html">← 第18話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep20.html">第20話へ →</a>
+</nav>
+
+<div class="scene">
+    <h2>プロローグ：システムはどうやって作る？</h2>
+    <div class="narration">
+        ロードマップ第7段階「システム開発編」がスタート。<br>
+        情シス部では、社内の「プロテイン在庫管理＆自動発注システム」を新しく構築するプロジェクトが立ち上がった。
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「システム作りって、いきなりプログラムのコードを書き始めるわけじゃないんですよね？ 何から手を付ければいいんですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「はい。システム開発は、まずユーザーの要望をまとめる **要件定義**、システムをどう作るか決める **設計**、実際にプログラムを作る **製造（コーディング）**、そして正しく動くか確かめる **テスト** という段階（工程）を踏んで進められます」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「フン、アオキ。開発手法には大きく分けて2つある。上流の『要件定義』から下流の『テスト』まで、滝が流れるように順番に進める **ウォーターフォールモデル**。そして、短いサイクルで設計・開発・テストを繰り返して少しずつシステムを拡張していく **アアジャイルモデル** だ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ウォーターフォールは計画通りに着実に進めるのに向いていて、アジャイルは仕様変更に柔軟に対応するのに向いているんですね！」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>バグを退治するテストの階段</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「開発の後の『テスト』についても教えてください。ただ動かしてみるだけじゃダメなんですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">
+            「（ため息をつきながら冷酷に見下ろす）<br>
+            ……ハッ、動かして『たまたま動いた』だけで安心する素人め。テストは段階的に行う必要がある。段階を追うことで、バグの原因を特定しやすくするんだ」
+        </div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「まず、個々のプログラム（関数やモジュール）単位で動作を確認する **単体テスト**。次に、それらを組み合わせて、モジュール間のデータの受け渡しが正しく行えるかを確認する **結合テスト**。最後に、システム全体として要件を満たしているかを検証する **システムテスト** を行います」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「なるほど！ 筋肉のテスト工程だな！<br>
+        大胸筋単体で力が入るか調べる（単体テスト）！<br>
+        次に大胸筋と三角筋を連動させてベンチプレスができるか調べる（結合テスト）！<br>
+        最後に、体全体の筋肉を連動させて、100kgを持ち上げられるか調べる（システムテスト）！<br>
+        どれか1つでもバグ（ケガや筋力不足）があれば、持ち上がらんのだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「相変わらず筋肉で説明しますけど、筋肉をパーツ（単体）から全体（システム）へ段階的にテストしていく流れは非常に納得がいきました！」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        開発工程とテストフェーズの役割を理解したアオキ。<br>
+        ホシノさんがホワイトボードに、システム開発の午前過去問を書き出した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        システム開発モデルのうち、開発プロセスを「要件定義」「設計」「プログラミング」「テスト」などの工程に分割し、前の工程が完了した後に次の工程に進む、後戻りが少ない大規模開発に向いたモデルはどれか。<br><br>
+        <span class="quiz-option">ア：アジャイルモデル</span><br>
+        <span class="quiz-option">イ：プロトタイピングモデル</span><br>
+        <span class="quiz-option">ウ：ウォーターフォールモデル</span><br>
+        <span class="quiz-option">エ：スパイラルモデル</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「上流から下流へ滝のように進む開発モデルだから、正解は **『ウのウォーターフォールモデル』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ アジャイルモデルは、短いスパンでイテレーション（反復）を繰り返す小〜中規模の開発に適した手法です」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        システム開発のテスト工程のうち、複数のモジュールを組み合わせて、モジュール間のインターフェースやデータの受け渡しが正しく機能するかを検証するテスト段階はどれか。<br><br>
+        <span class="quiz-option">ア：単体テスト</span><br>
+        <span class="quiz-option">イ：結合テスト</span><br>
+        <span class="quiz-option">ウ：システムテスト</span><br>
+        <span class="quiz-option">エ：運用テスト（受入テスト）</span>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「アオキ、もしこれを間違えたらお前の頭脳モジュールと体モジュールのインターフェースを遮断してやる。答えろ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「脳と体を切り離さないでください！ 複数モジュールを『組み合わせて』インターフェースをテストするのだから、正解は **『イの結合テスト』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい、大正解です！ 単体テストは個別モジュールのみ、システムテストは全体を対象とするテストです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハ！ 開発プロセスもバッチリだな！ バグのない完璧な『開発マッスル』がビルドされたぞ！ よし、今日の仕上げに……」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「フン、プロテインの品質保証テスト（ごくごく）……チッ、悪くない。お前の筋肉品質だけは合格ラインをクリアしているようだな。アオキ、次がいよいよ最後のロードマップ、第8段階『マネジメント』だ。すべてを統括する管理技術を教えてやる。気合を入れろ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「（合格ラインをもらえた！ ヤマモトさん、徐々に私を認めてくれてるのかな……？）はい、次で最後ですね。最後まで走りきります！」</div>
+    </div>
+
+    <div class="narration">
+        品質を高める開発管理とテスト手法をマスターしたアオキ。<br>
+        いよいよ最後のロードマップ、第8段階「マネジメント（進捗管理・IT運用）」へと進んでいく！<br>
+        （第7段階：システム開発編 完）
+    </div>
+</div>
+
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep18.html">← 第18話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep20.html">第20話へ →</a>
+</footer>
+
+</body>
+</html>

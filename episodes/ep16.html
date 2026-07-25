@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第16話：整理整頓データベースと、正規化の魔法</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.yamamoto-name{
+    color:#805ad5;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+.yamamoto-msg{
+    background:#faf5ff;
+    border:1px solid #d6bcfa;
+}
+
+.table-container {
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    margin-bottom: 10px;
+}
+
+th, td {
+    border: 1px solid #cbd5e1;
+    padding: 10px;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+th {
+    background: #f1f5f9;
+    color: #0f172a;
+    font-weight: bold;
+}
+
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+@media (max-width:768px){
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+    .name{
+        width:80px;
+        font-size:0.95rem;
+    }
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+    .question-box{
+        padding:15px;
+    }
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep15.html">← 第15話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep17.html">第17話へ →</a>
+</nav>
+
+<div class="scene">
+    <h2>プロローグ：ごちゃごちゃの会員名簿</h2>
+    <div class="narration">
+        ロードマップ第5段階「データベース編」がスタート。<br>
+        アオキは、部活動やトレーニングサークルの会員管理を行うためのExcel表を作成していたが、データの重複が多く、非常に見づらいものになっていた。
+    </div>
+
+    <div class="table-container">
+        <table>
+            <tr>
+                <th>会員ID</th>
+                <th>名前</th>
+                <th>連絡先</th>
+                <th>所属クラス</th>
+                <th>クラス担当</th>
+            </tr>
+            <tr>
+                <td>M001</td>
+                <td>アオキ</td>
+                <td>aoki@example.com</td>
+                <td>ビギナー、筋トレ</td>
+                <td>ホシノ、ミズダイ</td>
+            </tr>
+            <tr>
+                <td>M002</td>
+                <td>ヤマモト</td>
+                <td>yamamoto@example.com</td>
+                <td>筋トレ</td>
+                <td>ミズダイ</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「うーん、同じ会員が複数のクラスに入っていると、1つのセルの中に『ビギナー、筋トレ』って複数の値が入ってしまって、検索しづらいなぁ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「フン、相変わらず無残な表設計だな。関係データベース（RDB）の基本ルールすら守られていない。まずはデータを表形式の **テーブル**、横一行のデータを **レコード**、そしてレコードを一意（ユニーク）に識別する **主キー（プライマリキー）** として設計し直すんだ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「そうですね。そして、データの重複や矛盾（更新異常など）を防ぐために、テーブルの構造を整理する作業を **正規化** と呼びます。正規化には第1から第3段階までの手順があります」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>重複の排除と依存関係（第1〜第3正規化）</h2>
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「まず、1つのセルの中に『ビギナー、筋トレ』のように複数の値が入っているのを解消する。すべてのセルに1つの値（原子値）しか入らないようにテーブルを分割するのが **第1正規化** だ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど！ 1行に情報を詰め込まずに、レコードを分けるんですね」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「はい。次に、主キーの一部に対してデータが従属している関係を排除し、別テーブルに切り離すのが **第2正規化** です。例えば、『会員IDとクラスID』が複合主キーのとき、『会員の名前』は『会員ID』だけで決定できますよね。このような部分的な関係を分離します」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「最後に、主キー以外の項目同士の依存関係を排除するのが **第3正規化** だ。例えば『クラスID』が決まると『クラス担当者名』が決まるというように、主キーを介さずに他の項目に紐づいている情報を別テーブルに分けるんだ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「なるほど！ 筋肉の正規化だな！<br>
+        『プロテインロッカー（主キー）』の中に、『プロテイン（主キーに依存）』と『シェイカー』をぐちゃぐちゃに混ぜるのではなく、プロテイン用ロッカー、ボトル用ラック、サプリメントケースに完全に整理整頓して重複をゼロにするのだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ロッカーの整理はただの片付けですけど、要するに『1つのテーブルには1つのテーマだけを持たせる』ように綺麗に分割していくのが、正規化の魔法なんですね！」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        正規化の手順とデータベースの整合性管理を理解したアオキ。<br>
+        ホシノさんがホワイトボードに、関係データベース設計の午前過去問を書き出した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        関係データベースにおける「主キー（Primary Key）」の制約として、適切なものはどれか。<br><br>
+        <span class="quiz-option">ア：値に重複があってはならないが、Null値（空値）は許容される。</span><br>
+        <span class="quiz-option">イ：テーブル内に必ず複数存在しなければならない。</span><br>
+        <span class="quiz-option">ウ：値が重複してはならず（一意性）、かつNullであってはならない（非Null）。</span><br>
+        <span class="quiz-option">エ：外部テーブルの主キーを参照しているものでなければならない。</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「主キーは会員IDのように、絶対に他の人と被らなくて（一意）、空欄であってもいけない（非Null）ものだから、正解は **『ウ』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ ちなみに、他のテーブルの主キーを参照する項目は『外部キー』と呼びます」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        関係データベースの正規化において、主キーの構成メンバーの一部にのみ関数従属する項目（部分関数従属）を別テーブルに分離し、主キー全体に関数従属する状態にする段階はどれか。<br><br>
+        <span class="quiz-option">ア：非正規形から第1正規形への正規化</span><br>
+        <span class="quiz-option">イ：第1正規形から第2正規形への正規化</span><br>
+        <span class="quiz-option">ウ：第2正規形から第3正規形への正規化</span><br>
+        <span class="quiz-option">エ：第3正規形からボイスコッド正規形への正規化</span>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「アオキ、もしこれを間違えたらお前の存在自体を部分関数従属とみなして、情シス部から完全に切り離す。答えろ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「恐ろしすぎます！ 主キーの一部分への依存（部分関数従属）を排除して、主キー全体にのみ依存する状態にするのは **『イの第2正規化』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい、大正解です！ 第3正規化は、主キー以外の項目に依存する『推移的関数従属』を排除する段階になります」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハ！ 設計も完璧だな！ 無駄のないスリムな『正規化マッスル』が身についたぞ！ よし、お祝いに……」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「フン、無駄を削ぎ落としたプロテインの調合だ。……（ごくごく）チッ、やはり最高だな。アオキ、次はテーブルからデータを操作するコマンド、SQLの勉強だ。覚悟しておけよ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「（文句を言うわりに飲むのは誰よりも早いな……）でも、データベースの無駄をなくす正規化の考え方が分かって、スッキリしました！」</div>
+    </div>
+
+    <div class="narration">
+        テーブル設計の極意である「正規化」をマスターしたアオキ。<br>
+        次なるテーマは、データベースを実際に操作するための「SQL」の習得へと進む！<br>
+        （第16話：データベース設計・正規化 編 完）
+    </div>
+</div>
+
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep15.html">← 第15話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep17.html">第17話へ →</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第14話：メモリの広さと、倉庫の秘密</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.yamamoto-name{
+    color:#805ad5;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+.yamamoto-msg{
+    background:#faf5ff;
+    border:1px solid #d6bcfa;
+}
+
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+@media (max-width:768px){
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+    .name{
+        width:80px;
+        font-size:0.95rem;
+    }
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+    .question-box{
+        padding:15px;
+    }
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep13.html">← 第13話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep15.html">第15話へ →</a>
+</nav>
+
+<div class="scene">
+    <h2>プロローグ：メモリ不足と仮想記憶</h2>
+    <div class="narration">
+        週の半ば、アオキがPCで巨大な画像ファイルやスプレッドシートを何枚も同時に開いて作業していると、PCの動作が急激に重くなり、ハードディスクのアクセスランプが激しく点滅し始めた。
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「うわっ、重い！ マウスのカーソルがカクカクして動かないよ……。メモリは十分積んでいるはずなのに、どうしてこんなに重くなるんだ？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「アオキさん、それはPCの物理メモリ（実メモリ）の容量がいっぱいになって、OSが **仮想記憶（バーチャルメモリ）** の仕組みをフル稼働させているからですね」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「フン、アオキ。お前は机の上が書類で散らかると、何をする？ 机の引き出しや近くの棚（ハードディスク／SSD）に一時的に書類を避難させるだろ。それが仮想記憶の基本概念だ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「実メモリが足りなくなった時、ハードディスクなどの補助記憶装置を、メモリの代わり（仮想記憶）として使うんですね！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「そうだ。OSはメモリ空間を一定のサイズ（通常4KB程度）の **ページ** という単位に分割して管理している。これを **ページング方式** と言う。実メモリがいっぱいになった時、現在使われていないプロセスをページ単位でハードディスクに追い出す。これを **ページアウト**、逆に必要になった時にメモリに戻すのを **ページイン** と呼ぶんだ」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>机の上の大混乱（スラッシング）</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど。じゃあ、仮想記憶を使えばいくらでもアプリを開けるから、メモリ容量なんて気にしなくていいじゃないですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">
+            「（ため息をつきながら冷ややかに見つめる）<br>
+            ……ハッ、本当におめでたい脳みそだな。お前は机の上に置けないほどの書類を、引き出しと机の上で交互に入れ替えながら仕事をしたらどうなる？ 1文字書くたびに『引き出しを開けて書類を入れ替える』作業が発生して、仕事が進まなくなるだろ」
+        </div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「そうですね。実メモリの容量に対して動かすプログラムが多すぎると、ページインとページアウト（ページスワッピング）の処理が頻発し、CPUが本来の処理ではなくメモリの入れ替え処理ばかりに時間を使ってしまいます。この状態を **スラッシング（Thrashing）** と呼び、PCの処理速度が極端に低下する原因になります」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「そう！ まさに私のトレーニングで言う『プロテインの入れ替え』だな！<br>
+        プロテインを飲み干すたびに、わざわざ地下の遠い倉庫（ハードディスク）へプロテインを取りに行って戻るのを繰り返していたら、スクワットをする時間が全く無くなってしまう！ これが筋肉のスラッシングだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「それって単に手元にプロテインを用意し忘れてるだけですけど、要するにメモリの入れ替え作業自体がボトルネックになって、PC全体の動きがフリーズしちゃうんですね！」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        メモリ管理の重要性と、スラッシングの脅威を理解したアオキ。<br>
+        ホシノさんがホワイトボードに、仮想記憶に関する過去問を書き出した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        仮想記憶管理におけるページング方式の説明として、適切なものはどれか。<br><br>
+        <span class="quiz-option">ア：プログラムを実行する際、あらかじめプログラム全体を実メモリにロードする必要がある。</span><br>
+        <span class="quiz-option">イ：主記憶（実メモリ）と補助記憶（ハードディスク等）の間で、固定長の「ページ」と呼ばれる単位でデータを入れ替える。</span><br>
+        <span class="quiz-option">ウ：ページサイズを大きくするほど、主記憶と補助記憶の間の転送回数は常に減少する。</span><br>
+        <span class="quiz-option">エ：仮想アドレスと物理アドレスの変換は、すべてアプリケーションプログラムが自身で行う。</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「これは簡単です！ ページング方式は、固定長（ページ）の単位でメモリとハードディスクの間でデータを入れ替える仕組みだから、正解は **『イ』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ アプリ自身は物理アドレスを意識せず、OSがアドレス変換（マッピング）を自動で行うためエは誤りです」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        仮想記憶システムにおいて、実行中のプロセスが要求するメモリ量が実メモリ（主記憶）の容量を超えているために、ページの入れ替え処理が頻発し、システムの処理能力が極端に低下する現象はどれか。<br><br>
+        <span class="quiz-option">ア：スワップアウト</span><br>
+        <span class="quiz-option">イ：スラッシング</span><br>
+        <span class="quiz-option">ウ：メモリリーク</span><br>
+        <span class="quiz-option">エ：フラグメンテーション</span>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「アオキ、もし間違えたらお前の頭脳にスラッシングを起こして、使い物にならなくしてやる。答えを言え」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ひえっ！ ページの入れ替えが多すぎてPCが重くなる現象だから、正解は **『イのスラッシング』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい、大正解です！ ちなみにウのメモリリークは、確保したメモリを解放し忘れて実メモリが徐々に減少するバグで、エのフラグメンテーションは、メモリが細切れになって連続した領域が確保できなくなる現象です」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハ！ 仮想記憶もバッチリだな！ メモリ管理をマスターして、アオキの脳内メモリの『容量（キャパシティ）』も一段とパワーアップしたぞ！ よし、今日の成果を讃えてプロテインを一杯……」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「チッ、プロテインはプロテインでも、今回はアミノ酸の含有比率にこだわりがある。課長、レシピを教えろ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「（ヤマモトさん、冷たいけどプロテインに関してはめちゃくちゃ貪欲だな……）でも、PCが快適に動くために、OSが裏でせっせと机の整理整頓（ページング）をしてくれてるんだと分かってよかったです！」</div>
+    </div>
+
+    <div class="narration">
+        実メモリを有効に使うOSのメモリ管理術を学んだアオキ。<br>
+        次なるテーマは、サーバー管理で必須となる「Linuxコマンド」の習得へと進む！<br>
+        （第14話：OSのメモリ管理 編 完）
+    </div>
+</div>
+
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep13.html">← 第13話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep15.html">第15話へ →</a>
+</footer>
+
+</body>
+</html>

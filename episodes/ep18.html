@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第18話：整列と探索のアルゴリズム、そして疑似言語</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.yamamoto-name{
+    color:#805ad5;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+.yamamoto-msg{
+    background:#faf5ff;
+    border:1px solid #d6bcfa;
+}
+
+.code-box {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-family: "Consolas", "Courier New", monospace;
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+@media (max-width:768px){
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+    .name{
+        width:80px;
+        font-size:0.95rem;
+    }
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+    .question-box{
+        padding:15px;
+    }
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep17.html">← 第17話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep19.html">第19話へ →</a>
+</nav>
+
+<div class="scene">
+    <h2>プロローグ：アルゴリズムって何？</h2>
+    <div class="narration">
+        ロードマップ第6段階「アルゴリズム編」がスタート。<br>
+        アオキは、倉庫に保管されている「プロテインの在庫データ数千件」を賞味期限が近い順に並び替え（ソート）、特定のロット番号を検索するプログラムを開発することになった。
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「プログラムのコードは少しわかるようになりましたけど、大量のデータをどういう手順で効率よく並び替えたり検索したりすればいいのか、さっぱりイメージできません……」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「ある問題を解決するための手順や計算プロセスのことを **アルゴリズム** と呼びます。料理のレシピのようなものですね。同じ結果を出すのにも、効率の良し悪しがあります」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「フン、アオキ。お前が数千件のデータを力任せに探す（線形探索）のは、辞書を1ページ目から最後のページまで全部読むようなものだ。あまりに非効率で話にならない。まずは、基本となるソート（並び替え）と探索のアルゴリズムを学ぶんだ」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>並び替えと探し出し（バブルソートと二分探索）</h2>
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「並び替えの代表例が **バブルソート** だ。配列の隣り合うデータを比較し、順序が逆なら入れ替える処理を繰り返す。泡（バブル）が水面に浮かび上がるように、最大値や最小値が端に寄っていく。実装は簡単だが、計算量は $O(n^2)$ で、データ量が増えると非常に遅くなる」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「隣同士を地道に入れ替えていくから時間がかかるんですね」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「そして、あらかじめ整列（ソート）されたデータから目的の値を高速に探すアルゴリズムが **二分探索（バイナリサーチ）** です。配列の中央の値と目的の値を比較し、範囲を半分ずつに絞り込んでいきます」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「辞書を真ん中で開いて、探す文字が前半にあるか後半にあるかで絞るのと同じだ。データ数が100万件あっても、最大約20回の比較（ $\log_2 1000000 \approx 20$ ）で見つけ出せる。計算量は $O(\log n)$ だ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「なるほど！ 筋肉の二分探索だな！<br>
+        100kgのバーベルシャフトがどこにあるか探すとき、10kg、20kg……と順番に重さを量って探す（線形探索）のではない！<br>
+        まずラックの中央にあるバーベル（50kg）を手に取り、それより重いか軽いかで範囲を半分に絞り込んでいくのだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「バーベルの重さは量らなくても見れば分かりますけど、半分ずつ範囲を狭めていく二分探索の圧倒的なスピード感は理解できました！」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>試験突破の鍵（疑似言語）</h2>
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「基本情報技術者試験では、プログラミング言語に依存しない **疑似言語** というコード形式でアルゴリズムの問題が出題されます。ループ処理（`for`, `while`）や条件分岐（`if`）の構造を正しく読み解く必要があります」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「疑似言語を読み解くコツは、変数の値をメモ用紙に書き出しながら処理のステップを1つずつ追う（トレース）ことだ。頭の中だけで暗算しようとするな、確実にミスをする」</div>
+    </div>
+
+    <div class="code-box">
+○ 疑似言語の例（最大値を求める）<br>
+・配列 array のサイズを N とする<br>
+・max ← array[1]<br>
+・i を 2 から N まで 1 ずつ増やす間、以下を繰り返す：<br>
+　・もし array[i] &gt; max ならば：<br>
+　　・max ← array[i]<br>
+　・もし終わり<br>
+・繰り返し終わり<br>
+・max を返す
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど、1番目の要素を暫定の最大値にして、2番目から順にループで比較して、より大きい値を見つけたら更新する……。こうやってステップごとに値を追っていけば、複雑な処理でも理解できますね！」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        アルゴリズムと二分探索の計算ステップを理解したアオキ。<br>
+        ホシノさんがホワイトボードに、アルゴリズムの午前過去問を書き出した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        整列（ソート）済みのデータが15個ある配列に対して、目的のデータを「二分探索法」を用いて探索する場合、目的のデータが見つかるか、または存在しないと判定されるまでの比較回数の最大値はどれか。<br><br>
+        <span class="quiz-option">ア：3回</span><br>
+        <span class="quiz-option">イ：4回</span><br>
+        <span class="quiz-option">ウ：8回</span><br>
+        <span class="quiz-option">エ：15回</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「二分探索は範囲を半分ずつにするから……<br>
+        最初は15個。<br>
+        1回目の比較で、中央を除いて残りは最大7個。<br>
+        2回目の比較で、中央を除いて残りは最大3個。<br>
+        3回目の比較で、中央を除いて残りは最大1個。<br>
+        4回目の比較で、最後の1個を調べて確定する。<br>
+        だから比較回数の最大値は **『イの4回』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ データ数 N に対する二分探索の最大比較回数は、 $2^k \ge N$ を満たす最小の整数 $k$ で求めることができます。 $2^4 = 16 \ge 15$ ですので、最大4回になります」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        隣り合うデータの大小を比較し、必要に応じて入れ替える操作を繰り返すことによって、データを整列させるソートアルゴリズムはどれか。<br><br>
+        <span class="quiz-option">ア：クイックソート</span><br>
+        <span class="quiz-option">イ：ヒープソート</span><br>
+        <span class="quiz-option">ウ：バブルソート</span><br>
+        <span class="quiz-option">エ：挿入ソート</span>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「アオキ、これが分からないならお前の全神経をバブルソートで逆順に入れ替えて、大パニックにしてやる。答えろ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「神経を入れ替えないでください！ 隣り合うデータを比較・交換するソートだから、正解は **『ウのバブルソート』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい、大正解です！ ちなみにクイックソートは基準値を決めて分割する高速なソート方式です」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハ！ アルゴリズムも完璧だな！ ロジカルに脳みそを動かす『論理マッスル』がビルドされたぞ！ よし、今日の仕上げに……」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「フン、プロテインの吸収効率を最大化するアルゴリズム（ごくごく）……チッ、悪くない。お前の筋肉ロジックだけは、俺の秘密鍵に登録してやってもいい。アオキ、次は第7段階『システム開発』だ。現場の泥臭いシステム作りを叩き込んでやる」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「（秘密鍵に登録するって、ヤマモトさんなりのデレなのかな……？）はい、次も頑張ります！」</div>
+    </div>
+
+    <div class="narration">
+        プログラミングの根底にある「アルゴリズム」と「疑似言語」をマスターしたアオキ。<br>
+        いよいよ物語は終盤へ。第7段階「システム開発（開発モデル・テスト設計）」へと進んでいく！<br>
+        （第6段階：アルゴリズム編 完）
+    </div>
+</div>
+
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep17.html">← 第17話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep19.html">第19話へ →</a>
+</footer>
+
+</body>
+</html>

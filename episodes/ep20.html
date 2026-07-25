@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第20話：管理者の眼と、明日のITアーキテクト</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.yamamoto-name{
+    color:#805ad5;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+.yamamoto-msg{
+    background:#faf5ff;
+    border:1px solid #d6bcfa;
+}
+
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+@media (max-width:768px){
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+    .name{
+        width:80px;
+        font-size:0.95rem;
+    }
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+    .question-box{
+        padding:15px;
+    }
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep19.html">← 第19話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn disabled" href="#">第21話へ →</a>
+</nav>
+
+<div class="scene">
+    <h2>プロローグ：プロジェクトの管理とクリティカルパス</h2>
+    <div class="narration">
+        ロードマップ最終段階「マネジメント編」がスタート。<br>
+        新システムの開発プロジェクトも佳境に入り、アオキはスケジュール管理とリリース後の運用ルール作りに取り組んでいた。
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「複数のタスクが同時並行で動いていて、全体のスケジュールがいつ終わるのか、どの作業が遅れるとマズいのか整理しきれません……」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「そういう時は、まず作業を細かく分解した構成図 **WBS**（Work Breakdown Structure）を作り、それを時系列に並べた **ガントチャート** で可視化します。そして、プロジェクトの開始から終了までをつなぐ最長の経路である **クリティカルパス** を割り出すのです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「フン、アオキ。クリティカルパス上のタスクが1日でも遅れれば、プロジェクト全体の完了日も1日遅れる。つまり、最も遅延が許されない『生命線』だ。これ以外のパスには多少の遅延のゆとり（フロート）があるが、ここだけは監視を怠るな」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>稼働後の運用とインシデント管理</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なんとかシステムを無事にリリースできました！ でも、リリースした後にトラブルが起きたときは、どう対応すればいいですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「システムを安定稼働させるための運用管理も重要です。ユーザーに提供するサービス品質を事前に合意しておく **SLA（サービスレベル合意書）** を結び、障害が発生した際は迅速に対応します」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「障害対応では、まずサービスの一時復旧（暫定対応）を最優先する **インシデント管理** を行う。その後、障害の根本原因を特定して再発を防ぐ **問題管理** に引き継ぐんだ。アオキ、この2つの違いを混同するなよ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「うむ！ 筋肉のインシデント管理だな！<br>
+        トレーニング中にダンベルを落として足を痛めた（インシデント）とき、まずコールドスプレーで応急処置して立ち上がらせる（インシデント管理＝暫定復旧）！<br>
+        その後、なぜダンベルを落としたのか『握力不足か？シャフトのサビか？』と原因を究明して器具を交換する（問題管理＝根本原因究明）！<br>
+        この連携があってこそ、アスリートの日常（SLA）が守られるのだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「怪我を暫定復旧って言うのはちょっと怖いですけど、応急処置（インシデント管理）と根本治療（問題管理）の違いはよくわかりました！」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        プロジェクト管理とサービス運用のルールを理解したアオキ。<br>
+        ホシノさんがホワイトボードに、マネジメントの午前過去問を書き出した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        プロジェクト管理において、作業全体のスケジュールを決める最長の作業経路であり、その経路上のタスクの遅延がプロジェクト全体の遅延に直結するものを何と呼ぶか。<br><br>
+        <span class="quiz-option">ア：クリティカルパス</span><br>
+        <span class="quiz-option">イ：マイルストーン</span><br>
+        <span class="quiz-option">ウ：WBS</span><br>
+        <span class="quiz-option">エ：ガントチャート</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「全体の遅れに直結する最長のルートだから、正解は **『アのクリティカルパス』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ ちなみにマイルストーンはプロジェクトの節目となる重要ポイントです」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        ITIL（ITサービス管理のベストプラクティス）において、発生したサービスの中断に対して、一時的な回避策（ワークアラウンド）の適用などを行い、迅速に通常のサービスレベルを回復させることを主な目的とするプロセスはどれか。<br><br>
+        <span class="quiz-option">ア：問題管理</span><br>
+        <span class="quiz-option">イ：インシデント管理</span><br>
+        <span class="quiz-option">ウ：変更管理</span><br>
+        <span class="quiz-option">エ：リリース管理</span>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「アオキ、これが分からないならお前という障害に対するワークアラウンドとして、永久にこのオフィスから『排除（隔離）』してやる。答えろ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「私を隔離しないでください！ 迅速な回復・応急処置が目的だから、正解は **『イのインシデント管理』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい、大正解です！ 根本原因を突き止めるのは『問題管理』になります」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>エピローグ：明日のITアーキテクトへ</h2>
+    <div class="narration">
+        ついに、全てのロードマップを走りきったアオキ。<br>
+        試験を翌日に控えた夕方、情シス部の一角で、ヤマモトが最後のリコメンドをアオキに差し出した。
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「フン……アオキ。これを飲んでおけ。明日のお前の脳内CPUの動作クロックを最大化するアミノ酸を配合してある。……（ごくごく）チッ、相変わらずこのスムージーだけは最高だな。合格できなければ、このレシピを完全に削除（DELETE）するからな」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ありがとうございます、ヤマモトさん！ レシピを守るためにも、絶対に合格します！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「アオキさん、これまでコンピュータの仕組みからネットワーク、セキュリティ、そしてOSやマネジメントまで、本当によく頑張りましたね。今のあなたなら、自信を持って試験に臨めます。落ち着いていってらっしゃい！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハ！ 私たちの情シス部の日常で培った『ITマッスル』は本物だ！ 試験問題など、お前の鍛え上げた論理力で一瞬にして粉砕してくれるわ！ 恐れるなアオキ、力強く突き進め！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「はい！ 課長、ホシノさん、ヤマモトさん……本当にありがとうございました！ 私たちのオフィスの平和を守る情シス部のプロフェッショナルとして、明日の試験、全力で突破してきます！」</div>
+    </div>
+
+    <div class="narration">
+        ITの基礎知識から始まったアオキの成長の旅。<br>
+        情シス部が守るネットワークとセキュリティの城壁を背に、彼女は自信をみなぎらせて、明日の新しいステージ（試験会場）へと力強く歩み出す！<br>
+        （第8段階：マネジメント編・本編 完）
+    </div>
+</div>
+
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep19.html">← 第19話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn disabled" href="#">第21話へ →</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第17話：魔法の呪文と、テーブルの結合</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.yamamoto-name{
+    color:#805ad5;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+.yamamoto-msg{
+    background:#faf5ff;
+    border:1px solid #d6bcfa;
+}
+
+.code-box {
+    background: #1e1e1e;
+    color: #d4d4d4;
+    padding: 15px 20px;
+    border-radius: 10px;
+    font-family: "Consolas", "Courier New", monospace;
+    margin: 20px 0;
+    overflow-x: auto;
+}
+
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+@media (max-width:768px){
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+    .name{
+        width:80px;
+        font-size:0.95rem;
+    }
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+    .question-box{
+        padding:15px;
+    }
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep16.html">← 第16話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep18.html">第18話へ →</a>
+</nav>
+
+<div class="scene">
+    <h2>プロローグ：SQLの基本4つの呪文</h2>
+    <div class="narration">
+        正規化によって綺麗に整理されたデータベースのテーブル。<br>
+        アオキは、実際にこれらのテーブルからデータを抽出したり、更新したりするためのデータベース操作言語 **SQL** を学び始めた。
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「SQLって、データを操作するための専用コマンドなんですね。基本になるコマンドはどんなものがあるんですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「フン、アオキ。基本は4つだ。データを検索する **`SELECT`**、追加する **`INSERT`**、更新する **`UPDATE`**、削除する **`DELETE`**。これらを組み合わせてデータベースを動かすんだ」</div>
+    </div>
+
+    <div class="code-box">
+-- 会員テーブルから名前を検索<br>
+SELECT 名前 FROM 会員 WHERE 会員ID = 'M001';<br><br>
+-- 新しい会員を追加<br>
+INSERT INTO 会員 (会員ID, 名前) VALUES ('M003', 'ミズダイ');<br><br>
+-- データを更新<br>
+UPDATE 会員 SET 名前 = 'アオキ改' WHERE 会員ID = 'M001';<br><br>
+-- データを削除<br>
+DELETE FROM 会員 WHERE 会員ID = 'M003';
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「SELECT、INSERT、UPDATE、DELETE。英語の動詞そのままなので直感的ですね！」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>2つの表を繋ぐ魔法（テーブルの結合 - JOIN）</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「でも、正規化でテーブルを『会員テーブル』と『所属クラステーブル』にバラバラに分けたじゃないですか。これらを組み合わせて『アオキさんはどのクラスに所属しているか』という情報をまとめて一覧表示したいときはどうするんですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「そういう時こそ、**`JOIN`**（結合）を使います。2つの異なるテーブルを、共通の列（キー）を仲介役にして1つに繋ぎ合わせる魔法の呪文です」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「最もよく使われるのが **`INNER JOIN`（内結合）** だ。両方のテーブルに存在する共通データだけを結びつけて抽出する。もし、片方にしかデータがない行も強制的に残したい場合は **`LEFT OUTER JOIN`（左外部結合）** などを使うんだ」</div>
+    </div>
+
+    <div class="code-box">
+SELECT 会員.名前, クラス.クラス名<br>
+FROM 会員<br>
+INNER JOIN クラス ON 会員.クラスID = クラス.クラスID;
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「なるほど！ 筋肉の結合（JOIN）だな！<br>
+        『骨テーブル』と『筋肉テーブル』を、関節という共通キーで結合させることで、初めて『関節を動かす（動作ログ出力）』という1つの強力な処理（レコード）が完成するのだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「結合が外れたら大怪我ですけど、要するに共通のIDで複数の表を合体させて、必要なレポートを瞬時に作成する技術が `JOIN` なんですね！」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        SQLの基本命令とテーブル結合の概念を理解したアオキ。<br>
+        ホシノさんがホワイトボードに、SQLに関する午前過去問を書き出した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        関係データベースにおいて、2つのテーブルを特定の列の値に基づいて結びつけ、1つのテーブルのように扱うためのSQL句はどれか。<br><br>
+        <span class="quiz-option">ア：GROUP BY</span><br>
+        <span class="quiz-option">イ：ORDER BY</span><br>
+        <span class="quiz-option">ウ：JOIN</span><br>
+        <span class="quiz-option">エ：HAVING</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「テーブルを共通の列で結びつける命令だから、正解は **『ウのJOIN』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ ちなみに、GROUP BYはグループ化、ORDER BYは並び替え、HAVINGはグループ化後の絞り込みを行う句になります」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        テーブル「社員」から、部署コードが「D01」であるレコードの「社員名」を取得し、さらにそれを社員名の昇順（五十音順など）で並べるための適切なSQL文はどれか。<br><br>
+        <span class="quiz-option">ア：SELECT 社員名 FROM 社員 WHERE 部署コード = 'D01' ORDER BY 社員名 ASC;</span><br>
+        <span class="quiz-option">イ：SELECT 社員名 FROM 社員 WHERE 部署コード = 'D01' GROUP BY 社員名;</span><br>
+        <span class="quiz-option">ウ：UPDATE 社員 SET 社員名 WHERE 部署コード = 'D01';</span><br>
+        <span class="quiz-option">エ：SELECT 社員名 FROM 社員 HAVING 部署コード = 'D01' ORDER BY 社員名 DESC;</span>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「アオキ、これが分からないならお前の頭の中のデータベースを全削除（DROP DATABASE）してやる。答えを言え」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「頭を初期化しないでください！ データを検索するのがSELECT、条件がWHERE、並び替えの昇順（ASC）だから、正解は **『ア』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい、大正解です！ 並び替えは ORDER BY を使い、昇順は ASC (Ascending)、降順は DESC (Descending) となります」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハ！ SQLもバッチリだな！ データを思い通りにコントロールする『SQLマッスル』がビルドされたぞ！ よし、今日の仕上げに……」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「フン、プロテイン摂取（INSERT）のタスクを実行する。……（ごくごく）チッ、やはり最高だな。アオキ、データベース編（第5段階）も終わりだ。次は試験の最難関である第6段階『アルゴリズム』だ。地獄を見せてやるから覚悟しておけよ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「（言うことがいちいち怖いけど、ヤマモトさんの解説は本当に分かりやすいな……）よし、アルゴリズムも気合を入れて頑張ります！」</div>
+    </div>
+
+    <div class="narration">
+        SQLを用いたデータベース操作法を学び、ロードマップ第5段階「データベース」を完全クリアしたアオキ。<br>
+        いよいよ試験の合否を分ける難関、第6段階「アルゴリズム（疑似言語・探索・ソート）」へと進んでいく！<br>
+        （第5段階：データベース編 完）
+    </div>
+</div>
+
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep16.html">← 第16話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep18.html">第18話へ →</a>
+</footer>
+
+</body>
+</html>
