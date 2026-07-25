@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第11話：暗号の城と、開いた南京錠</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.illustration{
+    margin:30px 0;
+}
+
+.illustration img{
+    width:100%;
+    border-radius:15px;
+}
+
+.caption{
+    text-align:center;
+    color:#777;
+    margin-top:8px;
+    font-size:0.9rem;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.hacker-name{
+    color:#805ad5;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+.hacker-msg{
+    background:#faf5ff;
+    border:1px solid #d6bcfa;
+}
+
+/* 問題セクション用アレンジ（既存のパーツをベースに表現） */
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* ===== 共通ナビゲーション ===== */
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+/* ===== スマホ対応 ===== */
+@media (max-width:768px){
+
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
+
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+
+    .name{
+        width:80px;
+        font-size:0.95rem;
+    }
+
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+
+    .question-box{
+        padding:15px;
+    }
+
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+
+    .illustration img{
+        border-radius:10px;
+    }
+
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep10.html">← 第10話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep12.html">第12話へ →</a>
+</nav>
+
+<div class="scene">
+    <h2>プロローグ：鍵の受け渡し問題（共通鍵暗号）</h2>
+    <div class="narration">
+        ハッキング攻撃をことごとく封じられ、追いつめられた謎の男A。ある日の業務中、アおキ（25）がホシノへ重要なプロジェクトファイルを送ろうとしたとき、チャットが割り込んできた。
+    </div>
+    
+    <div class="illustration">
+        <img src="../images/ep11/ep11_01.png" alt="データ傍受を狙うハッカーのイメージ">
+        <div class="caption">【ep11_01.png】通信の盗聴を企む謎の男A</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「ふん、ログインがダメなら、お前たちがやり取りするデータを途中で傍受（盗聴）して中身を覗き見てやる！ いくらデータを暗号化しようと、暗号を解くための『鍵』をどうやってホシノに渡すつもりだ？ 鍵を送った瞬間に私が奪い取ってやるわ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「うわっ、確かに！ データを暗号化しても、解読するためのパスワード（鍵）をどうやって安全にホシノさんに伝えればいいんだ……？ メールで送ったらハッカーに盗まれちゃうし、電話で伝えるのも面倒だし……」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「そうですね。同じ鍵で暗号化と復号（ロックと解除）を行う方式を **共通鍵暗号方式** と言います。高速に動作するメリットがありますが、アオキさんが心配しているように『鍵を相手にどう安全に届けるか』という **鍵配送問題** が発生します」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「うむ！ 例えるなら、同じ鍵で開け閉めする『ダイヤル金庫（ロッカー）』だな！ アオキが金庫にプロテインを隠してロック（暗号化）しても、その解除番号（鍵）をホシノさんに伝えるメモをハッカー（謎の男A）に盗まれたら、中のプロテインはごっそり奪われてしまうのだ！」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>開いた南京錠の配布（公開鍵暗号）</h2>
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「そこで、現代のインターネット通信では **公開鍵暗号方式** という別の仕組みを使ってこの問題を解決しています。アオキさん、私の『開いた南京錠』をどうぞ」</div>
+    </div>
+
+    <div class="narration">
+        ホシノが自分のデスクの引き出しから、開いた状態の南京錠（キーレスの鍵）を取り出し、アオキに手渡した。<br>
+        ただし、その南京錠を開けるための「物理的な鍵（キー）」はホシノの手元に残されたままだ。
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「あ、開いた状態の南京錠ですか？ 鍵（キー）はホシノさんが持っているんですね」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「はい。この『開いた南京錠』がインターネット上の **公開鍵（Public Key）** です。誰に盗まれても構わないので、ネット上で公開します。アオキさんは送りたいファイルを箱に入れ、私の南京錠をパチンと閉めて（暗号化して）送ってください」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「ゲゲッ！？ 通信を傍受して箱を盗み取ったが、南京錠がかかっていて開けられないぞ！ なぜだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「当然です。南京錠をパチンと閉めることは誰にでもできますが、一度閉まった南京錠を開けられるのは、手元に唯一の鍵を持っている私だけです。この鍵を **秘密鍵（Private Key）** と呼びます。秘密鍵は私のPCから一歩も外に出ないため、ハッカーに盗まれる心配がありません」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「フハハ！ 素晴らしい！ 『暗号化するための公開鍵（南京錠）』と『復号するための秘密鍵（キー）』がペアになっているのだ！ これなら鍵を配送する必要がなく、ハッキングの余地はない！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど！ ロックする鍵（公開）と開ける鍵（秘密）を別々に分けるから、鍵配送問題が解決するんですね！」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep11/ep11_02.png" alt="公開鍵と秘密鍵の南京錠モデルのイメージ">
+        <div class="caption">【ep11_02.png】誰でも閉められる南京錠（公開鍵）と自分だけのキー（秘密鍵）の仕組み</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>元に戻せないミキサー（ハッシュ関数と改ざん検知）</h2>
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「く、くそ！ 中身が覗けないのなら、通信途中のデータパケットを適当に書き換えて、ファイルを壊して嫌がらせしてやる！ 読めないデータなんてただのゴミにしてやるわ！」</div>
+    </div>
+
+    <div class="narration">
+        謎の男Aが傍受したデータの中身の一部を書き換え（改ざん）、ホシノ宛てに送信した。<br>
+        データを受信したホシノは、PC画面で検証を行い、すぐに警告メッセージを表示させた。<br>
+        『警告：受信データが途中で改ざんされています！ 受信を破棄しました』
+    </div>
+
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「な、なぜだ！？ 暗号の中身は見えないはずなのに、どうしてデータが書き換えられたことが一瞬でバレるんだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「私たちはデータと一緒に **ハッシュ値（ハッシュコード）** を送受信して検証しています。**ハッシュ関数** を使って、データの『指紋』を計算しているのです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「そう！ いわば **『プロテインスムージーミキサー（一方行関数）』** だ！ バナナや牛乳、プロテインパウダーをミキサーに入れてブレンドした特製スムージー（ハッシュ値）は、元のフルーツ（データ）に分解して復元することは不可能（一方行性）！<br>
+        しかし！ もし途中でハッカーがスムージーに余計な毒（改ざんデータ）を1滴でも混ぜたら、出来上がったスムージーの味（ハッシュ値）が全く異なるものになり、すぐにバレてしまうのだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「課長の例え通り、元のデータがどれだけ長くても、ハッシュ値は常に一定の長さの不規則な文字列になります。そして元のデータが1文字でも変われば、生成されるハッシュ値は全く別のものになります。これを比較することで、データが改ざんされていないか（整合性）を一瞬でチェックできるのです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「一度混ぜたら元に戻せないミキサーだから、改ざんされたら絶対に一致しなくなるんですね！ データの安全を守る技術って、本当に巧妙にできてますね」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「ぎゃあああ！ 覗き見もできず、改ざんも即座に見破られるなんて！ もうお手上げだーーっ！（涙目で逃走）」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep11/ep11_03.png" alt="ハッシュ関数による改ざん検知のイメージ">
+        <div class="caption">【ep11_03.png】元のデータを復元できない一方行のハッシュ値比較による改ざん検知</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        ハッカーの盗聴・改ざんの悪企みを完全に撃退した3人。<br>
+        ホシノさんがホワイトボードに、暗号化技術に関する午前過去問を書き出した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        公開鍵暗号方式において、AさんからBさんへ、盗聴を防ぐ目的で暗号化メールを送る場合、メールの暗号化に使用する鍵と、復号に使用する鍵の組み合わせとして適切なものはどれか。<br><br>
+        <span class="quiz-option">ア：暗号化にAさんの公開鍵、復号にBさんの秘密鍵</span><br>
+        <span class="quiz-option">イ：暗号化にBさんの公開鍵、復号にBさんの秘密鍵</span><br>
+        <span class="quiz-option">ウ：暗号化にAさんの秘密鍵、復号にBさんの公開鍵</span><br>
+        <span class="quiz-option">エ：暗号化にBさんの秘密鍵、復号にAさんの公開鍵</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「これは『開いた南京錠』を思い浮かべれば一瞬ですね！ 受信者であるBさんの開いた南京錠（公開鍵）をかけてメールを送り、Bさん自身が持っているキー（秘密鍵）で開けるから、正解は **『イの暗号化にBさんの公開鍵、復号にBさんの秘密鍵』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ 送信者であるAさんの鍵を使ってしまうと、他の誰にも開けられなくなったり、誰にでも開けられる状態になってしまうため、盗聴防止の目的を果たせません」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        暗号技術などで用いられるハッシュ関数の特徴として、適切なものはどれか。<br><br>
+        <span class="quiz-option">ア：ハッシュ値から元の入力データを容易に復元できる。</span><br>
+        <span class="quiz-option">イ：同じ入力データであっても、算出するたびに異なるハッシュ値が得られる。</span><br>
+        <span class="quiz-option">ウ：入力データの長さに関わらず、生成されるハッシュ値の長さは一定である。</span><br>
+        <span class="quiz-option">エ：共通鍵暗号方式の鍵の配送に安全に用いられる。</span>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「おお！ 一方行にしか進まない、私のあのプロテインスムージーミキサーの特徴だな！ アオキ、最後を締めくくれ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「はい！ ハッシュ値は元データがどれだけ巨大でも常に一定の長さの文字列（指紋）になるから、正解は **『ウ』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい、大正解です！ ハッシュ値から元のデータに戻すことは不可能（一方行性）であるため『ア』は誤り。同じ入力データからは必ず同じハッシュ値が出力されるため『イ』も誤りです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハ！ 暗号の城も完全攻略だな！ これでハッカーの攻撃を完封し、情報システム部の盾としての第3段階（セキュリティ）をすべて制覇したぞ！ よし、アオキのセキュリティ筋の仕上がりを祝して、今日こそはプロテインスムージーで乾杯だ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「プロテインスムージーは、ハッシュ値のように二度と元の素材（牛乳や粉）に分離できないのが怖いので遠慮しておきます。……でも、ネットワークもセキュリティも、ルールをきちんと理解すれば自分たちのデータを守れる仕組みがしっかり作られているんだと分かって、すごく自信がつきました！」</div>
+    </div>
+
+    <div class="narration">
+        共通鍵・公開鍵の役割、そして改ざんを防ぐハッシュ関数の存在を学んだアオキ。<br>
+        サイバー脅威からオフィスの平和を守る情シス部の一員として、彼の成長の旅はさらに次のロードマップへと続いていく！<br>
+        （第3段階：セキュリティ編 完）
+    </div>
+</div>
+
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep10.html">← 第10話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep12.html">第12話へ →</a>
+</footer>
+
+</body>
+</html>

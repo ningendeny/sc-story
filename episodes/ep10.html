@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第10話：認証の砦と、スマートフォンの秘密</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.illustration{
+    margin:30px 0;
+}
+
+.illustration img{
+    width:100%;
+    border-radius:15px;
+}
+
+.caption{
+    text-align:center;
+    color:#777;
+    margin-top:8px;
+    font-size:0.9rem;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.hacker-name{
+    color:#805ad5;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+.hacker-msg{
+    background:#faf5ff;
+    border:1px solid #d6bcfa;
+}
+
+/* 問題セクション用アレンジ（既存のパーツをベースに表現） */
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* ===== 共通ナビゲーション ===== */
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+/* ===== スマホ対応 ===== */
+@media (max-width:768px){
+
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
+
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+
+    .name{
+        width:80px;
+        font-size:0.95rem;
+    }
+
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+
+    .question-box{
+        padding:15px;
+    }
+
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+
+    .illustration img{
+        border-radius:10px;
+    }
+
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep09.html">← 第9話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep11.html">第11話へ →</a>
+</nav>
+
+<div class="scene">
+    <h2>プロローグ：パスワードの限界と多要素認証（MFA）</h2>
+    <div class="narration">
+        情シス部での平和な日常に戻ったかに見えたある朝。<br>
+        アオキ（25）が共用Webポータルを開くと、またしてもチャットウィンドウから「謎の男A」が話しかけてきた。
+    </div>
+    
+    <div class="illustration">
+        <img src="../images/ep10/ep10_01.png" alt="管理者チャットで悔しがる謎の男A">
+        <div class="caption">【ep10_01.png】ログイン画面で足止めを食らう謎の男A</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「くそっ、何回攻撃してもネットワークの門番たちに弾かれる！ ならば、お前のIDとパスワードを裏ルート（フィッシングサイト）で盗み出してやったわ！ これで本物のユーザーとしてログインし、システムを内部から乗っ取ってやる！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ええええええええっ！？ パスワードが盗まれた！？ 最悪だ！ 終わった……！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「慌てないでください、アオキさん。パスワードを入力した後の『その男』のチャットを見てみましょう」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「ぬ、ぬおっ！？ パスワードを入れたのに、『アオキのスマートフォンに送られた認証コードを入力してください』と画面が出たぞ！？ そんなスマホ、手元にないぞ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「ふふ、引っかかりましたね。私たちのポータルは **多要素認証（MFA：Multi-Factor Authentication）** を有効にしています。IDとパスワードという『知識（ユーザーが知っていること）』に加え、アオキさんのスマートフォンという『所持（ユーザーが持っているもの）』の要素を組み合わせているのです。そのため、パスワードだけを盗んだハッカーは、スマホの実物を持っていないためログインできません」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「そう！ 私が昔通っていたゴールド筋肉ジムのセキュリティと同じだな！<br>
+        第1の壁：ジムの暗証番号（知識情報）！<br>
+        第2の壁：首から下げた会員証ICカード（所持情報）！<br>
+        第3の壁：指紋リーダーと、この盛り上がった大胸筋（生体情報・身体的特徴）！<br>
+        この3つの異なる要素（ファクター）を突破しなければ、ジムに一歩も入れなかったのだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「大胸筋は生体認証にならないと思いますけど、言いたいことは分かりました！ 単一のセキュリティ（パスワード）が破られても、別の要素（スマホ）があればログインを防げるんですね」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>使い捨ての合言葉（ワンタイムパスワード）</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「それにしても、私のスマホに送られてくる認証コードって、毎回数字が違いますし、30秒経つと無効になっちゃいますよね。これってどういう仕組みなんですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「それは **ワンタイムパスワード（OTP）** ですね。一度使うか、極めて短い制限時間を過ぎると二度と使えなくなる『使い捨て』のパスワードです。たとえハッカーが通信を盗聴してその数字を盗み見ても、数秒後にはそのパスワードはただのゴミ（無効）になります。だから再利用による不正ログイン（リプレイ攻撃）を防ぐことができるのです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「まさにスパイ映画の『読んだら自動的に消滅する指令書』だな！ 筋肉ワンタイムパスワード（プロテイン摂取ノルマ）も、一度飲み干したら二度と元には戻らん！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「それはただプロテインを消化しただけです」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep10/ep10_02.png" alt="スマホに届くワンタイムパスワードのイメージ">
+        <div class="caption">【ep10_02.png】一度使うか時間が経つと消滅するワンタイムパスワード（OTP）の仕組み</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>社章バッジがない端末（クライアント証明書）</h2>
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「ぐぬぬ、スマホ認証などという卑怯な真似を……！ ならば、お前のIDとパスワードを使って、社外の俺のハッキング端末から、社内業務システムに直接裏口からログインしてやる！」</div>
+    </div>
+
+    <div class="narration">
+        謎の男Aが自慢のハッキングPCから、会社の社内業務システムのアドレスにアクセスを試みた。<br>
+        しかし、ログイン画面すら表示されず、真っ白なエラー画面に文字が浮かび上がった。<br>
+        `400 Bad Request (No required SSL certificate)`
+    </div>
+
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「な、なんだと！？ IDとパスワードを入れる画面にすら辿り着けないぞ！？ どうなっているんだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「私たちの社内業務システムは、アクセスしてきたデバイスの認証も行っています。具体的には、端末内にあらかじめインストールされた **クライアント証明書（電子証明書）** の提出を求めているのです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「フハハ！ 会社公認の **『特製社章バッジ（証明書）』** だな！ 会社から支給されたPCにはバッジ（証明書）が付いているが、ハッカーの怪しいPCにはバッジがない。門番はIDやパスワードを尋ねる以前に、『社章バッジを持っていない端末』を接続段階で完全に拒否するのだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど！ パスワードを知っていても、会社が許可したPC（証明書が入ったPC）じゃなければ、システムに触ることもできないんですね。これなら個人PCからのシャドーITや、ハッカーの外部端末からのログインを完全に防げますね」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「く、くそーーっ！ パスワードを盗んでもログインできないなんて、どんな要塞なんだここは！ 今日は退散してやるーーッ！（通信切断）」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep10/ep10_03.png" alt="クライアント証明書によるデバイス認証イメージ">
+        <div class="caption">【ep10_03.png】許可された端末（証明書あり）のみを接続させるデバイス認証</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        ハッカーのログイン詐欺を完全に封じ込め、セキュリティの勝利を収めた3人。<br>
+        ホシノさんが振り返りのために、認証に関する過去問を出題した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        多要素認証（MFA）における、「知識」「所持」「生体」の3要素の組み合わせのうち、適切なものはどれか。<br><br>
+        <span class="quiz-option">ア：暗証番号、ICカード、指紋</span><br>
+        <span class="quiz-option">イ：ID、パスワード、暗証番号</span><br>
+        <span class="quiz-option">ウ：パスワード、顔写真、署名</span><br>
+        <span class="quiz-option">エ：電子証明書、ワンタイムパスワード、パスワード</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「これは覚えています！ 暗証番号（知っていること＝知識）、ICカード（持っていること＝所持）、指紋（本人の身体特徴＝生体）の3つだから、正解は **『ア』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ ちなみに『イ』はすべて知識情報だけなので、多要素認証にはなりません。『ウ』の署名は筆跡や行動の特徴にあたりますが、パスワード（知識）と顔写真（生体）で所持情報の要素が不足しています」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        ログイン時に毎回異なる使い捨てのパスワードを生成して利用する、ワンタイムパスワードを採用する主なセキュリティ上の目的はどれか。<br><br>
+        <span class="quiz-option">ア：パスワードを忘れた場合の再発行手続きを自動化する。</span><br>
+        <span class="quiz-option">イ：通信途中でパスワードが盗聴されても、その後の不正ログイン（リプレイ攻撃など）を防止する。</span><br>
+        <span class="quiz-option">ウ：生体認証デバイスの導入コストを削減する。</span><br>
+        <span class="quiz-option">エ：クライアント機器自体が会社の許可したものであるかを保証する。</span>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「おお！ 一度飲み干したプロテインは二度と使えんという、あの使い捨てシステムだな！ アオキ、瞬殺せよ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「飲み干したプロテインは関係ないです。ええと、一度使ったらすぐに無効化されるから、ハッカーが通信を盗聴しても再利用（リプレイ）できなくなるのが目的。だから正解は **『イ』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい、大正解です！ ワンタイムパスワードは、固定式のパスワードが抱える『盗難時の継続的な被害』を防ぐために非常に有効です。ちなみに『エ』は、クライアント証明書を導入する目的になります」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハ！ 認証の砦も完全制覇だな！ アオキ、これで身元偽装のハッカーからも身を守る『認証マッスル』がビルドされたぞ！ よし、今日の成果を讃えて、私の生体情報をアオキのスマホのログイン認証に特別に登録してやろう！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「課長の大胸筋や指紋で私のスマホが開くようになるのは絶対に嫌なので、拒否（Access Denied）させてください……。でも、多要素認証やクライアント証明書って、面倒な設定だと思っていましたけど、ものすごい効果があるんですね！」</div>
+    </div>
+
+    <div class="narration">
+        なりすましを防ぐ様々な認証技術を学び、防衛力を大きく向上させたアオキ。情シス部の守護者としてのステップを、彼は一歩ずつ、確実に上っていく！<br>
+        （第10話：認証の砦 編 完）
+    </div>
+</div>
+
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep09.html">← 第9話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep11.html">第11話へ →</a>
+</footer>
+
+</body>
+</html>

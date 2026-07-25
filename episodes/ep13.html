@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第13話：OSの司令塔と、超高速のタスク切り替え</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.illustration{
+    margin:30px 0;
+}
+
+.illustration img{
+    width:100%;
+    border-radius:15px;
+}
+
+.caption{
+    text-align:center;
+    color:#777;
+    margin-top:8px;
+    font-size:0.9rem;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.yamamoto-name{
+    color:#805ad5;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+.yamamoto-msg{
+    background:#faf5ff;
+    border:1px solid #d6bcfa;
+}
+
+/* 問題セクション用アレンジ（既存のパーツをベースに表現） */
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* ===== 共通ナビゲーション ===== */
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+/* ===== スマホ対応 ===== */
+@media (max-width:768px){
+
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
+
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+
+    .name{
+        width:80px;
+        font-size:0.95rem;
+    }
+
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+
+    .question-box{
+        padding:15px;
+    }
+
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+
+    .illustration img{
+        border-radius:10px;
+    }
+
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep12.html">← 第12話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn disabled" href="#">第14話へ →</a>
+</nav>
+
+<div class="scene">
+    <h2>プロローグ：OSの仕事とプロセス</h2>
+    <div class="narration">
+        ヤマモトが正式に「ホワイトハッカー」として情報システム部に加わり、4人体制となった情シス部。<br>
+        月曜日の朝、アおキ（25）はPCでブラウザを開き、Excelで表を作りながら、メールソフトで週報を送るという忙しいマルチタスク作業を行っていた。
+    </div>
+    
+    <div class="illustration">
+        <img src="../images/ep13/ep13_01.png" alt="マルチタスクで作業する情シス部とヤマモト">
+        <div class="caption">【ep13_01.png】複数のアプリを同時に動かして作業するアオキと、見守るメンバー</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ふぅ、ブラウザで調べ物しながらExcelに入力するの、地味に忙しいな。……そういえば、PCってどうやってこんなにたくさんのアプリを同時に、ごちゃごちゃにならずに実行できてるんですかね？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「それは、OS（オペレーティングシステム）の最も重要な役割の一つである『プロセス管理』のおかげですね。OSは、実行中のプログラムを **プロセス** という単位で管理しています」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「フン、アオキ。お前が頭の中で行っている『週報作成・発送』という業務全体の要求は、ユーザーから見た単位である **ジョブ（Job）** だ。だが、OSはそのジョブを分解し、Excelやメールソフトといった具体的な実行プログラムごとの『プロセス』に切り分けて管理しているんだよ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ジョブとプロセス。僕たちから見たら1つの大きな仕事（ジョブ）でも、PCの中ではアプリ単位の実行処理（プロセス）に分かれてるんですね。ヤマモトさん、さっそく的確な解説ありがとうございます！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「別に褒められたくて言ったわけじゃない。お前の基礎レベルがあまりに低くて見ていられなかっただけだ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「相変わらずトゲがありますね……（苦笑）」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>作業机と分身の手（プロセス vs スレッド）</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「プロセスっていう単位でアプリが動いているのは分かりました。でも、ブラウザを開いているときに、ページの文字を読み込みながら、同時にバックグラウンドで画像をダウンロードしたりしてますよね？ 1つのアプリの中でも、複数の処理が同時に走っているのはなぜですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「それはプロセスの中に、さらに細分化された実行単位があるからです。それを **スレッド（Thread）** と呼びます」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「アオキ、オフィスでの作業で例えてやる。**プロセスは『独立した作業机』** だ。Excel机、ブラウザ机という風にそれぞれ専用の場所（独立したメモリ空間）が与えられていて、隣の机の書類を勝手に覗くことはできない。だからアプリ同士が干渉してクラッシュするのを防げる」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど、机（メモリ）が完全に隔離されているから安全なんですね」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「そうだ。それに対して、**スレッドは『その机で作業をする分身の手』** だ。1つの机（同じメモリ空間）を共有しながら、左手が電卓を叩き（文字描画スレッド）、右手が書類をめくる（画像ダウンロードスレッド）ように動く。同じ机のスペースを使っているから、手と手の間の連絡やデータのやり取りが超高速で行えるんだ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「その通りです。プロセスを新しく作るのは机を用意するのと同じで時間がかかりますが、スレッド（分身の手）を増やすのはメモリを共有しているため、非常に軽量で高速に実行できます。試験でも『プロセスは独自の仮想メモリを持つが、スレッドは同一プロセス内のメモリを共有する』という特徴が非常によく出題されますよ」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep13/ep13_02.png" alt="プロセスとスレッドの作業机モデルイメージ">
+        <div class="caption">【ep13_02.png】独立した作業机（プロセス）と、共有して動く分身の手（スレッド）</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>筋肉の超高速切り替え（マルチタスクとラウンドロビン）</h2>
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「フハハハハ！ 複数の作業を同時にこなすマルチタスクだと！？ そんなものは私の筋肉（ボディ）を見れば一目瞭然だ！ 見よ！ 腕立て伏せと、スクワットと、腹筋のマルチタスク（同時並行）トレーニングだァァッ！」</div>
+    </div>
+
+    <div class="narration">
+        ミズダイ課長が叫びながら床に伏せて腕立て伏せを1回行い、電光石火の速さで立ち上がってスクワットを1回行い、さらに床に転がって腹筋を1回行うという動作を、ものすごい速さでクルクルと繰り返し始めた。
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「うわあ……ものすごい勢いで種目を切り替えてる。でも課長、それ同時にやってるんじゃなくて、1つずつ順番に超高速で切り替えてるだけですよね？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「フン、その通りだ。お前の体（CPUコア）は1つしかないのだから、物理的に全く同一の瞬間に複数の運動を実行することはできない。もし同時にやれたらお前は多頭多腕の化物（マルチコアCPU）だ。お前がやっているのは単なる **タイムシェアリング（時分割）** によるタスクの切り替えにすぎない」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ぬおっ！？ バカな、同時にやっているように見えたはずだぞ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「切り替え速度がミリ秒単位で速すぎるから、アオキの鈍い動体視線（人間の目）には同時に動いているように見えているだけだ。OSも同じ仕組みでマルチタスクを実現している。各プロセスに数ミリ秒という極めて短い処理時間（**タイムスライス**）を順に割り当てて、時間内に終わらなければ次のプロセスにCPUの実行権を受け渡す。このスケジューリング方式を **ラウンドロビン（Round-Robin）** 方式と呼ぶんだ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「ええ。順番に円（ラウンド）を描くように均等にCPUを使い回すのでラウンドロビンですね。優先度に関係なく、すべてのプロセスに均等にチャンスが回ってくるため、特定のプログラムが完全にフリーズして他の処理が全く動かなくなるのを防ぐことができます」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど！ PCの『同時に動く』の正体は、CPUが超高速でタスクを交代しながら回している（ラウンドロビン）結果なんですね。課長のドタバタ筋トレのおかげで、タイムスライスの意味がすごくイメージできました！」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep13/ep13_03.png" alt="時間交代でCPUを使い回すラウンドロビンのイメージ">
+        <div class="caption">【ep13_03.png】短い時間（タイムスライス）ごとに順次CPUを交代するラウンドロビン方式</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        ミズダイ課長が息を切らしてトレーニング（タスク切り替え）を終えたところで、<br>
+        ホシノさんがホワイトボードに、OSのプロセスとジョブ管理に関する午前問題を書き出した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        OSが管理するプログラムの実行単位である「プロセス」と「スレッド」に関する記述のうち、適切なものはどれか。<br><br>
+        <span class="quiz-option">ア：プロセス間でメモリ空間を共有することは容易であるが、スレッド間では共有できない。</span><br>
+        <span class="quiz-option">イ：プロセスはOSから見て独立した仮想メモリ空間を持つが、同一プロセス内のスレッドはメモリ空間を共有する。</span><br>
+        <span class="quiz-option">ウ：スレッドを切り替えるコストは、プロセスを切り替えるコストよりも大きい。</span><br>
+        <span class="quiz-option">エ：プロセスとスレッドは機能的に全く同一であり、OSの種類によって呼び方が異なるだけである。</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「これはさっきの『作業机』と『分身の手』ですね！ プロセスは独立した机（メモリ空間）を持つけど、その机の中のスレッド（手）たちは机のスペースを共有するから、正解は **『イ』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ スレッド切り替え（コンテキストスイッチ）のコストは、メモリ空間を切り替える必要がないため、プロセス切り替えよりも『小さい』のでウは誤りになります」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        CPUのスケジューリング方式のうち、各プロセスに一定のCPU時間（タイムスライス）を順番に割り当て、時間内に処理が終わらない場合は次のプロセスに実行権を移す方式はどれか。<br><br>
+        <span class="quiz-option">ア：先着順（FIFO）方式</span><br>
+        <span class="quiz-option">イ：優先度順方式</span><br>
+        <span class="quiz-option">ウ：ラウンドロビン方式</span><br>
+        <span class="quiz-option">エ：最短処理時間順方式</span>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「アオキ、これは俺がさっきの単細胞（課長）の動きを説明したときの方式だ。一定時間ずつ順番にタスクを使い回すのだから、答えは言うまでもなく 『ウのラウンドロビン方式』 だ。間違えたらお前の机（メモリ）を初期化してやる」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「脅さないでください！ でもその通り、交代で順番に処理を切り替えるラウンドロビン方式だから、正解は **『ウ』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい、大正解です！ ラウンドロビンはタイムスライスを均等に割り当てるため、公平な処理が行える特徴があります」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハ！ 完璧な正解だ！ OSのプロセスとマルチタスクも完全攻略！ ヤマモトが加わって情シス部のCPUコア数が増えたようなものだな！ よし、今日のOS研修完了を祝して、みんなでプロテインシェイクの同時並行（マルチコア）摂取だ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「フン、そのプロテインだけは評価してやる。……（ごくごく）チッ、やはり悪くない。お前の筋肉理論はともかく、このスムージーのハッシュ値（レシピ）は認めざるを得ないな」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「（本当に気に入ってるんだ……）でも、PCが裏でこんなに忙しくタスクを切り替えて仕事を回していると思うと、OSの働きって本当に素晴らしいオーケストラの指揮者みたいですね！」</div>
+    </div>
+
+    <div class="narration">
+        プログラムを実行し管理するOSの心臓部「プロセス管理」のルールを学んだアオキ。<br>
+        頼もしくもトゲのある仲間ヤマモトを加え、情シス部でのITサバイバル学習は、さらなるOSのメモリ管理領域へと進んでいく！<br>
+        （第13話：OSのプロセス管理 編 完）
+    </div>
+</div>
+
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep12.html">← 第12話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn disabled" href="#">第14話へ →</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第7話：安全なカフェテラスと、電話の取次係のヒミツ</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.illustration{
+    margin:30px 0;
+}
+
+.illustration img{
+    width:100%;
+    border-radius:15px;
+}
+
+.caption{
+    text-align:center;
+    color:#777;
+    margin-top:8px;
+    font-size:0.9rem;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+/* 問題セクション用アレンジ（既存のパーツをベースに表現） */
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* ===== 共通ナビゲーション ===== */
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+/* ===== スマホ対応 ===== */
+@media (max-width:768px){
+
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
+
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+
+    .name{
+        width:80px;
+        font-size:0.95rem;
+    }
+
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+
+    .question-box{
+        padding:15px;
+    }
+
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+
+    .illustration img{
+        border-radius:10px;
+    }
+
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep06.html">← 第6話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep08.html">第8話へ →</a>
+</nav>
+
+<div class="scene">
+    <h2>プロローグ：安全な地下防犯トンネル（VPN）</h2>
+    <div class="narration">
+        ある日の午後。アオキ（25）はリモートワークのため、会社の近くにあるお洒落なカフェのテラス席にいた。<br>
+        手元のPCをカフェのフリーWi-Fiに繋ぎ、社内サーバーにアクセスしようとしたとき、背後から聞き覚えのある大声が響いた。
+    </div>
+    
+    <div class="illustration">
+        <img src="../images/ep07/ep07_01.png" alt="カフェテラスでPCを開くアオキと近づくミズダイ課長">
+        <div class="caption">【ep07_01.png】カフェテラスでリモートワークの接続に悩むアオキ</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「アオキくーーん！！ カフェでリモートワークか！ 実に優雅だな！ だが、フリーWi-Fi（公道）をそのまま使って社内データにアクセスするなど、無防備にも程があるぞォッ！！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「うわっ、課長！？ なんでカフェのテラスにいるんですか？ 叫ぶと周りのお客さんの迷惑なので声抑えてください……。やっぱり、フリーWi-Fiから社内サーバーに入るのは危険なんですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「はい、暗号化されていない公衆回線は、ハッカーに盗聴される危険性が高いです。そこで、インターネットという公道の上に、暗号化技術を用いて安全な『仮想の専用トンネル』を作る技術を使います。それが **VPN（Virtual Private Network）** です」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「そう！ VPNとはいわば、本社へと直結する『専用の頑丈な地下防犯シェルタートンネル』だ！ 周りにどれだけ怪しいハッカー（通行人）がいようと、トンネル内を通るデータには一切手出しできん！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど。公道（インターネット）の中に、自分たち専用の隠し通路（仮想専用線）を作るから、バーチャル・プライベート・ネットワークなんですね」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>身元確認のパスポートと安全な配送（SSL/TLS）</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「そういえば、以前のWebサイトの暗号化（HTTPS）でも、安全なトンネルみたいなものを作って通信していましたよね。あれとはどう違うんですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「HTTPS通信の裏で動いているのは **SSL/TLS** というプロトコルです。VPNが『拠点と拠点（または端末と拠点）の通信全体を包む大きなトンネル』であるのに対し、SSL/TLSは主に『ブラウザと特定のWebサーバーのやり取りを直接保護する安全なカプセル』ですね。さらに、SSL/TLSにはもう一つ重要な役割があります」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「相手の身元を証明する **『デジタルパスポート（電子証明書）』** の提示だな！ 私が『本物のミズダイだ！』と証明するために、この鍛え抜かれた腹筋（証明書）を見せるようなものだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「それ偽造し放題なので証明書としては不適格です。……でも、相手が偽サイト（なりすまし）じゃないかを公的な機関の証明書で確認して、その上でデータを暗号化して届ける、それがSSL/TLSなんですね」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です。身元証明（認証）と暗号化をセットで行うことで、安全にWebショッピングや情報のやり取りができるようになります」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep07/ep07_02.png" alt="電子証明書と暗号カプセルで通信するSSL/TLS">
+        <div class="caption">【ep07_02.png】電子証明書による身元証明と通信の暗号化のイメージ</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>オフィスの代表電話と内線（NAT）</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「もう一つ気になるんですが……。今私がカフェや自宅で使っているPCのIPアドレスって、プライベートIPアドレス（内線）ですよね？ でも、インターネット上のサーバーと通信するには、世界で唯一のグローバルIPアドレス（外線）が必要だって習いました。どうしてプライベートIPのままでインターネットのサイトとやり取りできるんですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「非常に鋭い疑問です！ 実は、PCがインターネットに出ていく瞬間に、ルーターがプライベートIPとグローバルIPを相互に変換しているのです。この技術を **NAT（Network Address Translation）** と呼びます。オフィスの『電話の取次係・代表番号』で例えるとすっきりしますよ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">
+            「例えば、内線『301番（プライベートIP）』のアオキさんが、外部の取引先（インターネット上のサーバー）に電話をかけようとします。<br>
+            外部へかけるとき、会社のルーター（電話の取次係）は、アオキさんの番号を会社の代表電話番号である『03-XXXX（グローバルIP）』に書き換えて発信します。<br>
+            相手から代表番号に返信がかかってきたら、取次係（ルーター）が『これは301番のアオキさん宛てね』と判断して内線に繋ぎ直してくれます」
+        </div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「オレがその敏腕取次係（ルーター）だッ！ アオキの内線電話（プライベートパケット）を私の強靭な代表番号（グローバルIP）に瞬時に変換して外線発信し、返ってきたパケットをアオキにパスする！ ヌンッ！（電話を取り次ぐポーズ）」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「課長が窓口だと代表電話が常にビジー状態になりそうなので、取次は本物のルーター（NAT）に任せます。でも、内線（プライベート）と外線（グローバル）の住所をリアルタイムに翻訳して繋ぎ止めているのがNATなんですね。よく分かりました！」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep07/ep07_03.png" alt="代表番号と内線番号を変換するNATの仕組み">
+        <div class="caption">【ep07_03.png】プライベートIPとグローバルIPを変換するNAT（代表電話の取次イメージ）</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        カフェのテラス席で、ホシノさんがノートの切れ端に試験問題を書き出した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        インターネットなどの公衆回線を利用し、暗号化や認証技術を用いることで、あたかも専用線で接続しているかのような安全な通信環境を提供する技術はどれか。<br><br>
+        <span class="quiz-option">ア：DNS</span><br>
+        <span class="quiz-option">イ：NAT</span><br>
+        <span class="quiz-option">ウ：VPN</span><br>
+        <span class="quiz-option">エ：SSL/TLS</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「これはさっき習いました！ 公道（公衆回線）の中に安全な専用の仮想トンネルを引く技術だから、正解は **『ウのVPN』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ 専用線（Private Network）を仮想的（Virtual）に実現する技術なのでVPNですね」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        企業内のプライベートネットワークで使われているプライベートIPアドレスと、インターネット上で使われているグローバルIPアドレスを相互に変換する技術はどれか。<br><br>
+        <span class="quiz-option">ア：DHCP</span><br>
+        <span class="quiz-option">イ：DNS</span><br>
+        <span class="quiz-option">ウ：NAT</span><br>
+        <span class="quiz-option">エ：VPN</span>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「おおお！ 内線と外線の住所を書き換える取次係だな！ アオキ、大胸筋を震わせながら解答を叫べ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「叫びませんよ。ええと、内線番号（プライベートIP）と会社の代表番号（グローバルIP）の翻訳を行う技術だから、正解は **『ウのNAT』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「お見事、大正解です！ ちなみに『ア』のDHCPはIPアドレスの自動割り当て、『イ』のDNSはドメイン名とIPアドレスの変換、『エ』のVPNは仮想専用線です」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハ！ ネットワークセキュリティの接点も完璧にクリアしたな！ アオキ、これでどんな過酷なリモートワークでも耐えうるセキュリティ筋肉（ビルド）が完成したぞ！ よし、お祝いにこのカフェのプロテインスムージーを奢ってやろう！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「（メニューを見ながら）……あ、プロテインスムージーじゃなくて、普通のカフェラテがいいです。でも、ネットワークを守る技術って、私たちのオフィスワークのルールとそっくりで面白いですね！」</div>
+    </div>
+
+    <div class="narration">
+        VPN、SSL/TLS、そしてNATというネットワークセキュリティの守護神たちを学んだアオキ。<br>
+        ネットワーク編を完全制覇し、情シス部でのサバイバル学習は、次なるセキュリティ編へと引き継がれる！<br>
+        （第2段階：ネットワーク編 完）
+    </div>
+</div>
+
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep06.html">← 第6話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep08.html">第8話へ →</a>
+</footer>
+
+</body>
+</html>

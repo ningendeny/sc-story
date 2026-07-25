@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第6話：伝わらない暗号と、引き出しのPOP</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.illustration{
+    margin:30px 0;
+}
+
+.illustration img{
+    width:100%;
+    border-radius:15px;
+}
+
+.caption{
+    text-align:center;
+    color:#777;
+    margin-top:8px;
+    font-size:0.9rem;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+/* 問題セクション用アレンジ（既存のパーツをベースに表現） */
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* ===== 共通ナビゲーション ===== */
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+/* ===== スマホ対応 ===== */
+@media (max-width:768px){
+
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
+
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+
+    .name{
+        width:80px;
+        font-size:0.95rem;
+    }
+
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+
+    .question-box{
+        padding:15px;
+    }
+
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+
+    .illustration img{
+        border-radius:10px;
+    }
+
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep05.html">← 第5話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep07.html">第7話へ →</a>
+</nav>
+
+<div class="scene">
+    <h2>プロローグ：ファミレスのURLと電話帳</h2>
+    <div class="narration">
+        情シス部での研修が続いていた。お腹の空いたアオキ（25）は、以前ランチを食べたファミレス「マッピー」のWebサイト（`www.mappy-restaurant.com`）を見ようと、PCのブラウザにURLを入力していた。
+    </div>
+    
+    <div class="illustration">
+        <img src="../images/ep06/ep06_01.png" alt="URLからIPアドレスを引くDNSのイメージ">
+        <div class="caption">【ep06_01.png】ドメイン名をIPアドレスに翻訳するDNS（電話帳のイメージ）</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「マッピーのサイトに行きたいんですけど、このアルファベットのURLを入力すると、どうやって正しいサーバーに辿り着くんですか？ コンピュータ同士はIPアドレス（数字）で会話するって聞きましたけど……」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「ふふ、そうですね。そこで活躍するのが **DNS（Domain Name System）** です。これはインターネットの『電話帳（案内板）』のような存在です。」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「うむ！ ドメイン名（組織やサイトの別名）という『人の名前』を、コンピュータ用の電話番号である『IPアドレス』に変換するシステムだな！ 内線番号表と同じだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">
+            「はい。アオキさんがURLを入力すると、PCはまずDNSサーバーに問い合わせます。<br>
+            『www.mappy-restaurant.com のIPアドレスを教えてください！（DNSクエリ）』<br>
+            すると、DNSサーバーが登録簿を調べて返事をしてくれます。<br>
+            『それは 192.0.2.1 ですよ！（DNSレスポンス）』<br>
+            これによって、PCは正しい相手サーバーと通信できるようになります」
+        </div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど。人間にとってわかりやすい文字（ドメイン名）と、コンピュータがわかる数字（IPアドレス）を自動で翻訳してくれるシステムなんですね」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>ハガキと「筋肉暗号」</h2>
+    <div class="narration">
+        サイトが無事に見つかったアオキ。ログイン画面で情報を入力しようとして、URLが「https://」で始まっていることに気づいた。
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「あ、ここ『https』になってますね。いつも見てる『http』と何が違うんですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「HTTPは、暗号化せずにデータをそのまま送るプロトコルです。これは『ハガキに文字を書いて送る』ようなもので、通り道で誰かに覗き見（盗聴）されたらパスワードなどが丸見えになってしまいます」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「フハハ！ だから私はセキュリティ対策として、今後の業務報告をすべて暗号化することにしたぞ！ これを見るがいい！」</div>
+    </div>
+
+    <div class="narration">
+        ミズダイ課長がアオキのデスクにドサリと1枚の書類を置いた。そこには『大胸筋！広背筋！三角筋！上腕二頭筋！』と、筋肉ポーズの名前だけが延々と書き連ねられていた。
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「……なんですかこれ。暗号化っていうか、ただの筋肉ポーズの羅列で意味不明なんですけど。解読できません」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「それでいいのだ！ 第三者には絶対に意味が分からない！ これこそが鉄壁の暗号化セキュリティ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「宛先の僕にも意味が伝わらないなら、ただのゴミデータですよ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「ふふ、でも概念としては正解です。**HTTPS**は、データを『暗号化』して送るプロトコルです。もし途中のハッカーがデータを盗み見ても、課長の筋肉メモのように意味不明なデータにしか見えません。受信した正しいPCだけが、あらかじめ共有した『鍵』を使って元のメッセージに解読（復号）できるのです。これでログイン用のパスワードや個人情報を安全に送信できます」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど。丸見えのハガキ（HTTP）か、鍵付きの封筒（HTTPS）かという違いですね。暗号化の意味がすごくよく分かりました」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep06/ep06_02.png" alt="HTTPとHTTPSのセキュリティ対比">
+        <div class="caption">【ep06_02.png】plainなハガキ（HTTP）と暗号化された手紙（HTTPS）の対比</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>郵便ポストとメール送信</h2>
+    <div class="narration">
+        アオキは本日の日報をメールで送るため、メールソフトの設定を始めた。
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「メールを『送信』するための設定に『SMTP』って書いてありますね。これは何ですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「**SMTP**（Simple Mail Transfer Protocol）は、電子メールを送信・転送するためのプロトコルです。例えるなら、街の『郵便ポスト』や『郵便局の配達員』ですね。アオキさんが書いたメールを回収し、相手のメールサーバーまで届けてくれます」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「SMTPは郵便局員！ 筋肉日報を配達員（SMTP）が相手のメールボックスまで運んでくれるのだな！ 頼もしい走りだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「メールを送る時は、いつもSMTPのお世話になっているんですね」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>引き出しにしまう手紙と、共有の掲示板</h2>
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「メールを『受信』する設定には『POP3』と『IMAP』の2つがありますけど、何が違うんですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「そこがとても重要で、試験にも非常によく出題されます。メールの受け取り方の違いですね」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「POP3は、サーバーから自分のPCにメールを全部ダウンロードし、サーバーからは消してしまう方式だ！ 例えるなら、こうだッ！」</div>
+    </div>
+
+    <div class="narration">
+        ミズダイ課長がアオキのデスクの引き出しをガラッと開け、共有の書類トレイから書類を全部引っ掴んで、アオキの引き出しの中にグイグイと押し込んだ。
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「わわっ、何するんですか！ 引き出しの中が書類でパンパンになりますし、他の人が見られなくなっちゃうじゃないですか！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「これがPOP3の精神だ！ 自分の場所（PCのハードディスク）に全部取り込んで、共有スペース（サーバー）からは消し去る！ だからスマホや別のPCからはその書類が見えなくなるのだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「その通りです。POP3はPCが1台しかなかった時代の方式で、複数端末でメールを管理する現代では不便なことも多いです。そこで登場するのが **IMAP**（Internet Message Access Protocol）です。こちらはメールをサーバーに残したまま、PCやスマホから『閲覧しに行く』方式です。例えるなら、オフィスの『共有掲示板』ですね」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「あ！ それならPCで読んでもスマホで読んでも、同じメールがちゃんと見られますね。既読マークも同期されるし、今の時代はIMAPの方が圧倒的に便利ですね」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「そうですね。複数端末で同期して使うならIMAPが基本になります」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep06/ep06_03.png" alt="POP3とIMAPの受信動作の違い">
+        <div class="caption">【ep06_03.png】メールを端末に引き込むPOP3と、サーバー上で共有・閲覧するIMAP</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        ホシノさんがホワイトボードに、Webとメールのプロトコルに関する過去問を書き出した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        インターネットでドメイン名とIPアドレスを相互に変換する仕組みはどれか。<br><br>
+        <span class="quiz-option">ア：DHCP</span><br>
+        <span class="quiz-option">イ：DNS</span><br>
+        <span class="quiz-option">ウ：FTP</span><br>
+        <span class="quiz-option">エ：NAT</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「これはさっき習ったばかりです！ ドメイン名とIPアドレスを紐づけるインターネットの電話帳だから、正解は **『イのDNS』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ ちなみに『ア』のDHCPはIPアドレスの自動割り当て、『ウ』のFTPはファイル転送、『エ』のNATはIPアドレスの変換技術です」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        電子メールの送受信に用いられるプロトコルに関する記述のうち、適切なものはどれか。<br><br>
+        <span class="quiz-option">ア：SMTPは、メールサーバーからクライアントが電子メールを受信するために用いられる。</span><br>
+        <span class="quiz-option">イ：POP3は、クライアントからメールサーバーへ電子メールを送信するために用いられる。</span><br>
+        <span class="quiz-option">ウ：IMAPは、電子メールをクライアントにダウンロードせず、メールサーバー上で管理・閲覧するために用いられる。</span><br>
+        <span class="quiz-option">エ：HTTPSは、電子メールの添付ファイルを暗号化して安全に送受信するために用いられる。</span>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ぬおっ！ メールプロトコルの大一番だな！ アオキ、引き出しに書類を押し込まれたPOP3の恨みを、解答にぶつけてみよ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「恨みって……。ええと、アは『受信』と書いてあるからSMTP（送信）の記述として間違い。イも『送信』とあるからPOP3（受信）として間違い。エはメールの暗号化ではなくWebの暗号化だから間違い。ということは、サーバー上でメールを管理・閲覧する掲示板方式を説明している **『ウ』** が正解です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい！ 大正解です。POP3とIMAPの違い、そしてSMTPの役割は、午前試験（科目A）で本当によく問われますので、この『引き出しと掲示板』のイメージを忘れないでくださいね」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハ！ これでWebとメールのプロトコルも完全攻略だな！ よし、今日の研修完了を祝して、私の筋肉ポーズの意味（暗号）をアオキくんに全てレクチャーしてやろう！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「それは鍵があっても復号したくないので、永久に非公開でお願いします……」</div>
+    </div>
+
+    <div class="narration">
+        Webとメールを支える通信の仕組みを深く理解したアオキ。情シス部での学びは、着実に彼を成長させていく！<br>
+        （第6話：Webとメールのプロトコル 編 完）
+    </div>
+</div>
+
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep05.html">← 第5話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep07.html">第7話へ →</a>
+</footer>
+
+</body>
+</html>

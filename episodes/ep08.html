@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第8話：サイバー攻撃の脅威と、忍び寄る謎の影</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.illustration{
+    margin:30px 0;
+}
+
+.illustration img{
+    width:100%;
+    border-radius:15px;
+}
+
+.caption{
+    text-align:center;
+    color:#777;
+    margin-top:8px;
+    font-size:0.9rem;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.hacker-name{
+    color:#805ad5;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+.hacker-msg{
+    background:#faf5ff;
+    border:1px solid #d6bcfa;
+}
+
+/* 問題セクション用アレンジ（既存のパーツをベースに表現） */
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* ===== 共通ナビゲーション ===== */
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+/* ===== スマホ対応 ===== */
+@media (max-width:768px){
+
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
+
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+
+    .name{
+        width:80px;
+        font-size:0.95rem;
+    }
+
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+
+    .question-box{
+        padding:15px;
+    }
+
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+
+    .illustration img{
+        border-radius:10px;
+    }
+
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep07.html">← 第7話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep09.html">第9話へ →</a>
+</nav>
+
+<div class="scene">
+    <h2>プロローグ：悪意あるログイン（SQLインジェクション）</h2>
+    <div class="narration">
+        ある日の夕方。アオキ（25）は、情シス部で自分が管理している社内Webアプリケーションの保守作業を行っていた。<br>
+        突然、画面上の管理者用チャットウィンドウがアクティブになり、見覚えのないユーザーからのメッセージが表示された。
+    </div>
+    
+    <div class="illustration">
+        <img src="../images/ep08/ep08_01.png" alt="アオキのPC画面に謎のログイン通知が出るイメージ">
+        <div class="caption">【ep08_01.png】管理者画面に届いた謎の警告チャット</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「クックック……。お前の管理するアプリケーションに入り込んでやったぞ。脆弱性だらけのシステムめ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「えええっ！？ だ、誰ですかこの『謎の男A』って！？ 管理者権限でログインされてる……！ パスワードはかなり複雑なはずなのに、どうやって！？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「なんだとォッ！ アオキくんの管理システムに侵入者だと！？ 私のセキュリティ大胸筋が危険を検知したぞ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「アオキさん、落ち着いてログを確認してください。……あぁ、ログイン画面のID入力欄に `' OR 1=1; --` という文字列が入力されていますね。これは典型的な **SQLインジェクション** です」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「えすきゅーえる、いんじぇくしょん……？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「はい。Webサイトの入力フォームなどに『データベースへの命令（SQL文）を歪める特殊な文字列』を入力し、開発者が意図しない操作を実行させる攻撃です。<br>
+        『IDが一致する（0）』に `OR 1=1`（常に真となる条件）を付け加えることで、パスワードの入力を完全にバイパス（スキップ）してログインを突破されてしまったのですね」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「なんと狡猾な！ データベースの命令そのものを書き換えてしまうとは！ すぐにWAF（Webアプリケーションファイアウォール）を起動して、入力値のチェック（サニタイジング）を徹底するのだ！」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>社内フォーラムの罠（XSS）</h2>
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「フハハ！ ログインだけではないぞ。社内フォーラム（掲示板）にも面白いプレゼントを書き残しておいてやった」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なんだろう……。あ、フォーラムに『お知らせ』という投稿があります。これを開いてみますね」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「アオキさん、待って！ その投稿を開いてはダメ――」</div>
+    </div>
+
+    <div class="narration">
+        一瞬遅く、アオキがクリックした瞬間、PCのブラウザにポップアップ画面が立ち上がった。<br>
+        『警告：あなたのアカウント情報（セッションCookie）を外部サーバーに送信しました！』
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ひえっ！？ 何これ！ 勝手に警告が出て、私のID情報が抜かれちゃいました！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「……開いてしまいましたね。これが **XSS（クロスサイトスクリプティング）** です。脆弱性のあるWebサイトの掲示板などに、悪意あるJavaScriptコードを含んだ投稿を書き込み、それを閲覧したユーザーのブラウザ上で強制的にそのスクリプトを実行させる攻撃です。これによって、アオキさんのセッション情報が盗まれてしまいました」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「おのれ！ 信頼された掲示板を踏み台にして、閲覧者のブラウザ上で悪さを実行するとは！ まさに『掲示板に貼られた、見たら強制的に動かされる呪いの手紙』だな！ 即刻、投稿に含まれるタグ文字の無効化（サニタイズ）を行うのだ！」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep08/ep08_02.png" alt="掲示板経由でスクリプトを踏んでしまうXSSのイメージ">
+        <div class="caption">【ep08_02.png】掲示板に仕込まれた罠をユーザーが実行してしまうXSS</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>可愛い猫の罠（CSRF）</h2>
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「まだまだ行くぞ。アオキ、お前が欲しがっていた『もふもふ猫画像まとめサイト』のリンクをチャットに送ってやった。クリックしてみろ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「えっ、猫画像！？ （マウスを動かす）」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「アオキさん！ その男からのリンクは絶対に罠です、踏んではいけません！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「あっ、ついクリックしちゃいました！ でも、画面にはただの猫の写真が表示されているだけですよ？ 別に何も起きてないような……」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「いえ、裏で起きているのです。アオキさんの管理画面のログを見てください。『新規管理ユーザー「謎の男A」を追加しました』というリクエストが実行されてしまっています」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ええええええええッ！？ 私、そんな登録ボタン押してないですよ！？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「これが **CSRF（クロスサイトリクエストフォージェリ）** です。ユーザーが特定のWebサイトに『ログインした状態』であるのを悪用し、悪意ある外部のページ（今回の猫画像サイト）に仕込まれた罠ボタンなどを通じて、本人に気づかれないように元のサイトへ『不正な操作要求（リクエスト）』を強制送信させる攻撃です」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「アオキがログイン済みである（ハンコを押す準備ができている）のをいいことに、猫画像で気を引いている隙に勝手に契約書に承認印を押させたようなもの！ なんという卑劣ななりすまし詐欺だッ！」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep08/ep08_03.png" alt="ログイン状態を悪用して裏でリクエストを送るCSRF">
+        <div class="caption">【ep08_03.png】外部サイトを経由して意図しない操作をさせられるCSRF</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>怒涛のアクセスと、画面のロック（DoS ＆ ランサムウェア）</h2>
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「フハハハハ！ これで私は管理者権限を手に入れた！ ついでにお前のPCを使い物にならなくしてやろう！ ボットネットたちよ、一斉にアオキのPCへ突撃だ！」</div>
+    </div>
+
+    <div class="narration">
+        その直後、アオキのPCのネットワークランプが激しく点滅し始め、ブラウザがフリーズした。<br>
+        回線が完全にパンクしている。
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「うわっ、画面が全然動かない！ ネットに繋がらなくなりました！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「これは大量のダミーデータを送りつけてサーバーや回線をパンクさせる **DoS（Denial of Service）攻撃**、および複数のPCから一斉に行う **DDoS（Distributed DoS）攻撃** ですね。完全にトラフィックが溢れています」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ふんぬぅぅッ！！ 数の暴力で回線を塞ぐとは！ だが、情シスの防御力（バルク）を舐めるな！ アオキ、LANケーブルを抜く（物理隔離）のだ！ 通信を遮断しろ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「はい！（LANケーブルを抜く）……ふぅ、これで通信は止まりましたが、あれ？ 画面に何か変な髑髏マークが出てきましたよ？」</div>
+    </div>
+
+    <div class="narration">
+        アオキのPC画面に、真っ赤なドクロと警告メッセージがポップアップした。<br>
+        『お前のPC内の全ファイルを暗号化した。元に戻したければ、3日以内にプロテイン100箱分（または暗号資産）の金を支払え。期限を過ぎると復号キーを消去する』
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「えええええええええええええッ！？ 私の作成途中の報告書やデータが、全部開けなくなってる！ 拡張子が変なものに書き換えられてます！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「これは **ランサムウェア（Ransomware）** です。PC内のデータを勝手に暗号化して人質（身代金＝Ransom）にし、元に戻すための『復号キー』と引き換えに金銭を要求する極めて悪質なマルウェアです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「な、なにぃ！？ プロテインを人質（身代金）にするだとォォッ！！ それは私の大胸筋への宣戦布告と受け取るッ！ アオキ、そんな悪党の要求など絶対に無視しろ！ データは毎日夜間に『物理的（オフライン）な外付けHDD』へバックアップしてある！ バックアップからリストア（復旧）すれば一瞬で元通りだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「え、バックアップがあるんですか！？ 良かった……！ 課長、たまにはすごく頼りになりますね！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「そうですね。ランサムウェアはネットワーク上のバックアップデータも巻き込んで暗号化するため、課長のように『物理的に切り離した（オフライン）バックアップ』を取っておくのが最強の防衛策なのです」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep08/ep08_04.png" alt="暗号化されたPCとバックアップからの復旧">
+        <div class="caption">【ep08_04.png】ランサムウェア（身代金要求）とオフラインバックアップによる復旧</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        PCのハードディスクを初期化し、バックアップから完全復旧を終えて一息ついた3人。<br>
+        ホシノさんが振り返りのために、試験問題を出題した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        Webアプリケーションの脆弱性を悪用する攻撃手法のうち、入力フォームなどのパラメータに悪意あるSQL文を混入させ、データベースを不正に操作したり情報を盗み出したりするものはどれか。<br><br>
+        <span class="quiz-option">ア：SQLインジェクション</span><br>
+        <span class="quiz-option">イ：クロスサイトスクリプティング（XSS）</span><br>
+        <span class="quiz-option">ウ：クロスサイトリクエストフォージェリ（CSRF）</span><br>
+        <span class="quiz-option">エ：ディレクトリトラバーサル</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「これは最初に『謎の男A』にやられた攻撃ですね！ パラメータに悪意あるSQL命令を流し込んで、ログインを突破したりデータベースを不正操作する手法だから、正解は **『アのSQLインジェクション』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ SQL文を流し込む（インジェクションする）のでSQLインジェクションですね。イのXSSはスクリプトの埋め込み、ウのCSRFはログイン状態での強制リクエスト送信になります」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        PC内のファイルを勝手に暗号化して使用不能にし、復号するためのキーと引き換えに金銭を要求するマルウェアはどれか。<br><br>
+        <span class="quiz-option">ア：スパイウェア</span><br>
+        <span class="quiz-option">イ：トロイの木馬</span><br>
+        <span class="quiz-option">ウ：ランサムウェア</span><br>
+        <span class="quiz-option">エ：バックドア</span>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ぬおっ！ 私のプロテインを人質に取ろうとした許されざるマルウェアだな！ アオキ、大胸筋を怒らせて解答せよ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「怒らせませんよ。ファイルを勝手に暗号化して人質にし、身代金（Ransom）を要求するマルウェアだから、正解は **『ウのランサムウェア』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい、大正解です！ ランサム（身代金）＋ソフトウェアの造語なのでランサムウェアですね。アのスパイウェアは情報窃取、イのトロイの木馬は無害なソフトになりすますもの、エのバックドアは裏口を作って侵入する手法です」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハ！ ハッカーを退け、試験問題も完封するとは！ アオキ、お前のセキュリティ筋肉もかなりパンプアップしてきたな！ よし、今日のセキュリティ訓練のご褒美に、本物のプロテインを100パック、お前の引き出し（POP）に詰め込んでやろう！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「また引き出しをパンパンにするのはやめてください！ ……でも、攻撃の仕組みが分かると、どうやって防げばいいのか対策もよく見えてきて面白いですね！」</div>
+    </div>
+
+    <div class="narration">
+        「謎の男A」の攻撃を撃退し、情報セキュリティの最初の一歩を踏み出したアオキ。情シス部の盾となるべく、彼の戦い（学び）はこれからも続いていく！<br>
+        （第8話：サイバー攻撃の脅威 編 完）
+    </div>
+</div>
+
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep07.html">← 第7話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep09.html">第9話へ →</a>
+</footer>
+
+</body>
+</html>

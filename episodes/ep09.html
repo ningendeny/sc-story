@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第9話：ネットワークの盾と、鉄壁の防護壁</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.illustration{
+    margin:30px 0;
+}
+
+.illustration img{
+    width:100%;
+    border-radius:15px;
+}
+
+.caption{
+    text-align:center;
+    color:#777;
+    margin-top:8px;
+    font-size:0.9rem;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.hacker-name{
+    color:#805ad5;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+.hacker-msg{
+    background:#faf5ff;
+    border:1px solid #d6bcfa;
+}
+
+/* 問題セクション用アレンジ（既存のパーツをベースに表現） */
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* ===== 共通ナビゲーション ===== */
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+/* ===== スマホ対応 ===== */
+@media (max-width:768px){
+
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
+
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+
+    .name{
+        width:80px;
+        font-size:0.95rem;
+    }
+
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+
+    .question-box{
+        padding:15px;
+    }
+
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+
+    .illustration img{
+        border-radius:10px;
+    }
+
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep08.html">← 第8話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep10.html">第10話へ →</a>
+</nav>
+
+<div class="scene">
+    <h2>プロローグ：門番のブロック（ファイアウォール）</h2>
+    <div class="narration">
+        前回のハッキング騒動から数日。<br>
+        アオキ（25）がPCで業務を行っていると、またしても管理者チャットに「謎の男A」からのメッセージが届いた。
+    </div>
+    
+    <div class="illustration">
+        <img src="../images/ep09/ep09_01.png" alt="PCの前に立つ情シス部と謎の男Aのチャット">
+        <div class="caption">【ep09_01.png】再び攻撃を仕掛けてきた謎の男A</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「クックック……。前回はオフラインバックアップなどという小細工で逃げ切ったようだが、今回はお前の社内データベースポート（3306番）を直接こじ開けてデータを抜き取ってやる！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ひぇっ！ またアイツだ！ データベースに直接アクセスしようとしてる！？ どうしよう！！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「慌てないでください、アオキさん。もうデータベースポートへの直接アクセスは、設定した『盾』が防いでいるはずです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「ぬ、ぬおっ！？ なんだこれは、データベースポートに接続しようとしても『接続拒否（Connection Refused）』になるぞ！？ なぜだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「当然です。私たちのネットワークの入り口には **ファイアウォール（Firewall）** が設置されています。これは通信の『送信元IPアドレス』や『ポート番号（宛先ポート）』を検査し、あらかじめ許可された通信だけを通して、それ以外を遮断するシステムです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「そう！ いわばオフィスの正門に立つ **『頑固な警備員（または関所）』** だ！ 許可証（許可されたIP/ポート）を持たない外部の不審者は、正門の時点でシャットアウト！ データベースのある奥の部屋には一歩も入れんのだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど！ 正門の警備員がIPアドレスとポート番号のチェックをして弾いてくれているんですね」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>看視員とタックル警備（IDS vs IPS）</h2>
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「チッ、正門が閉じているなら、Webサイト用に一般公開されているポート（80番/443番）から、OSやシステムの既知の『脆弱性（セキュリティの隙間）』を突く不正パケットを送り込んでやる！」</div>
+    </div>
+
+    <div class="narration">
+        謎の男Aが一般公開されたポートに向けて、システムを破壊するための特殊な攻撃データを送り始めた。<br>
+        その瞬間、情シス部の監視モニターからけたたましいアラート音が響いた！<br>
+        『警告：不審な脆弱性スキャンおよび攻撃コードを検知！』
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「うわっ、すごい警報が鳴ってます！ 攻撃が侵入してきたんですか！？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大丈夫です。今のアラームを鳴らしたのは **IDS（Intrusion Detection System：侵入検知システム）** です。ネットワーク上を流れるパケットを監視し、あらかじめ登録された攻撃パターン（シグネチャ）と一致する通信を見つけると、管理者に『侵入者がいます！』と通報するシステムです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「えっ、でも通報する（アラームを鳴らす）だけじゃ、攻撃は通り抜けちゃうんじゃ……」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「ふふ、そのために今回は **IPS（Intrusion Prevention System：侵入防止システム）** も連動させてあります。画面を見てください」</div>
+    </div>
+
+    <div class="narration">
+        アラート画面の直後に、青い文字でステータスが表示された。<br>
+        『攻撃通信を検知し、該当IPからの通信を自動遮断しました。被害なし』
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「これぞIPSの力だッ！ IDSが『不審者が侵入したぞ！』と叫ぶ **監視カメラ（看視員）** だとすれば、IPSは不審者を見つけた瞬間にダッシュで突撃し、その場で取り押さえてつまみ出す **『武闘派のガードマン』** なのだ！ ヌンッ！（タックルする構え）」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「おおお！ 検知（Detection）するだけのIDSに対して、防御・防止（Prevention）まで自動で行うのがIPSなんですね！ 頼もしいガードマンだ！」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep09/ep09_02.png" alt="IDSとIPSの動作の違いイメージ">
+        <div class="caption">【ep09_02.png】叫ぶだけのIDSと、タックルして止めるIPSの対比</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>手荷物検査官（WAF：Web Application Firewall）</h2>
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「おのれ、ネットワークパケットのパターンで弾くとは！ ならば、正規のアクセスを装い、ホームページのお問い合わせフォームの入力欄から、SQLインジェクションの命令文や、XSSの悪意あるスクリプト文字列を送りつけてやる！ これなら普通のポートだし、ただの文字入力データだからパケットの形は正常だぞ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「あっ！ 確かにホームページへのアクセス自体は遮断できないから、お問い合わせフォームに悪意ある文字を入れて送信されたら、中まで入られちゃいませんか！？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「いいえ、それも防げます。Webサーバーの直前には、もう一つの盾 **WAF（Web Application Firewall）** が控えていますから」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「送信ボタン、ポチッとな！ ……って、画面に『403 Forbidden（ブロックされました）』と出たぞ！？ なんでWebアプリケーション層の攻撃まで弾かれるんだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「ファイアウォールはIPやポート（住所）しか見ず、IPSはネットワーク全体の異常パケットを見ます。しかし **WAF** は、Web通信（HTTP/HTTPS）の『中身（データの内容）』を細かくチェックするのです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「そう！ WAFとはまさに、正門を通過した客を一人ずつ調べる **『入念な手荷物検査官（毒物検査員）』** だ！ どんなに身元（IP）が正常で許可されたポートから入ってこようと、カバン（HTTPリクエストの中身）を開けて『SQLインジェクションの毒物（OR 1=1）』や『XSSのナイフ（&lt;script&gt;）』が入っていれば、その場で没収して追い出すのだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど！ ファイアウォールが『正門の門番』、IPSが『館内を走るタックル警備員』、そしてWAFが『Webの入り口の手荷物検査官』なんですね。それぞれ守る場所や見ている部分が違うから、重ねて配置することで鉄壁になるんだ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hacker-name">謎の男A</div>
+        <div class="message hacker-msg">「うぎゃあああ！ どこから攻めても防御が硬すぎる！ 覚えていろーーっ！（通信切断）」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep09/ep09_03.png" alt="WAFによる手荷物検査のイメージ">
+        <div class="caption">【ep09_03.png】HTTPリクエストの「中身（手荷物）」をチェックするWAFの仕組み</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        謎の男Aを完全にシャットアウトし、オフィスの安全を守りきった3人。<br>
+        ホシノさんがホワイトボードに、ネットワーク防御に関する午前問題を書き出した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        Webアプリケーションの脆弱性を悪用するSQLインジェクションやクロスサイトスクリプティング（XSS）などの攻撃からWebサイトを保護するために、HTTPやHTTPSなどのアプリケーション層のデータを検査して不正な通信を遮断する装置はどれか。<br><br>
+        <span class="quiz-option">ア：ファイアウォール</span><br>
+        <span class="quiz-option">イ：WAF</span><br>
+        <span class="quiz-option">ウ：IDS</span><br>
+        <span class="quiz-option">エ：ルーター</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「これはさっき習いました！ Webフォームからの文字入力（SQLインジェクションやXSS）という手荷物の中身を検査して防ぐ装置だから、正解は **『イのWAF』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ Web Application Firewallの略なのでWAFですね。アのファイアウォールはIPアドレスやポート番号しか検査しないため、HTTPの通信内に隠されたこれらの攻撃をすり抜けてしまいます」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        ネットワークやサーバーへの不正侵入を防ぐシステムのうち、不審な通信を検知して管理者に通知する（検知）だけでなく、自動的にその通信を遮断する（防止）機能を持つものはどれか。<br><br>
+        <span class="quiz-option">ア：IDS</span><br>
+        <span class="quiz-option">イ：IPS</span><br>
+        <span class="quiz-option">ウ：DHCP</span><br>
+        <span class="quiz-option">エ：DNS</span>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「おお！ 不審者を見つけてアラームを鳴らすだけにとどまらず、自らタックルしてつまみ出す（防止する）警備員だな！ アオキ、瞬時に答えよ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「はい！ 防止（Prevention）の機能を持ったシステムなので、正解は **『イのIPS』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「素晴らしい、完璧です！ 検知（Detection）のみを行うのが『ア』のIDS。自動で遮断・防止（Prevention）まで行うのが『イ』のIPSですね」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハ！ ネットワークの防御壁も完全にマスタライズしたな！ アオキ、これでハッカーのどんな攻撃にも屈しない鉄壁のセキュリティバルクが手に入ったぞ！ よし、今日のセキュリティ成功を祝して、私の大胸筋ファイアウォール（ポーズ）を見せてやろう！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「そのファイアウォールはパケット破棄（ドロップ）でお願いします。……でも、ファイアウォールやIPS、WAFがどうやって連携してシステムを守っているのか、関係性がすごくスッキリ整理できました！」</div>
+    </div>
+
+    <div class="narration">
+        セキュリティの防護壁の仕組みを学び、また一歩頼もしくなったアオキ。情シス部の盾としての修行は、さらに深みを増していく！<br>
+        （第9話：ネットワークの盾 編 完）
+    </div>
+</div>
+
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep08.html">← 第8話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep10.html">第10話へ →</a>
+</footer>
+
+</body>
+</html>

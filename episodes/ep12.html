@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>第12話：人の心の隙間と、新入りヤマモトのヒミツ</title>
+    <style>
+
+body{
+    max-width:950px;
+    margin:auto;
+    background:#f5f7fa;
+    font-family:"Yu Gothic","Meiryo",sans-serif;
+    line-height:2;
+    color:#333;
+    padding:20px;
+}
+
+a{
+    color:#2563eb;
+    text-decoration:none;
+    font-weight:bold;
+}
+
+a:hover{
+    text-decoration:underline;
+}
+
+.back{
+    margin-bottom:20px;
+}
+
+.scene{
+    background:white;
+    border-radius:20px;
+    padding:35px;
+    margin-bottom:40px;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+}
+
+.scene h2{
+    color:#0d2342;
+    border-left:8px solid #2563eb;
+    padding-left:15px;
+    margin-bottom:25px;
+}
+
+.narration{
+    background:#f7f7f7;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:25px;
+    line-height:2.2;
+}
+
+.illustration{
+    margin:30px 0;
+}
+
+.illustration img{
+    width:100%;
+    border-radius:15px;
+}
+
+.caption{
+    text-align:center;
+    color:#777;
+    margin-top:8px;
+    font-size:0.9rem;
+}
+
+.talk{
+    display:flex;
+    margin-bottom:20px;
+}
+
+.name{
+    width:100px;
+    font-weight:bold;
+    font-size:1.05rem;
+}
+
+.message{
+    flex:1;
+    padding:16px 20px;
+    border-radius:15px;
+}
+
+.mizudai-name{
+    color:#d62828;
+}
+
+.aoki-name{
+    color:#2563eb;
+}
+
+.hoshino-name{
+    color:#2f855a;
+}
+
+.yamamoto-name{
+    color:#805ad5;
+}
+
+.mizudai-msg{
+    background:#ffeaea;
+}
+
+.aoki-msg{
+    background:#edf5ff;
+}
+
+.hoshino-msg{
+    background:#eaf8ef;
+}
+
+.yamamoto-msg{
+    background:#faf5ff;
+    border:1px solid #d6bcfa;
+}
+
+/* 問題セクション用アレンジ（既存のパーツをベースに表現） */
+.question-box {
+    border: 2px dashed #2563eb;
+    padding: 20px;
+    border-radius: 15px;
+    background: #f8fafc;
+    margin-bottom: 20px;
+}
+.quiz-option {
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* ===== 共通ナビゲーション ===== */
+.episode-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+.episode-nav.bottom {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+.nav-btn {
+    display: inline-block;
+    background: #2563eb;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: background 0.2s;
+    text-align: center;
+    text-decoration: none;
+    min-width: 140px;
+}
+.nav-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+}
+.nav-btn.home-btn {
+    background: #4b5563;
+}
+.nav-btn.home-btn:hover {
+    background: #374151;
+}
+.nav-btn.disabled {
+    background: #d1d5db;
+    color: #9ca3af !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+/* ===== スマホ対応 ===== */
+@media (max-width:768px){
+
+    body{
+        padding:10px;
+        line-height:1.8;
+    }
+
+    .scene{
+        padding:20px;
+        border-radius:15px;
+    }
+
+    .name{
+        width:80px;
+        font-size:0.95rem;
+    }
+
+    .message{
+        padding:14px;
+        font-size:0.95rem;
+    }
+
+    .narration{
+        padding:15px;
+        line-height:2;
+    }
+
+    .question-box{
+        padding:15px;
+    }
+
+    .quiz-option{
+        margin-left:0;
+        display:block;
+        margin-top:8px;
+    }
+
+    .illustration img{
+        border-radius:10px;
+    }
+
+    .episode-nav {
+        gap: 8px;
+        margin-bottom: 20px;
+    }
+    .episode-nav.bottom {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .nav-btn {
+        padding: 10px 12px;
+        font-size: 0.85rem;
+        flex: 1;
+        min-width: 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<nav class="episode-nav top">
+    <a class="nav-btn" href="ep11.html">← 第11話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep13.html">第13話へ →</a>
+</nav>
+
+<div class="scene">
+    <h2>プロローグ：爽やかな新人（テールゲート）</h2>
+    <div class="narration">
+        何度もハッキングを防がれ、嫌がらせの改ざんまで見破られたハッカー「謎の男A」。<br>
+        アオキ（25）が所属する情報システム部に、中途入社として新メンバーが配属されることになった。
+    </div>
+    
+    <div class="illustration">
+        <img src="../images/ep12/ep12_01.png" alt="情シス部に入館するアオキとヤマモト">
+        <div class="caption">【ep12_01.png】セキュリティゲートを通るアオキと、後ろについてくるヤマモト</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「おはようございます！ （ピッ、とセキュリティゲートに社員カードをかざしてドアを開ける）」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「おはようございます、アオキさん。本日中途入社しましたヤマモトです。よろしくお願いします（ニコッ）」</div>
+    </div>
+
+    <div class="narration">
+        物腰が柔らかく、丁寧な口調のヤマモト。彼はアオキが開けたセキュリティゲートのドアが閉まる前に、自分のカードをかざすことなく、アオキのすぐ後ろから自然な足取りでオフィス内へと入ってきた。
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「おはようございます。ヤマモトさん、ようこそ情シス部へ。<br>
+        ……あ、ヤマモトさん、今の入り方は良くないですね。ゲートを通る際は、必ず一人ずつカードをかざして認証を行ってください」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「あ、すみません……。アオキさんが開けてくださったので、ついそのままついて入ってしまいました。失礼いたしました」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「いいえ、最初なので知らなくて当然です。ただ、認証した人の後ろにピタリとついて、カードを通さずに一緒に入る行為を **テールゲート（共連れ）** と呼びます。部外者が社内へ侵入する際の代表的な手口ですので、悪意がなくても絶対に禁止されているルールなんですよ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「なるほど。僕も親切心で『どうぞ』ってドアを押さえちゃいがちですけど、それだとテールゲートを助けちゃうことになるんですね。気をつけます！」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>背後の優しい視線（ショルダーハック）</h2>
+    <div class="narration">
+        ヤマモトのデスクはアオキの斜め後ろに配置された。<br>
+        アオキがPCを起動し、ログイン用パスワードを入力しようとしたとき、ヤマモトが「あの、すみません……」と優しく声をかけながら肩越しに覗き込むように近づいてきた。
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「アオキさん、今日最初の仕事として、業務日報の共有フォルダの場所を教えていただけますか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「あ、いいですよ。ええと、まずシステムにログインして……（キーボードでカタカタとパスワードを打つ）」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「アオキさん、ストップ！ 画面を体で隠して打ってください！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「わっ！ ホシノさん、急にどうしたんですか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「パスワードの入力中に、背後からキーボードや画面を盗み見られる行為を **ショルダーハック（のぞき見）** と呼びます。非常に原始的ですが、これも立派なパスワード奪取の手口です。ログイン時は、周りの視線に気を配るか、のぞき見防止フィルターを画面に貼るなどの対策が必要です」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「あ、申し訳ありません……！ 早く仕事を覚えようと、つい熱心に見つめてしまいました。他意はなかったのですが、不安にさせてしまいましたね」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「いえいえ、ヤマモトさんが悪いわけじゃないですよ！ でも、すぐ後ろに人がいる状態で無防備にパスワードを打つのは、確かに危険ですね」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep12/ep12_02.png" alt="ショルダーハック（のぞき見）を警戒する様子">
+        <div class="caption">【ep12_02.png】パスワード入力を背後から盗み見られるショルダーハック</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>ゴミ箱の中の秘密（トラッシング）</h2>
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「皆さん、お忙しそうですね。私がオフィスのゴミを集めて捨てておきますので、どうぞ作業を続けてください」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「あ、ヤマモトさん、ありがとうございます！ じゃあこのゴミ箱を……」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「アオキさん、ちょっとそのゴミ箱を見せてください。……あぁ、やっぱり。昨日使った一時的な接続テスト用のパスワードや、システム構成がメモされた不要用紙が、シュレッダーされずにそのまま捨てられています」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「おや、これは危ないですね。私が処理しておきますよ（メモを回収しようとする）」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「いえ、私がシュレッダーにかけます。ゴミ箱からこうした機密情報を記載したメモを拾い出す行為を **トラッシング（ゴミ箱漁り）** や **スカベンジング** と呼びます。これも重要な攻撃の手口です。不要なメモであっても、システムに関する情報は必ずシュレッダーで裁断して破棄するのがルールです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「うっ……！ メモ用紙だからと油断してそのまま捨てちゃってました。もし悪いハッカーがゴミを回収してたら、そこから情報が全部漏れてたってことか……」</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>正体の暴露と、熱きスカウト</h2>
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「……ヤマモトさん。先ほどからあなたの行動を見させていただいていましたが、テールゲートで進入し、アオキさんのパスワード入力を覗き見ようとし、さらに今度は機密情報のゴミを回収しようとしましたね。これが全て『ただの偶然』だと思いますか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「えっ……？ な、何をおっしゃるんですかホシノさん。私はただ、早く仕事を覚えようとお手伝いしただけで……（困惑したような優しい笑顔を見せる）」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「とぼけなくても大丈夫ですよ。あなたが採用試験で提出した経歴書、そして入社時に登録したPCの物理MACアドレスと端末ID。これらは、昨日まで私たちの社内システムに攻撃を仕掛けていた『謎の男A』が使用していた通信シグネチャと完全に一致しています。」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「えええええええええええええッ！？ ヤ、ヤマモトさんがハッカーの『謎の男A』！？ 嘘でしょ、あんなに優しくて丁寧なのに！？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">
+            「（フッ……と優しい笑顔が消え、冷酷で乾いた表情に変わる。口調も低く冷たいものに変化する）<br>
+            ……チッ。バレたか。随分とぬるい会社だと思って舐めていたが、ホシノだけは少しは頭が回るらしいな」
+        </div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「わわっ！ 声のトーンが全然違う！ 誰だこの人！？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「ハッ、その通り。俺がネットの向こうからお前らのシステムを弄んでいた『謎の男A』だ。ネットからの攻撃が全て弾かれたからな、偽の経歴書を作ってこの情シス部に潜入し、直接ソーシャルエンジニアリングでデータを奪ってやろうと思ったのさ。だが……まさかこんなゴミ拾いの段階で暴かれるとはな。無様だよ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「内部への潜入という大胆なアプローチ、そしてアオキさんの心理を突くやり方は確かに見事でした。ですが、私たちの『人』へのセキュリティ対策を見くびりすぎです」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「勝手に言え。捕まえるなら警察でも何でも呼べばいい。言い訳するつもりはない」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハハハハハ！ 面白いッ！ 実に素晴らしい冷酷さだ！」</div>
+    </div>
+
+    <div class="narration">
+        突然、奥のデスクからミズダイ課長が立ち上がり、大声で笑いながらヤマモトの肩にガシッと手を置いた。
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「……なんだお前は。気味が悪い、その腕を退けろ。警察に突き出さないのか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「突き出すわけがないだろう！ ネット経由の防衛網を避けて自ら潜入し、人の隙を冷静に突くその卓越したハッカー視点！ そして冷徹なまでの判断力！ これぞ我が情シス部の防御力（バルク）をさらにビルドアップさせるために必要な『最強の筋肉』だ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「は？ 正気か？ 俺はお前たちのデータを盗み、システムを壊そうとしていたスパイであり、クラッカーだぞ？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「課長の言う通り、防御側を強化するには、攻撃者の冷徹な視点が一番の薬になります。それに、あなたほどの技術をこんな犯罪で埋もれさせるのはもったいないです。どうですか？ これからは『ホワイトハッカー』として、アオキさんたちと一緒にこの会社を守る側に回ってみませんか？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「……フン、おめでたい奴らだな。だが、お前らみたいな奇妙な連中の内側で、この会社のセキュリティがどこまで保つか見物するのも悪くない。いいだろう、雇われるふりをして、内部からお前らの脆弱性を監視してやる」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「言い方はめちゃくちゃ棘がありますけど、とりあえず協力してくれるってことですね……！ よろしくお願いします、ヤマモトさん！」</div>
+    </div>
+
+    <div class="illustration">
+        <img src="../images/ep12/ep12_03.png" alt="ヤマモトが情シス部のメンバーに加わる様子">
+        <div class="caption">【ep12_03.png】ホワイトハッカーとして情シス部に加わったヤマモト</div>
+    </div>
+</div>
+
+<div class="scene">
+    <h2>午前問題（科目A）にチャレンジ！</h2>
+    <div class="narration">
+        ヤマモトが正式に情報システム部のメンバーに加わった！<br>
+        歓迎ムードの中、ホシノさんが新体制で最初の午前過去問をホワイトボードに書き出した！
+    </div>
+
+    <div class="question-box">
+        <strong>【問題1】</strong><br>
+        人間の心理的な隙や、物理的な管理の甘さに付け込んで、パスワードなどの機密情報を入手する行為（ショルダーハックやトラッシング、なりすまし電話など）の総称はどれか。<br><br>
+        <span class="quiz-option">ア：ソーシャルエンジニアリング</span><br>
+        <span class="quiz-option">イ：ブルートフォース攻撃</span><br>
+        <span class="quiz-option">ウ：SQLインジェクション</span><br>
+        <span class="quiz-option">エ：フィッシング</span>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「これは今日ヤマモトさん（謎の男A）にオフィスで仕掛けられた攻撃そのものですね！ 人の心理や管理の甘さを突く手口の総称だから、正解は **『アのソーシャルエンジニアリング』** です！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です！ ソーシャルエンジニアリングは技術的な防御（ファイアウォールなど）をすり抜けてしまうため、従業員一人ひとりの教育と防衛意識（ポリシー）が唯一の対策になります」</div>
+    </div>
+
+    <div class="question-box">
+        <strong>【問題2】</strong><br>
+        物理的なセキュリティ対策のうち、静脈認証やICカード等で認証された者がゲートを通過する際、その直後に認証を受けずに続いて入場する「共連れ（テールゲート）」を防止する仕組みとして、最も適切なものはどれか。<br><br>
+        <span class="quiz-option">ア：のぞき見防止フィルターの設置</span><br>
+        <span class="quiz-option">イ：1人分しか通過できない回転式ゲート（サークルゲート）の導入</span><br>
+        <span class="quiz-option">ウ：不要書類のシュレッダー裁断の徹底</span><br>
+        <span class="quiz-option">エ：ログインIDとパスワードの文字数を増やす</span>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「アオキ、これは俺が最初に入館した際の手口（テールゲート）の対策だな。物理的に一人しか通れない仕組みを導入するのが最も手っ取り早い。正解は 『イ』 だ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name hoshino-name">ホシノ</div>
+        <div class="message hoshino-msg">「大正解です、ヤマモトさん。さすが攻撃者としての視点が冴えていますね。回転式のサークルゲートや、前後の扉が同時に開かない二重扉（インターロック）などがテールゲート対策として有効です」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「ガハハ！ 完璧な正解だ！ これでソーシャルエンジニアリングも完全制覇！ 情報セキュリティ編（第3段階）も完遂だな！ よし、ヤマモトの入社を祝して、今日こそは特製のプロテインスムージーで乾杯だ！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「フン、ハッシュ値のように二度と分離できないプロテインか。……（ごくごく）チッ、味は悪くないな。これで大胸筋とやらを鍛えておけばいいんだろ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「ええっ、ヤマモトさん、冷たい態度のまま全部飲んでる！？」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name yamamoto-name">ヤマモト</div>
+        <div class="message yamamoto-msg">「差し出された栄養素を拒むほど愚かではないだけだ。だが、馴れ合うつもりはないと言ったはずだ」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name mizudai-name">ミズダイ</div>
+        <div class="message mizudai-msg">「おおお！ 素晴らしい！ ついに私のプロテインの味が分かる本物の男（バディ）が現れたぞ！ アオキ、見習え！」</div>
+    </div>
+
+    <div class="talk">
+        <div class="name aoki-name">アオキ</div>
+        <div class="message aoki-msg">「いや、そこは見習わなくていいです……。でも、技術（システム）だけでなく、人（ソーシャル）のセキュリティの大切さもヤマモトさんから学べて、すごく良かったです！」</div>
+    </div>
+
+    <div class="narration">
+        セキュリティ攻撃者であった謎の男Aことヤマモトが仲間に加わり、セキュリティ防衛をコンプリートした情シス部。<br>
+        最強のホワイトハッカーを仲間に迎え、アオキのIT基礎と安全性を高める旅は、第4段階の「OS」領域へと突き進む！<br>
+        （第3段階：セキュリティ編 完）
+    </div>
+</div>
+
+<footer class="episode-nav bottom">
+    <a class="nav-btn" href="ep11.html">← 第11話へ</a>
+    <a class="nav-btn home-btn" href="../index.html">🏠 ホーム</a>
+    <a class="nav-btn" href="ep13.html">第13話へ →</a>
+</footer>
+
+</body>
+</html>
